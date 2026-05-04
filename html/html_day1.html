@@ -15,9 +15,12 @@ HTML - Hyper Text Markup Language
     <h5>Hello</h5>
     <h6>Hello</h6>
 
-    <hr>
+    <hr />
 
-    <p>Lorem ipsum dolor sit amet <br> consectetur adipisicing elit. Molestias, voluptatibus.</p>
+    <p>
+      Lorem ipsum dolor sit amet <br />
+      consectetur adipisicing elit. Molestias, voluptatibus.
+    </p>
     <p>Welcome to <b>Sheryians</b></p>
     <p>Welcome to <strong>Sheryians</strong></p>
 
@@ -29,7 +32,7 @@ HTML - Hyper Text Markup Language
     <p>2<sup>2</sup> = 4</p>
     <p>h<sub>2</sub>O = Water</p>
 
-    <hr>
+    <hr />
 
     <ol>
       <li>Harsh</li>
@@ -43,16 +46,19 @@ HTML - Hyper Text Markup Language
       <li>Ritik</li>
     </ul>
 
-    <hr>
+    <hr />
 
     <a href="https://x.com/forgewithharsh">forgewithharsh</a>
 
     <details>
       <summary>Click here please</summary>
-      <ul><li>Hahaha</li><li>hihihi</li></ul>
+      <ul>
+        <li>Hahaha</li>
+        <li>hihihi</li>
+      </ul>
     </details>
 
-    <br><br>
+    <br /><br />
 
     <select name="Naman" id="">
       <option value="Harsh">Harsh</option>
@@ -60,42 +66,69 @@ HTML - Hyper Text Markup Language
       <option value="Ritik">Ritik</option>
     </select>
 
-    <hr>
+    <hr />
 
-    <img height="100" src="https://yt3.googleusercontent.com/t8z86Svc4diX-k6VHCZ7AY0EFgVin91qLZigPwJLnavVaB0YPa0etWa-c7bG1BUEcbB4U4im=s900-c-k-c0x00ffffff-no-rj" alt="Sheriyans">
+    <img
+      height="100"
+      src="https://yt3.googleusercontent.com/t8z86Svc4diX-k6VHCZ7AY0EFgVin91qLZigPwJLnavVaB0YPa0etWa-c7bG1BUEcbB4U4im=s900-c-k-c0x00ffffff-no-rj"
+      alt="Sheriyans"
+    />
 
-    <br><br>
+    <br /><br />
 
-    <video autoplay muted loop controls height="400" src="./sheriyans.mp4"></video>
+    <video
+      autoplay
+      muted
+      loop
+      controls
+      height="400"
+      src="./sheriyans.mp4"
+    ></video>
 
-    <br><br>
+    <br /><br />
 
     <audio controls src="./faaa.mp3"></audio>
 
-    <hr>
-    <br>
+    <hr />
+    <br />
 
-    <table>
+    <table border="1">
+      <tr>
+        <td>name</td>
+        <td>gender</td>
+        <td>city</td>
+      </tr>
 
-        <tr>
-          <tr>name</tr>
-          <tr>gender</tr>
-          <tr>city</tr>
-        </tr>
+      <tr>
+        <td>harsh</td>
+        <td>male</td>
+        <td>shimla</td>
+      </tr>
 
-        <tr>
-          <td>harsh</td>
-          <td>male</td>
-          <td>shimla</td>
-        </tr>
-
-        <tr>
-          <td>sarthak</td>
-          <td>male</td>
-          <td>bhopal</td>
-
-        </tr>
-
+      <tr>
+        <td>sarthak</td>
+        <td>male</td>
+        <td>bhopal</td>
+      </tr>
     </table>
+    <br />
+
+    <hr />
+    <br />
+
+    <form>
+      <input type="text" placeholder="Enter name..." /><br />
+      <input type="password" placeholder="Enter password..." /><br />
+      <input type="email" placeholder="Enter email..." /><br />
+      <input type="date" /> <br />
+      <input type="radio" name="gen" />Male
+      <input type="radio" name="gen" />Female <br />
+      <input type="checkbox" id="check" />
+      <label for="check">I accept terms and conditions</label>
+      <br />
+      <input type="file">
+      <br>
+      <button>Submit</button>
+    </form>
   </body>
 </html>

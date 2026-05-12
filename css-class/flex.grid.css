@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-family: "Helvetica Neue";
   color: white;
-  font-size: 50px;
+  font-size: 20px;
 }
 
 html,
@@ -13,13 +13,13 @@ body {
   width: 100%;
 }
 
-#main {
+main {
   height: 100%;
   width: 100%;
   background-color: #101010;
 }
 
-#nav {
+nav {
   height: 90px;
   width: 100%;
   background-color: rgb(65, 174, 225);
@@ -39,8 +39,8 @@ body {
   width: 50%;
 }
 
-#center {
-  height: calc(100% - 90px);
+section {
+  height: calc(100% - 90px - 80px);
   width: 100%;
   background-color: rgb(9, 104, 99);
   display: flex;
@@ -71,4 +71,10 @@ body {
   height: 100%;
   width: 60%;
   background-color: rgb(107, 93, 37);
+}
+
+footer {
+  height: 80px;
+  width: 100%;
+  background-color: rgb(254, 144, 47);
 }

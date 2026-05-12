@@ -12,7 +12,6 @@ body {
   min-height: 100vh;
 }
 
-/* ─── NAVBAR ─────────────────────────────────── */
 .navbar {
   display: flex;
   align-items: center;
@@ -70,7 +69,6 @@ body {
   color: #e86c1a;
 }
 
-/* ─── HERO ────────────────────────────────────── */
 .hero {
   display: grid;
   grid-template-columns: 270px 1fr 300px;
@@ -79,7 +77,6 @@ body {
   align-items: start;
 }
 
-/* ─── PRODUCT INFO (Left) ─────────────────────── */
 .product-info {
   padding-right: 24px;
 }
@@ -96,7 +93,7 @@ body {
 .product-title {
   font-size: 48px;
   font-weight: 900;
-  line-height: 1.0;
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: -1px;
   margin-bottom: 18px;
@@ -165,7 +162,6 @@ body {
   color: #e86c1a;
 }
 
-/* ─── PRODUCT IMAGE (Center) ─────────────────── */
 .product-image-wrapper {
   display: flex;
   flex-direction: column;
@@ -178,7 +174,7 @@ body {
   width: 100%;
   max-width: 500px;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12));
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.12));
 }
 
 .feature-badges {
@@ -200,7 +196,6 @@ body {
   color: #555;
 }
 
-/* ─── PRODUCT OPTIONS (Right) ─────────────────── */
 .product-options {
   padding-left: 20px;
 }
@@ -302,7 +297,6 @@ body {
   color: #555;
 }
 
-/* ─── ACTION BUTTONS ─────────────────────────── */
 .action-buttons {
   display: flex;
   flex-direction: column;
@@ -353,7 +347,6 @@ body {
   background: #cf5c0f;
 }
 
-/* ─── FEATURES STRIP ─────────────────────────── */
 .features-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -398,7 +391,6 @@ body {
   color: #555;
 }
 
-/* ─── INFO BAR ───────────────────────────────── */
 .info-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

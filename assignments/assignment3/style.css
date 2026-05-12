@@ -1,12 +1,12 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Helvetica Neue';
+  font-family: "Helvetica Neue";
 }
 
 html,
-body{
+body {
   height: 100%;
   width: 100%;
 }
@@ -27,13 +27,24 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   background: var(--dark);
   color: var(--text-light);
   /* overflow-x: hidden; */
 }
 
-/* ──────────────── NAV ──────────────── */
+/*  NAV  */
 nav {
   position: absolute;
   top: 0;
@@ -129,7 +140,7 @@ nav {
   color: var(--gold-light);
 }
 
-/* ──────────────── HERO ──────────────── */
+/*  HERO  */
 .hero {
   position: relative;
   width: 100%;
@@ -138,16 +149,14 @@ nav {
   overflow: hidden;
 }
 
-/* Background image */
 .hero-bg {
   position: absolute;
   inset: 0;
   background: url("bg.png");
-background-size: cover;
+  background-size: cover;
   z-index: 0;
 }
 
-/* Dark vignette overlays */
 .hero-bg::before {
   content: "";
   position: absolute;
@@ -162,7 +171,6 @@ background-size: cover;
   z-index: 1;
 }
 
-/* Side vignettes */
 .hero-bg::after {
   content: "";
   position: absolute;
@@ -173,7 +181,6 @@ background-size: cover;
   z-index: 2;
 }
 
-/* Hero content layer */
 .hero-content {
   position: absolute;
   inset: 0;
@@ -182,10 +189,8 @@ background-size: cover;
   align-items: center;
   justify-content: center;
   padding-top: 60px;
-
 }
 
-/* Title block */
 .hero-title-block {
   position: relative;
   display: flex;
@@ -230,7 +235,6 @@ background-size: cover;
   animation: fadeSlideUp 1s 0.3s ease both;
 }
 
-/* Character image — centered, overlapping title */
 .hero-character {
   position: absolute;
   bottom: -10px;
@@ -245,7 +249,6 @@ background-size: cover;
   animation: floatIn 1.2s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Mint button — sits below title, above character visually */
 .hero-cta-wrap {
   position: relative;
   z-index: 25;
@@ -303,7 +306,6 @@ background-size: cover;
   box-shadow: 0 10px 40px rgba(201, 162, 39, 0.65);
 }
 
-/* Bottom curve separator */
 .hero-curve {
   position: absolute;
   bottom: 0;
@@ -317,7 +319,7 @@ background-size: cover;
   width: 100%;
 }
 
-/* ──────────────── VISION SECTION ──────────────── */
+/*  VISION SECTION  */
 .section-vision {
   position: relative;
   background: var(--dark-mid);
@@ -384,8 +386,6 @@ background-size: cover;
   color: var(--text-light);
   font-weight: 600;
 }
-
-/* ──────────────── ANIMATIONS ──────────────── */
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
@@ -405,22 +405,5 @@ background-size: cover;
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0) scale(1);
-  }
-}
-
-/* ──────────────── RESPONSIVE ──────────────── */
-@media (max-width: 768px) {
-  nav {
-    padding: 14px 20px;
-  }
-  .nav-links {
-    display: none;
-  }
-  .section-vision {
-    padding: 60px 24px;
-  }
-  .vision-grid {
-    flex-direction: column;
-    gap: 30px;
   }
 }

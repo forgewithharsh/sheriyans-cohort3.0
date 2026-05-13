@@ -56,6 +56,7 @@ main {
   grid-area: right-bottom;
 } */
 
+/*
 
 *{
   margin: 0;
@@ -85,7 +86,6 @@ main{
   "left-bottom1 left-bottom2 right";
 }
 
-
 .header {
   background-color: lightseagreen;
   grid-area: header;
@@ -109,7 +109,86 @@ main{
 .left-bottom2 {
   background-color: rgb(20, 184, 130);
   grid-area: left-bottom2;
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue';
 }
+
+html,
+body{
+  height: 100%;
+  width: 100%;
+}
+
+main{
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: grid;
+}
+
+.left-top{
+  background-color: royalblue;
+}
+
+.left-bottom {
+  background-color: lightseagreen;
+  /* grid-area: header; */
+}
+
+.right-top {
+  background-color: royalblue;
+  /* grid-area: left-center; */
+}
+
+.right-bottom {
+  background-color: rgb(209, 209, 55);
+  /* grid-area: right; */
+}
+
+.center {
+  background-color: crimson;
+  /* grid-area: left-bottom1; */
+}
+
+.top-center1 {
+  background-color: rgb(20, 184, 130);
+  /* grid-area: left-bottom2; */
+}
+
+.top-center2 {
+  background-color: rgb(198, 129, 27);
+  /* grid-area: left-bottom2; */
+}
+
+
+.bottom-center1 {
+  background-color: rgb(198, 27, 147);
+  /* grid-area: left-bottom2; */
+}
+
+.bottom-center2 {
+  background-color: rgb(223, 60, 128);
+  /* grid-area: left-bottom2; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

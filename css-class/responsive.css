@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue";
+  background-color: black;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/* #box {
+  height: 200px;
+  width: 200px;
+  background-color: crimson;
+}
+
+#inner {
+  height: 100px;
+  width: 100px;
+  background-color: royalblue;
+}
+
+#parent {
+  height: 200px;
+  width: 200px;
+  background-color: crimson;
+}
+
+#child {
+  height: 50%;
+  width: 50%;
+  background-color: royalblue;
+}
+*/
+
+h1 {
+  font-size: clamp(10px, 20px, 40px);
+  color: white;
+}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dribbble - Assignment 5</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <ul class="nav-mid">
+    <img class="logo" src="./images/logo.png" alt="logo">
+      <li><a href="#">Explore ▾</a></li>
+      <li><a href="#">Hire a Designer ▾</a></li>
+      <li><a href="#">Find Jobs</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#">Sign up</a>
+      <a href="#" id="btn-login">Log in</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Discover the world's top designers</h1>
+    <p>Explore work from the most talented and accomplished designers<br>ready to take on your next project</p>
+
+    <div class="search-wrap">
+      <input type="text" placeholder="What are you looking for?" />
+      <select class="search-type">
+        <option>Shots</option>
+      </select>
+      <button class="search-btn"><i class="ri-search-line"></i></button>
+    </div>
+
+    <div class="trending">
+      <span>Trending searches</span>
+      <a href="#" class="trend-tag">landing page</a>
+      <a href="#" class="trend-tag">e-commerce</a>
+      <a href="#" class="trend-tag">mobile app</a>
+      <a href="#" class="trend-tag">logo design</a>
+      <a href="#" class="trend-tag">dashboard</a>
+      <a href="#" class="trend-tag">icons</a>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-left">
+      <select class="select-box">
+        <option>Popular</option>
+      </select>
+      <ul class="filter-tabs">
+        <li><a href="#" class="active">Discover</a></li>
+        <li><a href="#">Animation</a></li>
+        <li><a href="#">Branding</a></li>
+        <li><a href="#">Illustration</a></li>
+        <li><a href="#">Mobile</a></li>
+        <li><a href="#">Print</a></li>
+        <li><a href="#">Product Design</a></li>
+        <li><a href="#">Typography</a></li>
+        <li><a href="#">Web Design</a></li>
+      </ul>
+    </div>
+    <button class="filter-btn">&#9776; Filters</button>
+  </div>
+
+  <!-- SHOTS GRID -->
+  <div class="grid">
+
+    <!-- row 1 -->
+    <div class="shot-card">
+      <div class="shot-img c1">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-size:13px;padding:16px;text-align:center;">📱 Mobile UI Design</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🎨</div>
+          <span class="user-name">Upnow Studio <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img c2">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-size:13px;padding:16px;text-align:center;">Make Every Nickel Count</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">✨</div>
+          <span class="user-name">FANCY <span class="badge team">TEAM</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img c3">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#333;font-size:13px;padding:16px;text-align:center;">💻 Dashboard UI</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🔴</div>
+          <span class="user-name">Extej UI UX <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img c4">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-size:22px;">😶‍🌫️</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">⚫</div>
+          <span class="user-name">Emote <span class="badge team">TEAM</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- row 2 -->
+    <div class="shot-card">
+      <div class="shot-img c3">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#333;font-size:13px;padding:16px;text-align:center;">Manage your business budget</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🟤</div>
+          <span class="user-name">Victa Ville <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img" style="background:#f8f9fa;">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#333;font-size:13px;padding:16px;text-align:center;">One platform to streamline your agency.</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🟢</div>
+          <span class="user-name">Bonsai <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img c5">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#002244;font-size:36px;">🦅</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🏔</div>
+          <span class="user-name">Type08 <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img" style="background:#f5f0ff;">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#333;font-size:13px;padding:16px;text-align:center;">📱 $3,450.00 Finance App</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">⚙️</div>
+          <span class="user-name">Ronus IT|UI <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- row 3 -->
+    <div class="shot-card">
+      <div class="shot-img c9">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-size:13px;padding:16px;text-align:center;">💳 Empower Your Finances!</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🐦</div>
+          <span class="user-name">Bato <span class="badge team">TEAM</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img c10">
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#00e5a0;font-size:20px;letter-spacing:1px;font-weight:bold;">✦ Floncek</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🟡</div>
+          <span class="user-name">Jovel Ahmed <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img" style="background:#111; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px;">
+        <div style="background:#00c853;display:flex;align-items:center;justify-content:center;font-size:22px;">🐇</div>
+        <div style="background:#1a3a2a;display:flex;align-items:center;justify-content:center;font-size:22px;">🐇</div>
+        <div style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;font-size:22px;">🐇</div>
+        <div style="background:#e8d5f0;display:flex;align-items:center;justify-content:center;font-size:22px;">🐇</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🎯</div>
+          <span class="user-name">Levi Lowell <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot-card">
+      <div class="shot-img" style="background:#1a2a3a; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px; padding:16px; text-align:center;">
+        <div style="color:#fff; font-size:11px; letter-spacing:2px;">BRANDING</div>
+        <div style="color:#f5e6c0; font-size:28px; font-weight:900;">FREE</div>
+        <div style="color:#ccc; font-size:10px;">SAMPLE PACK</div>
+        <div style="color:#aaa; font-size:9px;">TYPEFACES | TEMPLATES | ILLUSTRATIONS</div>
+      </div>
+      <div class="shot-label">
+        <div class="shot-user">
+          <div class="avatar">🖊</div>
+          <span class="user-name">Ulysses Design <span class="badge pro">PRO</span></span>
+        </div>
+        <div class="shot-stats">
+          <span>♡ 31</span>
+          <span>👁 6.6k</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIGN UP BANNER -->
+  <div class="signup-banner">
+    <a href="#">Sign up to continue</a>
+  </div>
+
+  <!-- SPONSOR LOGOS -->
+  <div class="sponsors">
+    <img src="./images/line1.svg" alt="">
+    <img src="./images/line2.svg" alt="">
+    <img src="./images/line3.svg" alt="">
+    <img src="./images/line4.svg" alt="">
+    <img src="./images/line5.svg" alt="">
+    <img src="./images/line6.svg" alt="">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+   <img class="footer-logo" src="./images/logo.png" alt="">
+      <ul class="footer-links">
+        <li><a href="#">For designers</a></li>
+        <li><a href="#">Hire talent</a></li>
+        <li><a href="#">Inspiration</a></li>
+        <li><a href="#">Advertising</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><i class="ri-twitter-fill"></i></a>
+        <a href="#"><i class="ri-facebook-fill"></i></a>
+        <a href="#"><i class="ri-instagram-line"></i></a>
+        <a href="#"><i class="ri-pinterest-fill"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>©2026 Dribbble &nbsp; <a href="#" style="color:#aaa;text-decoration:none;">Terms</a> &nbsp; <a href="#" style="color:#aaa;text-decoration:none;">Privacy</a> &nbsp; <a href="#" style="color:#aaa;text-decoration:none;">Cookies</a></p>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Designers</a></li>
+        <li><a href="#">Freelancers</a></li>
+        <li><a href="#">Tags</a></li>
+        <li><a href="#">Places</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

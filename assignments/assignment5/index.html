@@ -1,489 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dribbble - Assignment 5</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- NAV -->
-    <nav>
-      <ul class="nav-mid">
-        <img class="logo" src="./images/logo.png" alt="logo" />
-        <li><a href="#">Explore ▾</a></li>
-        <li><a href="#">Hire a Designer ▾</a></li>
-        <li><a href="#">Find Jobs</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
-      <div class="nav-right">
-        <a href="#">Sign up</a>
-        <a href="#" id="btn-login">Log in</a>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sheryians Coding School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Discover the world's top designers</h1>
-      <p>
-        Explore work from the most talented and accomplished designers<br />ready
-        to take on your next project
-      </p>
-
-      <div class="search-wrap">
-        <input type="text" placeholder="What are you looking for?" />
-        <select class="search-type">
-          <option>Shots</option>
-        </select>
-        <button class="search-btn"><i class="ri-search-line"></i></button>
-      </div>
-
-      <div class="trending">
-        <span>Trending searches</span>
-        <a href="#" class="trend-tag">landing page</a>
-        <a href="#" class="trend-tag">e-commerce</a>
-        <a href="#" class="trend-tag">mobile app</a>
-        <a href="#" class="trend-tag">logo design</a>
-        <a href="#" class="trend-tag">dashboard</a>
-        <a href="#" class="trend-tag">icons</a>
-      </div>
-    </section>
-
-    <!-- FILTER BAR -->
-    <div class="filter-bar">
-      <div class="filter-left">
-        <select class="select-box">
-          <option>Popular</option>
-        </select>
-        <ul class="filter-tabs">
-          <li><a href="#" class="active">Discover</a></li>
-          <li><a href="#">Animation</a></li>
-          <li><a href="#">Branding</a></li>
-          <li><a href="#">Illustration</a></li>
-          <li><a href="#">Mobile</a></li>
-          <li><a href="#">Print</a></li>
-          <li><a href="#">Product Design</a></li>
-          <li><a href="#">Typography</a></li>
-          <li><a href="#">Web Design</a></li>
-        </ul>
-      </div>
-      <button class="filter-btn">&#9776; Filters</button>
-    </div>
-
-    <!-- SHOTS GRID -->
-    <div class="grid">
-      <!-- Card 1 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img1.webp" alt="Mobile UI Design" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Fitness and step coun..</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava1.jpg" alt="" /></div>
-            <span class="user-name"
-              >Upnow Studio <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <video
-            src="https://cdn.dribbble.com/userupload/18911729/file/original-31b3d222d1c9ab101d5d197eb36b672a.mp4"
-            loop
-            muted
-            autoplay
-          ></video>
-          <div class="shot-overlay">
-            <span class="overlay-title">Hero 3D and Anima...</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava2.png" alt="" /></div>
-            <span class="user-name"
-              >FANCY <span class="badge team">TEAM</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img3.webp" alt="Dashboard UI" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Liverage Crypto trading...</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava3.png" alt="" /></div>
-            <span class="user-name"
-              >Extej UI UX <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img4.webp" alt="Emote" />
-          <div class="shot-overlay">
-            <span class="overlay-title"> Plexo</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava4.png" alt="" /></div>
-            <span class="user-name"
-              >Emote <span class="badge team">TEAM</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img5.webp" alt="Manage your business budget" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Altecho-Webdesign</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava5.png" alt="" /></div>
-            <span class="user-name"
-              >Victa Ville <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img
-            src="./images/img6.webp"
-            alt="One platform to streamline your agency"
-          />
-          <div class="shot-overlay">
-            <span class="overlay-title">Fitness and step coun..</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava6.png" alt="" /></div>
-            <span class="user-name"
-              >Bonsai <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 7 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img7.webp" alt="Type08" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Doverange.</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava7.jpg" alt="" /></div>
-            <span class="user-name"
-              >Type08 <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 8 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img8.webp" alt="Finance App" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Financial Mobile App</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava8.jpg" alt="" /></div>
-            <span class="user-name"
-              >Ronus IT|UI <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 9 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img9.webp" alt="Empower Your Finances" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Animated Landing Page....</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava9.png" alt="" /></div>
-            <span class="user-name"
-              >Bato <span class="badge team">TEAM</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 10 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img10.webp" alt="Floncek" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Finanace Logo</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava10.jpg" alt="" /></div>
-            <span class="user-name"
-              >Jovel Ahmed <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 11 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img11.webp" alt="Levi Lowell" />
-          <div class="shot-overlay">
-            <span class="overlay-title"> Rapid Rabbit Logo</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava11.jpg" alt="" /></div>
-            <span class="user-name"
-              >Levi Lowell <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 12 -->
-      <div class="shot-card">
-        <div class="shot-img">
-          <img src="./images/img12.webp" alt="Free Sample Pack" />
-          <div class="shot-overlay">
-            <span class="overlay-title">Free Sample Pack|u......</span>
-            <div class="overlay-actions">
-              <button class="overlay-btn"><i class="ri-heart-line"></i></button>
-              <button class="overlay-btn">
-                <i class="ri-bookmark-line"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-label">
-          <div class="shot-user">
-            <div class="avatar"><img src="./images/ava12.jpg" alt="" /></div>
-            <span class="user-name"
-              >Ulysses Design <span class="badge pro">PRO</span></span
-            >
-          </div>
-          <div class="shot-stats">
-            <span><i class="ri-heart-line"></i> 31</span>
-            <span><i class="ri-eye-line"></i> 6.6k</span>
-          </div>
-        </div>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <div >
+        <img class="logo-img" src="./images/full-logo.webp" alt="">
       </div>
     </div>
 
-    <!-- SIGN UP BANNER -->
-    <div class="signup-banner">
-      <a href="#">Sign up to continue</a>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">Bootcamp</a></li>
+      <li><a href="#">Classroom</a></li>
+      <li><a href="#">Request Callback</a></li>
+    </ul>
 
-    <div class="sponsors">
-      <div class="sponsors-track">
-        <img src="./images/line1.svg" alt="" />
-        <img src="./images/line2.svg" alt="" />
-        <img src="./images/line3.svg" alt="" />
-        <img src="./images/line4.svg" alt="" />
-        <img src="./images/line5.svg" alt="" />
-        <img src="./images/line6.svg" alt="" />
-        <!-- duplicate  -->
-        <img src="./images/line1.svg" alt="" />
-        <img src="./images/line2.svg" alt="" />
-        <img src="./images/line3.svg" alt="" />
-        <img src="./images/line4.svg" alt="" />
-        <img src="./images/line5.svg" alt="" />
-        <img src="./images/line6.svg" alt="" />
+    <div class="nav-right"><img src="./images/avatar.png" alt="">
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p id="hero-tag">LEARN. BUILD. GET PLACED.</p>
+    <h1>
+      Become The Software Engineer<br>
+      That <span class="box-word">Companies</span> Want To Hire!
+    </h1>
+    <p>Join a growing community of students preparing for real-world tech careers at Sheryians.</p>
+
+    <div class="social-proof">
+      <div class="avatars">
+        <span ><img src="./images/top1.jpg" alt=""></span>
+        <span ><img src="./images/top2.jpg" alt=""></span>
+        <span ><img src="./images/top3.jpg" alt=""></span>
+        <span ><img src="./images/top4.jpg" alt=""></span>
       </div>
+      <span class="social-text"><strong>1 Million+</strong> Students learning in our mastery programs</span>
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-top">
-        <img class="footer-logo" src="./images/logo.png" alt="" />
-        <ul class="footer-links">
-          <li><a href="#">For designers</a></li>
-          <li><a href="#">Hire talent</a></li>
-          <li><a href="#">Inspiration</a></li>
-          <li><a href="#">Advertising</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Support</a></li>
-        </ul>
-        <div class="footer-social">
-          <a href="#"><i class="ri-twitter-fill"></i></a>
-          <a href="#"><i class="ri-facebook-fill"></i></a>
-          <a href="#"><i class="ri-instagram-line"></i></a>
-          <a href="#"><i class="ri-pinterest-fill"></i></a>
+    <a href="#" class="btn-main">Start Journey →</a>
+
+    <!-- STATS CARDS -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-icon"><img src="./images/yt.png" alt=""></span>
+          <span class="stat-num">600k</span>
+        </div>
+        <div class="stat-label">Sheryians Subscriber</div>
+        <div class="stat-desc">Be part of a vibrant learning ecosystem.</div>
+      </div>
+
+      <div class="stat-card dark">
+        <div class="stat-top">
+          <span class="stat-icon">⭐</span>
+          <span class="stat-num">01 Million</span>
+        </div>
+        <div class="stat-label">Career-Driven Learners</div>
+        <div class="stat-desc">Join a large and growing community of coders.</div>
+      </div>
+
+      <div class="start-card">
+        <div>
+          <h3>Start<br>Learning</h3>
+          <div class="video-thumb">▶</div>
+        </div>
+        <a href="#" class="btn-outline">Get in touch →</a>
+      </div>
+
+      <div class="unlock-box" style="grid-column: 1 / 3;">
+        <div class="unlock-people">
+          <span>👥</span>
+          <span style="font-size:14px; color:#aaa; font-family:Arial,sans-serif;">UNLOCK YOUR</span>
+        </div>
+        <h3>FIRST JOB AND<br>INTERNSHIP WITH US!</h3>
+        <br>
+        <a href="#" class="arrow-btn">→</a>
+      </div>
+      <div class="class"></div>
+    </div>
+  </section>
+
+  <!-- BRANDS MARQUEE -->
+  <div class="brands">
+    <div class="brand-track">
+      <img src="./images/companiesLogo.png" alt="">
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <section class="impact">
+    <div class="impact-tag">IMPACT</div>
+    <h2>How We Are Doing It Faster And Better Than Others!</h2>
+
+    <div class="photos">
+      <div class="photo-card">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a1a,#2a1a1a);display:flex;align-items:center;justify-content:center;font-size:40px;">🎤</div>
+        <div class="arrow">↗</div>
+      </div>
+      <div class="photo-card">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a1a,#1a2a1a);display:flex;align-items:center;justify-content:center;font-size:40px;">📚</div>
+        <div class="arrow">↗</div>
+      </div>
+      <div class="photo-card">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#2a1510,#1a0a0a);display:flex;align-items:center;justify-content:center;font-size:40px;">🤝</div>
+        <div class="arrow">↗</div>
+        <div class="tag-pill">Meet-ups</div>
+        <div class="caption">
+          <h4>Meet And Greet</h4>
+          <p>Open Conversations About Careers, Coding, Bootcamps, Internships</p>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <p>
-          ©2026 Dribbble &nbsp;
-          <a href="#" style="color: #aaa; text-decoration: none">Terms</a>
-          &nbsp;
-          <a href="#" style="color: #aaa; text-decoration: none">Privacy</a>
-          &nbsp;
-          <a href="#" style="color: #aaa; text-decoration: none">Cookies</a>
-        </p>
-        <ul class="footer-bottom-links">
-          <li><a href="#">Jobs</a></li>
-          <li><a href="#">Designers</a></li>
-          <li><a href="#">Freelancers</a></li>
-          <li><a href="#">Tags</a></li>
-          <li><a href="#">Places</a></li>
-          <li><a href="#">Resources</a></li>
-        </ul>
+      <div class="photo-card">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2a1a,#0a1a0a);display:flex;align-items:center;justify-content:center;font-size:40px;">👨‍💻</div>
+        <div class="arrow">↗</div>
       </div>
-    </footer>
-  </body>
+    </div>
+  </section>
+
+</body>
 </html>

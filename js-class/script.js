@@ -21,7 +21,7 @@ for (let i = 0; i < array.length; i++) {
   matrixSum += array[i][i];
 }
 
-console.log(matrixSum);
+// console.log(matrixSum);
 
 let a = [5, -9, 2, -4, 33, 8];
 
@@ -29,4 +29,54 @@ const b = a.filter((e) => {
   return e > 0;
 });
 
-console.log(b);
+// console.log(b);
+
+let obj = {
+  user: "harsh",
+  greet: function () {
+    console.log("Good Morning...");
+  },
+};
+
+// obj.greet();
+
+let obj1 = {
+  greet: () => {
+    console.log("Hello");
+  },
+};
+
+// obj1.greet();
+
+let age = 19;
+
+let greet = () => {
+  console.log("Greet...");
+};
+
+let bye = () => {
+  console.log("Bye Bye...");
+};
+
+let obj2 = {
+  name: "Harsh",
+  age: age > 10 ? greet : bye,
+};
+
+console.log(obj2);
+
+const arr1 = [10, 20, 30, 40];
+
+const [x, y, ...z] = arr1;
+
+console.log(x, y, z);
+
+let obj3 = {
+  name: "harry",
+  age: 20,
+  batch: "cohort 3",
+};
+
+let { name, ...q } = obj3;
+
+console.log(name, q);

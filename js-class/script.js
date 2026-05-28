@@ -80,3 +80,56 @@ let obj3 = {
 let { name, ...q } = obj3;
 
 console.log(name, q);
+
+// Shallow Copy
+let n = {
+  name: "Harsh",
+  age: 19,
+};
+
+let n2 = { ...n };
+
+n2.name = "Harry";
+
+console.log(n);
+console.log(n2);
+
+// Deep Copy
+let original = {
+  name: "Harsh",
+  age: 19,
+  college: {
+    name: "HPU",
+    student: 200000,
+  },
+};
+
+let str = JSON.stringify(original);
+let copy = JSON.parse(str);
+
+copy.college.name = "UIT";
+copy.name = "Harry";
+
+console.log(original);
+console.log(copy);
+
+let ar = [100, { name: "Harsh", age: 19 }, 300];
+
+// let ar2 = JSON.parse(JSON.stringify(ar))
+let ar2 = structuredClone(ar);
+
+ar2[1].name = "Harry";
+ar2[2] = 100;
+
+console.log(ar);
+console.log(ar2);
+
+let a1 = {
+  name: "Harsh",
+  age: 19,
+  city: "Shimla",
+};
+
+for (let a2 in a1) {
+  console.log(a1[a2]);
+}

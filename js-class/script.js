@@ -210,15 +210,56 @@ class User {
     this.lname = lname;
     this.contact = contact;
   }
-  greetUser() {
-    console.log(`Welcome ${this.fname} ${this.lname}`);
+  // greetUser() {
+  //   console.log(`Welcome ${this.fname} ${this.lname}`);
+  // }
+}
+
+class Admin extends User {
+  constructor(fname, lname, contact) {
+    super(fname, lname, contact);
+    this.accessAdminPanel = true;
   }
 }
 
 let u1 = new User("Gullu", "Guleria", 4567890);
+let u2 = new Admin("Harsh", "Guleria", 4567890);
 
-u1.greetUser();
+// console.log(u1);
+// console.log(u2);
 
-// class Admin extends User{
+// Classical Inheritence
 
-// }
+class Employee {
+  constructor(fname, lname, contact) {
+    this.fname = fname;
+    this.lname = lname;
+    this.contact = contact;
+  }
+  greetUser() {
+    console.log(`Welcome, ${this.fname} ${this.lname}!`);
+  }
+}
+
+let s1 = new Employee("Ritik", "Rajput", 345896);
+
+s1.greetUser();
+
+class Boss extends Employee {
+  constructor(fname, lname, contact) {
+    super(fname, lname, contact);
+    this.adminAccess = true;
+  }
+  greet() {
+    console.log(`Welcome, ${this.fname} ${this.lname}!`);
+  }
+}
+
+let s2 = new Employee("Harsh", "Sharma", 4567890);
+let s3 = new Boss("Sarthak", "Sharma", 4567890);
+
+// console.log(s2);
+// console.log(s3);
+
+s2.greetUser();
+s3.greet();

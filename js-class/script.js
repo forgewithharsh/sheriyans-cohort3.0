@@ -150,5 +150,51 @@ let book1 = new CreateBook("HP - Philospher Stone", "JK Rowling", 760);
 let book2 = new CreateBook("Rich Dad Poor Dad", "Robert Kiyosaki", 440);
 let book3 = new CreateBook("Sapiens", "Yuvan Noah Harrari", 850);
 
-console.log(book1);
-book2.getFrontPage();
+// console.log(book1);
+// book2.getFrontPage();
+
+function MakeStudents(fname, lname, contact, isVerified) {
+  this.fname = fname;
+  this.lname = lname;
+  this.contact = contact;
+  this.isVerified = isVerified;
+  this.showProfile = function () {
+    if (this.isVerified) {
+      console.log(
+        `Student Name : ${this.fname} ${this.lname}, Contact : ${this.contact}`,
+      );
+    } else {
+      console.log(`User Not Verified`);
+    }
+  };
+}
+
+let student1 = new MakeStudents("Harsh", "Guleria", "4567876520", true);
+let student2 = new MakeStudents("Sarthak", "Sharma", "7897876392", false);
+
+// student1.showProfile();
+// student2.showProfile();
+
+class CreateStudents {
+  constructor(fname, lname, contact, isVerified) {
+    this.fname = fname;
+    this.lname = lname;
+    this.contact = contact;
+    this.isVerified = isVerified;
+  }
+  showProfile = function () {
+    if (this.isVerified) {
+      console.log(
+        `Student Name : ${this.fname} ${this.lname}, Contact : ${this.contact}`,
+      );
+    } else {
+      console.log(`User Not Verified`);
+    }
+  };
+}
+
+let student3 = new MakeStudents("Harry", "Boy", "4567876520", true);
+let student4 = new MakeStudents("Harsh", "Boy", "4574678320", false);
+
+student3.showProfile();
+student4.showProfile();

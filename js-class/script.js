@@ -182,19 +182,43 @@ class CreateStudents {
     this.contact = contact;
     this.isVerified = isVerified;
   }
-  showProfile = function () {
-    if (this.isVerified) {
-      console.log(
-        `Student Name : ${this.fname} ${this.lname}, Contact : ${this.contact}`,
-      );
-    } else {
-      console.log(`User Not Verified`);
-    }
-  };
 }
 
-let student3 = new MakeStudents("Harry", "Boy", "4567876520", true);
-let student4 = new MakeStudents("Harsh", "Boy", "4574678320", false);
+let showProfile = function () {
+  if (this.isVerified) {
+    console.log(
+      `Student Name : ${this.fname} ${this.lname}, Contact : ${this.contact}`,
+    );
+  } else {
+    console.log(`User Not Verified`);
+  }
+};
 
-student3.showProfile();
-student4.showProfile();
+MakeStudents.prototype.showProfile = showProfile;
+
+let student3 = new MakeStudents("Harry", "Boy", 4567876520, true);
+let student4 = new MakeStudents("Harsh", "Boy", 4574678328, false);
+
+// console.log(student3)
+// student3.showProfile();
+// console.log(student4)
+// student4.showProfile();
+
+class User {
+  constructor(fname, lname, contact) {
+    this.fname = fname;
+    this.lname = lname;
+    this.contact = contact;
+  }
+  greetUser() {
+    console.log(`Welcome ${this.fname} ${this.lname}`);
+  }
+}
+
+let u1 = new User("Gullu", "Guleria", 4567890);
+
+u1.greetUser();
+
+// class Admin extends User{
+
+// }

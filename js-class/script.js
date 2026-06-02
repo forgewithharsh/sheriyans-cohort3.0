@@ -136,36 +136,19 @@ for (let a2 in a1) {
 
 // Constructor
 function CreateBook(bookName, authorName, pages) {
-  this.bookName = bookName,
-  this.authorName = authorName,
-  this.pages = pages
+  ((this.bookName = bookName),
+    (this.authorName = authorName),
+    (this.pages = pages),
+    (this.getFrontPage = function () {
+      console.log("Book Name :", this.bookName);
+      console.log("Author Name :", this.authorName);
+      console.log("Pages :", this.pages);
+    }));
 }
 
 let book1 = new CreateBook("HP - Philospher Stone", "JK Rowling", 760);
 let book2 = new CreateBook("Rich Dad Poor Dad", "Robert Kiyosaki", 440);
+let book3 = new CreateBook("Sapiens", "Yuvan Noah Harrari", 850);
 
 console.log(book1);
-console.log(book2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+book2.getFrontPage();

@@ -63,13 +63,13 @@ let obj2 = {
   age: age > 10 ? greet : bye,
 };
 
-console.log(obj2);
+// console.log(obj2);
 
 const arr1 = [10, 20, 30, 40];
 
 const [x, y, ...z] = arr1;
 
-console.log(x, y, z);
+// console.log(x, y, z);
 
 let obj3 = {
   name: "harry",
@@ -79,7 +79,7 @@ let obj3 = {
 
 let { name, ...q } = obj3;
 
-console.log(name, q);
+// console.log(name, q);
 
 // Shallow Copy
 let n = {
@@ -91,8 +91,8 @@ let n2 = { ...n };
 
 n2.name = "Harry";
 
-console.log(n);
-console.log(n2);
+// console.log(n);
+// console.log(n2);
 
 // Deep Copy
 let original = {
@@ -110,8 +110,8 @@ let copy = JSON.parse(str);
 copy.college.name = "UIT";
 copy.name = "Harry";
 
-console.log(original);
-console.log(copy);
+// console.log(original);
+// console.log(copy);
 
 let ar = [100, { name: "Harsh", age: 19 }, 300];
 
@@ -121,8 +121,8 @@ let ar2 = structuredClone(ar);
 ar2[1].name = "Harry";
 ar2[2] = 100;
 
-console.log(ar);
-console.log(ar2);
+// console.log(ar);
+// console.log(ar2);
 
 let a1 = {
   name: "Harsh",
@@ -131,5 +131,41 @@ let a1 = {
 };
 
 for (let a2 in a1) {
-  console.log(a1[a2]);
+  // console.log(a1[a2]);
 }
+
+// Constructor
+function CreateBook(bookName, authorName, pages) {
+  this.bookName = bookName,
+  this.authorName = authorName,
+  this.pages = pages
+}
+
+let book1 = new CreateBook("HP - Philospher Stone", "JK Rowling", 760);
+let book2 = new CreateBook("Rich Dad Poor Dad", "Robert Kiyosaki", 440);
+
+console.log(book1);
+console.log(book2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

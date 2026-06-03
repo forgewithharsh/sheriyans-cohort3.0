@@ -295,6 +295,49 @@ function findMax(arr) {
   return max;
 }
 
-console.log(findMax(arr3));
+// console.log(findMax(arr3));
 
+const result = arr3.reduce((max, curr) => {
+  if (max < curr) {
+    max = curr;
+  }
+  return max;
+}, 0);
 
+// console.log(result);
+
+const users = [
+  { firstName: "harsh", lastName: "guleria", age: 19 },
+  { firstName: "harry", lastName: "guleria", age: 21 },
+  { firstName: "gullu", lastName: "guleria", age: 20 },
+  { firstName: "harshu", lastName: "guleria", age: 19 },
+];
+
+const output1 = users.map((x) => x.firstName + " " + x.lastName);
+
+// console.log(output1);
+
+const output2 = users.reduce((acc, curr) => {
+  if (acc[curr.age]) {
+    acc[curr.age] = ++acc[curr.age];
+  } else {
+    acc[curr.age] = 1;
+  }
+  return acc;
+}, {});
+
+// console.log(output2);
+
+const output3 = users.filter((x) => x.age < 20).map((x) => x.firstName);
+
+// console.log(output3);
+
+const output4 = users.reduce((acc, curr) => {
+  if (curr.age < 20) {
+    // acc[curr.firstName] = curr.age;
+    acc.push(curr.firstName);
+  }
+  return acc;
+}, []);
+
+console.log(output4);

@@ -340,4 +340,19 @@ const output4 = users.reduce((acc, curr) => {
   return acc;
 }, []);
 
-console.log(output4);
+// console.log(output4);
+
+const cart = ["shoes", "pants", "kurta"];
+
+// Inversion of Control
+createOrder(cart, function (orderId) {
+  proceedToPayment(orderId);
+});
+
+// Promises
+
+const promise = createOrder(cart);
+
+promise.then(function (orderId) {
+  proceedToPayment(orderId);
+});

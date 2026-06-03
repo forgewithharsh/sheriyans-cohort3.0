@@ -243,7 +243,7 @@ class Employee {
 
 let s1 = new Employee("Ritik", "Rajput", 345896);
 
-s1.greetUser();
+// s1.greetUser();
 
 class Boss extends Employee {
   constructor(fname, lname, contact) {
@@ -261,5 +261,40 @@ let s3 = new Boss("Sarthak", "Sharma", 4567890);
 // console.log(s2);
 // console.log(s3);
 
-s2.greetUser();
-s3.greet();
+// s2.greetUser();
+// s3.greet();
+
+let arr3 = [5, 1, 3, 2, 6];
+
+// Sum
+function findSum(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  return sum;
+}
+
+// console.log(findSum(arr3));
+
+const output = arr3.reduce(function (acc, curr) {
+  acc = acc + curr;
+  return acc;
+}, 0);
+
+// console.log(output);
+
+// Max
+function findMax(arr) {
+  let max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+console.log(findMax(arr3));
+
+

@@ -514,15 +514,27 @@ function orderFood() {
           console.log("Payment Failed!");
           rej();
         }
-      }, 1000);
+      }, 3000);
     })
       .then(function () {
         console.log("Food Eating....");
       })
       .catch(function () {
-        console.log("Complain karo!");
+        console.log("Order Cancelled!");
       });
   });
 }
 
-orderFood();
+// orderFood();
+
+let response = fetch("https://fakestoreapi.com/products");
+
+response
+  .then(function (data) {
+    console.log("Data aa gya ✅");
+    console.log(data);
+    
+  })
+  .catch(function () {
+    console.error("Data nhi aaya ❌");
+  });

@@ -527,14 +527,27 @@ function orderFood() {
 
 // orderFood();
 
-let response = fetch("https://fakestoreapi.com/products");
+async function dataLao() {
+  let response = await fetch("https://fakestoreapi.com/products");
 
-response
-  .then(function (data) {
-    console.log("Data aa gya ✅");
-    console.log(data);
-    
-  })
-  .catch(function () {
-    console.error("Data nhi aaya ❌");
+  let data = await response.json();
+
+  data.forEach((elem) => {
+    console.log(elem.title);
   });
+}
+
+console.log(dataLao());
+
+// response
+//   .then(function (data) {
+//     console.log("Data aa gya ✅");
+
+//     return data.json();
+//   })
+//   .then(function (myData) {
+//     console.log(myData);
+//   })
+//   .catch(function () {
+//     console.error("Data nhi aaya ❌");
+//   });

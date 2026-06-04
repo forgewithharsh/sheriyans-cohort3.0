@@ -345,14 +345,35 @@ const output4 = users.reduce((acc, curr) => {
 const cart = ["shoes", "pants", "kurta"];
 
 // Inversion of Control
-createOrder(cart, function (orderId) {
-  proceedToPayment(orderId);
-});
+// createOrder(cart, function (orderId) {
+//   proceedToPayment(orderId);
+// });
 
 // Promises
 
-const promise = createOrder(cart);
+// const promise = createOrder(cart);
 
-promise.then(function (orderId) {
-  proceedToPayment(orderId);
-});
+// promise.then(function (orderId) {
+//   proceedToPayment(orderId);
+// });
+
+const GITHUB_API = "https://api.github.com/users/forgewithharsh";
+
+const user = fetch(GITHUB_API);
+
+console.log(user);
+
+// user.then((data) => {
+//   console.log(data);
+// });
+
+createOrder(cart)
+  .then(function (orderId) {
+    return proceedToPayment(orderId);
+  })
+  .then(function (paymentInfo) {
+    return showOrderSummary(paymentInfo);
+  })
+  .then(function (paymentInfo) {
+    return updateWalletBalance(paymentInfo);
+  });

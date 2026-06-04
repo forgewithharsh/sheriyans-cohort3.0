@@ -487,26 +487,42 @@ function orderFood() {
   let myOrder = new Promise(function (resolve, reject) {
     console.log("Your order is coming....");
 
-    let orderStatus = false;
+    let orderStatus = true;
 
     setTimeout(function () {
       if (orderStatus) {
         console.log("Delivery vaale bhaiya aa gye hain");
         resolve();
       } else {
+        console.log("Order Failed");
         reject();
       }
     }, 3000);
   });
 
-  myOrder
-    .then(function () {
-      console.log("Now Make a Payment");
+  myOrder.then(function () {
+    console.log("Now Make a Payment");
+
+    let paymentStatus = true;
+
+    return new Promise(function (res, rej) {
+      setTimeout(function () {
+        if (paymentStatus) {
+          console.log("Payment Done!");
+          res();
+        } else {
+          console.log("Payment Failed!");
+          rej();
+        }
+      }, 1000);
     })
-    .catch(function () {
-      console.log("Order Failed");
-      console.log("Complain karo!");
-    });
+      .then(function () {
+        console.log("Food Eating....");
+      })
+      .catch(function () {
+        console.log("Complain karo!");
+      });
+  });
 }
 
 orderFood();

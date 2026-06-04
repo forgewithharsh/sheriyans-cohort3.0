@@ -528,16 +528,20 @@ function orderFood() {
 // orderFood();
 
 async function dataLao() {
-  let response = await fetch("https://fakestoreapi.com/products");
+  try {
+    let response = await fetch("https://fakestoreapi.com/products");
 
-  let data = await response.json();
+    let data = await response.json();
 
-  data.forEach((elem) => {
-    console.log(elem.title);
-  });
+    data.forEach((elem) => {
+      console.log(elem.title);
+    });
+  } catch (error) {
+    console.error("URL galat hai bhai");
+  }
 }
 
-console.log(dataLao());
+// console.log(dataLao());
 
 // response
 //   .then(function (data) {
@@ -551,3 +555,26 @@ console.log(dataLao());
 //   .catch(function () {
 //     console.error("Data nhi aaya ❌");
 //   });
+
+// Optional Chaining
+
+let object = {
+  name: "harsh",
+  age: 18,
+  company: {
+    name: "Sheriyans",
+  },
+};
+
+console.log(object?.company?.name);
+
+// Nullish Coalescing
+
+let age3 = null;
+
+var object1 = {
+  name: "harry",
+  myAge: age3 ?? 22,
+};
+
+console.log(object1);

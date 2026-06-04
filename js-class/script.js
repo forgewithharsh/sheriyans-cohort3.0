@@ -431,29 +431,82 @@ async function dataLao() {
 }
 // dataLao();
 
-let p1 = new Promise((resolve, reject) => {
-  let val = true;
-  if (val) {
-    console.log("Success");
-  } else {
-    console.log("Failure");
-  }
-});
+// let p1 = new Promise((resolve, reject) => {
+//   let val = true;
+//   if (val) {
+//     console.log("Success");
+//   } else {
+//     console.log("Failure");
+//   }
+// });
 
 let p2 = new Promise(function (resolve, reject) {
-  console.log("Promise Pending hai....");
+  // console.log("Promise Pending hai....");
 
   let result = true;
 
   setTimeout(() => {
     if (result) {
-      console.log("Fulfilled");
+      // console.log("Value True");
 
-      resolve()
+      resolve();
     } else {
-      console.log("Rejected");
+      // console.log("Value False");
 
-      reject()
+      reject();
     }
   }, 3000);
 });
+
+p2.then(function () {
+  // console.log("Promise is fullfilled");
+})
+  .catch(function () {
+    // console.log("Promise is Rejected");
+  })
+  .finally(function () {
+    // console.log("Promise END");
+  });
+
+/*
+Order shoes from Amazon
+
+order done -> order confirmed (your food is preparing)
+
+mai waitv karunga order ke prepare hoke mujh tak aane ka
+
+1. order aa gya
+  - make a payment
+
+2. order nhi aaya
+  - complain karo
+
+*/
+
+function orderFood() {
+  let myOrder = new Promise(function (resolve, reject) {
+    console.log("Your order is coming....");
+
+    let orderStatus = false;
+
+    setTimeout(function () {
+      if (orderStatus) {
+        console.log("Delivery vaale bhaiya aa gye hain");
+        resolve();
+      } else {
+        reject();
+      }
+    }, 3000);
+  });
+
+  myOrder
+    .then(function () {
+      console.log("Now Make a Payment");
+    })
+    .catch(function () {
+      console.log("Order Failed");
+      console.log("Complain karo!");
+    });
+}
+
+orderFood();

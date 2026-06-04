@@ -342,8 +342,6 @@ const output4 = users.reduce((acc, curr) => {
 
 // console.log(output4);
 
-const cart = ["shoes", "pants", "kurta"];
-
 // Inversion of Control
 // createOrder(cart, function (orderId) {
 //   proceedToPayment(orderId);
@@ -367,13 +365,49 @@ console.log(user);
 //   console.log(data);
 // });
 
-createOrder(cart)
+// createOrder(cart)
+//   .then(function (orderId) {
+//     return proceedToPayment(orderId);
+//   })
+//   .then(function (paymentInfo) {
+//     return showOrderSummary(paymentInfo);
+//   })
+//   .then(function (paymentInfo) {
+//     return updateWalletBalance(paymentInfo);
+//   });
+
+const cart = ["shoes", "pants", "kurta"];
+
+const promise = createOrder(cart);
+
+promise
   .then(function (orderId) {
-    return proceedToPayment(orderId);
+    console.log(orderId);
+
+    // proceedToPayment(orderId);
   })
-  .then(function (paymentInfo) {
-    return showOrderSummary(paymentInfo);
-  })
-  .then(function (paymentInfo) {
-    return updateWalletBalance(paymentInfo);
+  .catch(function (err) {
+    console.log(err.message);
   });
+
+function validateCart(cart) {
+  return true;
+}
+
+function createOrder(cart) {
+  const pr = new Promise(function (resolve, reject) {
+    // Validate Cart
+    if (!validateCart(cart)) {
+      const err = new Error("Cart is not valid");
+      reject(err);
+    }
+
+    // Logic for createOrder
+    const orderId = "12345";
+    if (orderId) {
+      resolve(orderId);
+    }
+  });
+
+  return pr;
+}

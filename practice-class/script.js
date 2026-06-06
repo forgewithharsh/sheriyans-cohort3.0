@@ -74,3 +74,31 @@ function sum(...numbers) {
 }
 
 console.log(sum(10, 20, 50, 20));
+
+// Q8
+let users = [
+  { name: "ritik", age: 20 },
+  { name: "aman", age: 16 },
+  { name: "priya", age: 25 },
+];
+
+function adult(users) {
+  return users.filter((user) => user.age >= 18);
+}
+
+// console.log(adult(users));
+
+// Q9
+let cart = [
+  { name: "Mouse", price: 500, qty: 2 },
+  { name: "Keyboard", price: 1000, qty: 1 },
+  { name: "Monitor", price: 10000, qty: 1 },
+];
+
+function getCartTotal(cart) {
+  return cart.reduce((acc, value) => {
+    return acc + value.price * value.qty;
+  }, 0);
+}
+
+console.log(getCartTotal(cart));

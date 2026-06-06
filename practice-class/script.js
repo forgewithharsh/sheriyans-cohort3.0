@@ -29,5 +29,48 @@ for (let i = 0; i < numbers.length; i++) {
     count[num] = 1;
   }
 }
-console.log(count);
 
+// console.log(count);
+
+let frequency = 0;
+
+let mostFrequent;
+
+for (let key in count) {
+  if (count[key] > frequency) {
+    frequency = count[key];
+    mostFrequent = key;
+  }
+}
+
+// console.log(mostFrequent);
+
+// Q4
+let user = {
+  name: "Ritik",
+  age: 20,
+  city: "Bhopal",
+};
+
+user.age = 21;
+
+// console.log(user);
+
+// Q5
+for (let [key, value] of Object.entries(user)) {
+  console.log(`${key}: ${value}`);
+}
+
+// Q6
+let greet = (name) => {
+  console.log("Hello,", name);
+};
+
+greet("harsh");
+
+// Q7
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr);
+}
+
+console.log(sum(10, 20, 50, 20));

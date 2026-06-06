@@ -578,3 +578,53 @@ var object1 = {
 };
 
 console.log(object1);
+
+// Async returns a promise
+
+const p = new Promise((resolve, reject) => {
+  resolve("Promise Resolved Value!");
+});
+
+async function getData() {
+  return p;
+}
+
+const dataPromise = getData();
+
+// dataPromise.then((res) => console.log(res));
+
+// await can only be used inside an async function
+async function handlePromise() {
+  const val = await p;
+  console.log(val);
+}
+// handlePromise();
+
+// function getData() {
+//   p.then((res) => console.log(res));
+// }
+
+// getData()
+
+const namaste = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Welcome, Start Javascript Journey");
+  }, 10000);
+});
+
+async function namastePromise() {
+  console.log("Hello World!");
+
+  // JS Engine was waiting for promise to resolved
+
+  const val = await namaste;
+  console.log("Namaste JS");
+  console.log(val);
+
+  const val2 = await namaste;
+  console.log("Namaste JS 2");
+  console.log(val2);
+}
+namastePromise();
+
+

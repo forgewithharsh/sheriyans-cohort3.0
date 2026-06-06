@@ -594,10 +594,10 @@ const dataPromise = getData();
 // dataPromise.then((res) => console.log(res));
 
 // await can only be used inside an async function
-async function handlePromise() {
-  const val = await p;
-  console.log(val);
-}
+// async function handlePromise() {
+//   const val = await p;
+//   console.log(val);
+// }
 // handlePromise();
 
 // function getData() {
@@ -606,10 +606,16 @@ async function handlePromise() {
 
 // getData()
 
-const namaste = new Promise((resolve, reject) => {
+const namaste1 = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve("Welcome, Start Javascript Journey");
   }, 10000);
+});
+
+const namaste2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Welcome, Start Javascript Journey");
+  }, 5000);
 });
 
 async function namastePromise() {
@@ -617,14 +623,29 @@ async function namastePromise() {
 
   // JS Engine was waiting for promise to resolved
 
-  const val = await namaste;
+  const val = await namaste1;
   console.log("Namaste JS");
   console.log(val);
 
-  const val2 = await namaste;
+  const val2 = await namaste2;
   console.log("Namaste JS 2");
   console.log(val2);
 }
-namastePromise();
+// namastePromise();
 
+const API_URL = "https://api.github.com/users/forgewithharsh";
 
+async function handlePromise() {
+  try {
+    const data = await fetch(API_URL);
+
+    const json = await data.json();
+    // frtch() => Response.json() => jsonValue
+
+    console.log(json);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+handlePromise();

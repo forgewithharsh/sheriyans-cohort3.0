@@ -1,3 +1,5 @@
+"use strict";
+
 let movies = ["Avengers", "KGF", "Salaar", "Devara", "Marco"];
 
 for (let i = 0; i < movies.length; i++) {
@@ -653,17 +655,17 @@ async function handlePromise() {
 // Promise APIs
 const h1 = new Promise((resolve, reject) => {
   // setTimeout(() => resolve("P1 Success"), 3000);
-  setTimeout(() => reject("P1 Fail"), 3000);
+  // setTimeout(() => reject("P1 Fail"), 3000);
 });
 
 const h2 = new Promise((resolve, reject) => {
   // setTimeout(() => resolve("P2 Success"), 1000);
-  setTimeout(() => reject("P2 Fail"), 1000);
+  // setTimeout(() => reject("P2 Fail"), 1000);
 });
 
 const h3 = new Promise((resolve, reject) => {
   // setTimeout(() => resolve("P3 Success"), 2000);
-  setTimeout(() => reject("P3 Fail"), 2000);
+  // setTimeout(() => reject("P3 Fail"), 2000);
 });
 
 // Promise.all([p1, p2, p3]).then((res) => {
@@ -686,11 +688,41 @@ const h3 = new Promise((resolve, reject) => {
 //     console.error(err);
 //   });
 
-Promise.any([h1, h2, h3])
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-    console.log(err.errors)
-  });
+// Promise.any([h1, h2, h3])
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     console.log(err.errors);
+//   });
+
+// this keyword
+
+console.log(this); // globalObject - window. global
+
+function abc() {
+  // the value depends on strict - undefined / non-q12strict mode - window
+  console.log(this);
+}
+
+// this inside non-strict mode - (this substitution)
+
+// If the value of this keyword is undefined or null
+// this keyword will be replaced with globalObject
+// only in non-strict mode
+
+abc(); // undefined
+
+// this keyword value depends on how the function is called (window)
+window.abc(); // window
+
+const objectMethod = {
+  a: 10,
+  x: function () {
+    console.log(this.a);
+    console.log(this);
+  },
+};
+
+objectMethod.x();

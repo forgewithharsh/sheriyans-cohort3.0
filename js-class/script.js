@@ -656,7 +656,8 @@ const h1 = new Promise((resolve, reject) => {
 });
 
 const h2 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("P2 Success"), 1000);
+  // setTimeout(() => resolve("P2 Success"), 1000);
+  setTimeout(() => reject("P2 Fail"), 1000);
 });
 
 const h3 = new Promise((resolve, reject) => {
@@ -668,7 +669,23 @@ const h3 = new Promise((resolve, reject) => {
 //   console.log(res);
 // });
 
-Promise.allSettled([h1, h2, h3])
+// Promise.allSettled([h1, h2, h3])
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// Promise.race([h1, h2, h3])
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+Promise.any([h1, h2, h3])
   .then((res) => {
     console.log(res);
   })

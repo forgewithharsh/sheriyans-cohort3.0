@@ -717,12 +717,43 @@ abc(); // undefined
 // this keyword value depends on how the function is called (window)
 window.abc(); // window
 
+const student = {
+  name: "Harsh",
+  printName: function () {
+    console.log(this.name);
+    // console.log(this);
+  },
+};
+
+student.printName();
+
+const student10 = {
+  name: "Harry",
+};
+
+student.printName.call(student10); // value of this - student10
+
+// Arrow Function -> enclosing lexical context
+
 const objectMethod = {
   a: 10,
-  x: function () {
-    console.log(this.a);
+  x: () => {
     console.log(this);
   },
 };
 
-objectMethod.x();
+// objectMethod.x();
+
+const objectMethod2 = {
+  a: 10,
+  x: function () {
+    const y = () => {
+      console.log(this);
+    };
+    y();
+  },
+};
+
+objectMethod2.x();
+
+// this inside DOM elements => reference to HTML element

@@ -652,7 +652,8 @@ async function handlePromise() {
 
 // Promise APIs
 const h1 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("P1 Success"), 3000);
+  // setTimeout(() => resolve("P1 Success"), 3000);
+  setTimeout(() => reject("P1 Fail"), 3000);
 });
 
 const h2 = new Promise((resolve, reject) => {
@@ -691,4 +692,5 @@ Promise.any([h1, h2, h3])
   })
   .catch((err) => {
     console.error(err);
+    console.log(err.errors)
   });

@@ -101,4 +101,22 @@ function getCartTotal(cart) {
   }, 0);
 }
 
-console.log(getCartTotal(cart));
+// console.log(getCartTotal(cart));
+
+let employees = {
+  aman: 25000,
+  ritik: 50000,
+  priya: 45000,
+};
+
+let maxSalary = 0;
+let employee = "";
+
+for (let name in employees) {
+  if (employees[name] > maxSalary) {
+    maxSalary = employees[name];
+    employee = name;
+  }
+}
+
+console.log(employee);

@@ -392,3 +392,69 @@ const multiply = (a, b) => {
 
 // console.log(multiply(2, 5));
 
+function calculateDiscount(price) {
+  return price - (price * 10) / 100;
+}
+
+// console.log(calculateDiscount(500));
+
+function findLargest(a, b, c) {
+  if (a > b && a > c) {
+    return a;
+  } else if (b > a && b > c) {
+    return b;
+  } else {
+    return c;
+  }
+}
+
+// console.log(findLargest(10,50,20));
+
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
+
+// console.log(reverseString("hello"))
+
+function countVowels(str) {
+  let count = 0;
+
+  for (let char of str) {
+    if (
+      char === "a" ||
+      char === "e" ||
+      char === "i" ||
+      char === "o" ||
+      char === "u"
+    ) {
+      count++;
+    }
+  }
+  return count;
+}
+
+// console.log(countVowels("javascript"));
+
+function generateUsername(name) {
+  return name.toLowerCase().replace(" ", "_");
+}
+
+// console.log(generateUsername("Ritik Rajput"));
+
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+
+// console.log(sum(1, 2, 3, 4));
+
+function login(username, password) {
+  if (username === "admin" && password === "1234") {
+    return "Login Successful";
+  } else {
+    return "Invalid Credentials";
+  }
+}
+
+// console.log(login("admin", "1234"));
+
+

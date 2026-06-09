@@ -258,6 +258,34 @@ for (let num of nums0) {
   }
 }
 
-console.log(secondLargest);
+// console.log(secondLargest);
 
+let user3 = {
+  name: "Ritik",
+  age: 21,
+  city: "Bhopal",
+  password: "12345",
+};
 
+user3.name;
+user3.age = 22;
+user3.country = "India";
+delete user3.password;
+
+// console.log(user3);
+
+let product4 = {
+  name: "Laptop",
+  price: 60000,
+};
+
+// console.log(Object.hasOwn(product4, "price"));
+
+let car= {
+brand:"BMW",
+model:"X5",
+year:2025
+};
+
+// console.log(Object.keys(car))
+console.log(Object.values(car))

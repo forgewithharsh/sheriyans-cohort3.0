@@ -223,9 +223,41 @@ const greaterAge = ages.find((age) => age >= 18);
 
 // console.log(greaterAge);
 
-let nums= [5,8,10,3];
+let nums = [5, 8, 10, 3];
 
 const positiveNum = nums.every((num) => num >= 0);
 console.log(positiveNum);
+
+let numbers3 = [1, 2, 3, 2, 4, 2, 5, 1, 1, 1];
+let count1 = {};
+let maxCount = 0;
+let mostFreq;
+
+for (let num of numbers) {
+  count1[num] = (count1[num] || 0) + 1;
+
+  if (count1[num] > maxCount) {
+    maxCount = count1[num];
+    mostFreq = num;
+  }
+}
+
+// console.log(mostFreq);
+
+let nums0 = [10, 50, 20, 80, 40];
+
+let largest = -Infinity;
+let secondLargest = -Infinity;
+
+for (let num of nums0) {
+  if (num > largest) {
+    secondLargest = largest;
+    largest = num;
+  } else if (num > secondLargest && num !== largest) {
+    secondLargest = num;
+  }
+}
+
+console.log(secondLargest);
 
 

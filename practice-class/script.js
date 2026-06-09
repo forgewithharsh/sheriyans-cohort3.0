@@ -281,11 +281,78 @@ let product4 = {
 
 // console.log(Object.hasOwn(product4, "price"));
 
-let car= {
-brand:"BMW",
-model:"X5",
-year:2025
+let car = {
+  brand: "BMW",
+  model: "X5",
+  year: 2025,
 };
 
 // console.log(Object.keys(car))
-console.log(Object.values(car))
+// console.log(Object.values(car));
+
+let user5 = {
+  name: "Ritik",
+  age: 21,
+  city: "Bhopal",
+};
+
+// console.log(Object.entries(user5))
+
+let employee1 = {
+  name: "Aman",
+  salary: 50000,
+};
+
+employee1.salary = employee1.salary + (employee1.salary * 10) / 100;
+
+// console.log(employee1);
+
+let user6 = {
+  name: "Ritik",
+  address: {
+    city: "Bhopal",
+    state: "MP",
+  },
+};
+
+// console.log(user6.address.city);
+
+let student10 = {
+  name: "Priya",
+  age: 20,
+  course: "BCA",
+};
+
+const { name: studentName, age: studentAge } = student10;
+
+// console.log(studentName);
+// console.log(studentAge);
+
+let user11 = {
+  name: "Ritik",
+  age: 21,
+};
+let address11 = {
+  city: "Bhopal",
+  state: "MP",
+};
+
+let merge = { ...user11, ...address11 };
+
+// console.log(merge);
+
+let user12 = {
+  name: "Ritik",
+  age: 21,
+  city: "Bhopal",
+  country: "India",
+};
+
+// console.log(Object.keys(user12).length);
+
+let
+employees= {
+aman:25000,
+ritik:50000,
+priya:45000
+};

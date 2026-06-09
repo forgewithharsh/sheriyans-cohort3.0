@@ -193,3 +193,39 @@ let cart1 = ["Mouse", "Keyboard", "Monitor", "Laptop"];
 
 // console.log(cart1.length);
 
+let marks2 = [80, 90, 70, 85, 95];
+const total = marks2.reduce((sum, mark) => sum + mark, 0);
+const average = total / marks2.length;
+
+// console.log(average);
+
+let numbers2 = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const newNumber = numbers2.filter((num) => num % 2 == 0);
+
+// console.log(newNumber);
+
+let products2 = ["Laptop", "Mouse", "Keyboard", "Monitor"];
+
+// console.log(products2.indexOf("Keyboard"));
+
+let sales = [500, 700, 1000, 300];
+const revenue = sales.reduce((acc, curr) => +acc + curr, 0);
+
+// console.log(revenue);
+
+let users3 = ["ritik", "aman", "priya"];
+const username = users3.map((user) => user.toUpperCase());
+// console.log(username);
+
+let ages = [12, 15, 17, 19, 22];
+const greaterAge = ages.find((age) => age >= 18);
+
+// console.log(greaterAge);
+
+let nums= [5,8,10,3];
+
+const positiveNum = nums.every((num) => num >= 0);
+console.log(positiveNum);
+
+

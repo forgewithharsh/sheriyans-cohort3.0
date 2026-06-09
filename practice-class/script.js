@@ -350,9 +350,45 @@ let user12 = {
 
 // console.log(Object.keys(user12).length);
 
-let
-employees= {
-aman:25000,
-ritik:50000,
-priya:45000
+function greet1(name) {
+  console.log(name);
+}
+
+// greet1("harsh")
+
+function sum(a, b) {
+  return a + b;
+}
+
+// console.log(sum(10, 20));
+
+function square(num) {
+  return num * num;
+}
+
+// console.log(square(5));
+
+function isEven(num) {
+  return num % 2 == 0;
+}
+
+// console.log(isEven(2));
+
+function name(name = "Guest") {
+  return "Hello, " + name;
+}
+
+// console.log(name());
+
+function convertTemp(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
+
+// console.log(convertTemp(1));
+
+const multiply = (a, b) => {
+  return a * b;
 };
+
+// console.log(multiply(2, 5));
+

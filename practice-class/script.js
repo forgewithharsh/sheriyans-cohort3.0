@@ -163,6 +163,33 @@ function generateReport() {
 
 // console.log(generateReport());
 
+// Phase 2 Pracice Sheet
 
+let prices1 = [100, 250, 500, 150, 700];
+const expensive = prices1.filter((price) => price > 300);
 
+// console.log(expensive);
+
+let students1 = ["Aman", "Ritik", "Priya", "Rahul"];
+// console.log(students1[students1.length-1]);
+
+let products = ["Laptop", "Mouse", "Keyboard"];
+products.push("Monitor");
+// console.log(products);
+
+let notifications = ["Order Placed", "Order Shipped", "Order Delivered"];
+
+notifications.pop();
+// console.log(notifications);
+
+let users1 = ["Aman", "Ritik", "Priya"];
+// console.log(users1.includes("Ritik"));
+
+let marks1 = [80, 90, 70];
+const newMarks = marks1.map((e) => e + "%");
+// console.log(newMarks);
+
+let cart1 = ["Mouse", "Keyboard", "Monitor", "Laptop"];
+
+// console.log(cart1.length);
 

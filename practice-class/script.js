@@ -119,4 +119,50 @@ for (let name in employees) {
   }
 }
 
-console.log(employee);
+// console.log(employee);
+
+function discountCalculator(price) {
+  return price - (price * 10) / 100;
+}
+
+// console.log(discountCalculator(500));
+
+let students = [
+  {
+    name: "Ritik",
+    marks: [80, 90, 85],
+  },
+  {
+    name: "Aman",
+    marks: [50, 40, 60],
+  },
+];
+
+function generateReport() {
+  return students.map((student) => {
+    const total = student.marks.reduce((acc, curr) => acc + curr, 0);
+    const average = total / student.marks.length;
+
+    let grade;
+
+    if (average >= 80) {
+      grade = "A";
+    } else if (average >= 60) {
+      grade = "B";
+    } else {
+      grade = "C";
+    }
+
+    return {
+      name: student.name,
+      average,
+      grade,
+    };
+  });
+}
+
+// console.log(generateReport());
+
+
+
+

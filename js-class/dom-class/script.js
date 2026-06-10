@@ -1,17 +1,16 @@
-// NodeList will be reload
-const h1 = document.querySelector('h1')
+const bulb = document.querySelector(".bulb");
+const btn = document.querySelector("button");
 
-// HTMLCollection is live
-// const h1 = document.getElementsByTagName("h1");
+let flag = true;
 
-// const h1 = document.getElementById('heading')
-
-// const h1 = document.getElementsByClassName("hey");
-
-// h1.textContent = 'hey....';
-
-h1.innerText = "Polo"
-
-h1.style.backgroundColor = "orange"
-
-console.log(h1);
+btn.addEventListener("click", () => {
+  if (flag) {
+    bulb.style.backgroundColor = "yellow";
+    btn.textContent = "Off";
+    flag = false;
+  } else {
+    bulb.style.backgroundColor = "transparent";
+    btn.textContent = "On";
+    flag = true;
+  }
+});

@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue';
+}
+
+html,
+body{
+  height: 100%;
+  width: 100%;
+  background-color: #131313;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.bulb{
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  border: 4px solid white
+}
+
+button{
+  padding: 10px 30px;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  font-size: 30px;
+}
+
+#yellow{
+  background-color: yellow;
+}

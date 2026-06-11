@@ -3,7 +3,7 @@ const btn = document.querySelector("#add");
 const todoBox = document.querySelector(".todo-list");
 
 btn.addEventListener("click", () => {
-  const value = inp.value;
+  let value = inp.value;
 
   if (value.trim() === "") return;
 
@@ -14,6 +14,20 @@ btn.addEventListener("click", () => {
             <button class="btn del">Delete</button>
           </div>
         </div>`;
+
+  let edit = document.querySelector(".edit");
+  edit.addEventListener("click", () => {
+    const newText = prompt("Edit Todo: " + inp.value);
+
+    value = edit;
+  });
+
+  let del = document.querySelector(".del");
+  let li = document.querySelector(".li");
+
+  del.addEventListener("click", () => {
+    li.remove();
+  });
 
   inp.value = "";
 });

@@ -41,8 +41,10 @@ btn.addEventListener("click", () => {
 const main = document.querySelector("main");
 
 let footer = document.createElement("footer");
-const span = document.createElement("span")
+const span = document.createElement("span");
 
-span.innerHTML = "hey i am <i>dynamic...</i>"
+span.innerHTML = "hey i am <i>dynamic...</i>";
 
 main.append(footer, span);
+
+main.removeChild(span);

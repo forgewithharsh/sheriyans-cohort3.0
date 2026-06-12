@@ -457,4 +457,8 @@ function login(username, password) {
 
 // console.log(login("admin", "1234"));
 
+function show() {
+  console.log(this);
+}
 
+// show();

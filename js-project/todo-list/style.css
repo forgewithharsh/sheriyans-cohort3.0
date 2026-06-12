@@ -2,14 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Helvetica Neue";
 }
 
 html,
 body {
   height: 100%;
   width: 100%;
-  background-color: #121212;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,17 +27,19 @@ body {
 }
 
 main {
+  padding: 20px;
   height: 60%;
   width: 60%;
-  background-color: rgb(155, 155, 155);
-  border: 20px;
+  background-color: rgb(119, 119, 119);
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
 }
 
 input {
-  padding: 8px 10px;
+  padding: 10px 10px;
   outline: none;
   border: 1px solid gray;
   border-radius: 5px;
@@ -46,7 +47,7 @@ input {
 
 #add {
   padding: 10px 30px;
-  background-color: rgb(17, 92, 196);
+  background-color: rgb(8, 79, 193);
   color: white;
   border-radius: 10px;
   border: none;
@@ -72,8 +73,8 @@ input {
 }
 
 h3 {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .btn {
@@ -83,11 +84,11 @@ h3 {
 }
 
 .edit {
-  background-color: darkorange;
+  background-color: darkgoldenrod;
   color: white;
 }
 
 .del {
-  background-color: rgb(229, 36, 15);
+  background-color: darkred;
   color: white;
 }

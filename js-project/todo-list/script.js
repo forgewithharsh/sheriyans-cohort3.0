@@ -83,8 +83,10 @@ let usersData = [
   },
 ];
 
-usersData.forEach((elem) => {
-  users.innerHTML += `<div class="users-card">
+const ui = () => {
+  users.innerHTML = "";
+  usersData.forEach((elem) => {
+    users.innerHTML += `<div class="users-card">
         <div class="img-box">
           <img
             src="${elem.photo}"
@@ -96,7 +98,10 @@ usersData.forEach((elem) => {
           <p>Email - ${elem.email}</p>
         </div>
       </div>`;
-});
+  });
+};
+
+ui();
 
 form.addEventListener("submit", (events) => {
   events.preventDefault();
@@ -104,22 +109,17 @@ form.addEventListener("submit", (events) => {
 
   let name = inp1.value;
   let email = inp2.value;
-  let imageUrl = url.value;
+  let photo = url.value;
 
-  if (name.trim() === "" && email.trim() === "") return;
+  if (name.trim() === "" && email.trim() === "" && Image.trim() === "") return;
 
-  users.innerHTML += `<div class="users-card">
-        <div class="img-box">
-          <img
-            src="${imageUrl}"
-            alt="image here"
-          />
-        </div>
-        <div class="text">
-          <h3>Name - ${name}</h3>
-          <p>Email - ${email}</p>
-        </div>
-      </div>`;
+  usersData.push({
+    name,
+    email,
+    photo,
+  });
+
+  ui();
 
   form.reset();
 });

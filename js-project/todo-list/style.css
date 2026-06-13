@@ -24,9 +24,10 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+  padding: 10px;
 }
 
-main {
+/* main {
   padding: 20px;
   height: 60%;
   width: 60%;
@@ -91,4 +92,69 @@ h3 {
 .del {
   background-color: darkred;
   color: white;
+} */
+
+form {
+  height: 30%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 30px;
+  gap: 10px;
+}
+
+input {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1ps solid white;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: royalblue;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+.users {
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.users-card {
+  height: 40%;
+  width: 30%;
+  border-radius: 10px;
+  border-radius: 1px solid white;
+  padding: 10px;
+}
+
+.img-box{
+  height: 70%;
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+
+.img-box img{
+height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.text{
+  color: white;
+}
+
+h3{
+  margin-bottom: 10px;
 }

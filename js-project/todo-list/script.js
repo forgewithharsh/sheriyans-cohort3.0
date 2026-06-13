@@ -101,7 +101,7 @@ const ui = () => {
   });
 };
 
-ui();
+// ui();
 
 form.addEventListener("submit", (events) => {
   events.preventDefault();

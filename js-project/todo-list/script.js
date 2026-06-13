@@ -36,6 +36,67 @@ const form = document.querySelector("form");
 const inp1 = document.querySelector("#name");
 const inp2 = document.querySelector("#email");
 const users = document.querySelector(".users");
+const url = document.querySelector("#url");
+
+let usersData = [
+  {
+    id: 1,
+    name: "Raja Babu",
+    email: "raj@gmail.com",
+    dob: "1998-05-12",
+    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+  },
+  {
+    id: 2,
+    name: "Priya Sharma",
+    email: "priya@gmail.com",
+    dob: "2000-08-24",
+    photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+  },
+  {
+    id: 3,
+    name: "Amit Kumar",
+    email: "amit@gmail.com",
+    dob: "1997-11-15",
+    photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+  },
+  {
+    id: 4,
+    name: "Neha Singh",
+    email: "neha@gmail.com",
+    dob: "2001-03-09",
+    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+  },
+  {
+    id: 5,
+    name: "Rohit Verma",
+    email: "rohit@gmail.com",
+    dob: "1999-07-30",
+    photo: "https://images.unsplash.com/photo-1504593811423-6dd665756598",
+  },
+  {
+    id: 6,
+    name: "Anjali Gupta",
+    email: "anjali@gmail.com",
+    dob: "2002-01-18",
+    photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+  },
+];
+
+usersData.forEach((elem) => {
+  users.innerHTML += `<div class="users-card">
+        <div class="img-box">
+          <img
+            src="${elem.photo}"
+            alt="image here"
+          />
+        </div>
+        <div class="text">
+          <h3>Name - ${elem.name}</h3>
+          <p>Email - ${elem.email}</p>
+        </div>
+      </div>`;
+});
 
 form.addEventListener("submit", (events) => {
   events.preventDefault();
@@ -43,13 +104,14 @@ form.addEventListener("submit", (events) => {
 
   let name = inp1.value;
   let email = inp2.value;
+  let imageUrl = url.value;
 
   if (name.trim() === "" && email.trim() === "") return;
-  
+
   users.innerHTML += `<div class="users-card">
         <div class="img-box">
           <img
-            src="https://images.unsplash.com/photo-1779406859387-5d6fd116b3ff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8"
+            src="${imageUrl}"
             alt="image here"
           />
         </div>

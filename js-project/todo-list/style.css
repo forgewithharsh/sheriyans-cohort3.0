@@ -129,8 +129,8 @@ button {
 }
 
 .users-card {
-  height: 40%;
-  width: 30%;
+height: fit-content;
+  width: 20%;
   border-radius: 10px;
   border-radius: 1px solid white;
   padding: 10px;
@@ -153,8 +153,22 @@ height: 100%;
 
 .text{
   color: white;
+  margin-bottom: 10px;
 }
 
 h3{
   margin-bottom: 10px;
+}
+
+.actions{
+  display: flex;
+  justify-content: space-between;
+}
+
+#edit{
+  background-color: orange;
+}
+
+#delete{
+  background-color: crimson;
 }

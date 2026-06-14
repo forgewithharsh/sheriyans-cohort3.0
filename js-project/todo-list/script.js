@@ -85,7 +85,7 @@ let usersData = [
 
 const ui = () => {
   users.innerHTML = "";
-  usersData.forEach((elem) => {
+  usersData.forEach((elem, index) => {
     users.innerHTML += `<div class="users-card">
         <div class="img-box">
           <img
@@ -97,15 +97,20 @@ const ui = () => {
           <h3>Name - ${elem.name}</h3>
           <p>Email - ${elem.email}</p>
         </div>
+        <div class="actions">
+        <button id="edit">Edit</button>
+        <button  onClick=(deleteCard(${index})) id="delete">Delete</button>
+        </div>
+
       </div>`;
   });
 };
 
-// ui();
+ui();
 
 form.addEventListener("submit", (events) => {
   events.preventDefault();
-  console.log(events);
+  // console.log(events);
 
   let name = inp1.value;
   let email = inp2.value;
@@ -123,3 +128,8 @@ form.addEventListener("submit", (events) => {
 
   form.reset();
 });
+
+let deleteCard = (idx) => {
+  usersData.splice(idx, 1);
+  ui();
+};

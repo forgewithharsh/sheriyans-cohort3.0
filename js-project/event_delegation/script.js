@@ -58,6 +58,6 @@ btn.addEventListener("click", () => {
 
   setTimeout(() => {
     clearInterval(interval);
-    overlay.style.display = "flex"
+    overlay.style.display = "flex";
   }, 10000);
 });

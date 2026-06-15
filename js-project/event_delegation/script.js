@@ -17,10 +17,12 @@ box.classList.add("box");
 const btn = document.querySelector("button");
 
 const timer = document.querySelector("#timer");
+const scoreee = document.querySelector("#score");
 
 const overlay = document.querySelector("#overlay");
 
 let time = 0;
+let score = 0;
 let interval;
 
 const randomBox = () => {
@@ -61,3 +63,8 @@ btn.addEventListener("click", () => {
     overlay.style.display = "flex";
   }, 10000);
 });
+
+box.addEventListener('click', () => {
+  score += 1;
+  scoreee.textContent = score
+})

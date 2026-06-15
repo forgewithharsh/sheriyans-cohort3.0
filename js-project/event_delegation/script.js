@@ -18,6 +18,8 @@ const btn = document.querySelector("button");
 
 const timer = document.querySelector("#timer");
 
+const overlay = document.querySelector("#overlay");
+
 let time = 0;
 let interval;
 
@@ -56,5 +58,6 @@ btn.addEventListener("click", () => {
 
   setTimeout(() => {
     clearInterval(interval);
+    overlay.style.display = "flex"
   }, 10000);
 });

@@ -15,11 +15,15 @@ let box = document.createElement("div");
 box.classList.add("box");
 
 let timer = document.querySelector("#timer");
+let scoreee = document.querySelector("#score");
 
 let btn = document.querySelector("button");
 
+let overlay = document.querySelector("#overlay");
+
 let time = 0;
 let interval;
+let score = 0;
 
 const randomColor = () => {
   let r = Math.floor(Math.random() * 256);
@@ -31,30 +35,36 @@ const randomColor = () => {
 
 const randomBox = () => {
   box.style.backgroundColor = randomColor();
-
   main.append(box);
 
   let mainH = main.clientHeight - box.offsetHeight;
-  let mainW = main.clientWeight - box.offsetWidth;
+  let mainW = main.clientWidth - box.offsetWidth;
 
-  let randomY = Math.random() * mainH;
-  let randomX = Math.random() * mainW;
+  const randomY = Math.random() * mainH;
+  const randomX = Math.random() * mainW;
 
-  box.style.top = `${randomX}px`;
-  box.style.left = `${randomY}px`;
+  box.style.top = `${randomY}px`;
+  box.style.left = `${randomX}px`;
 };
 
 btn.addEventListener("click", () => {
-  randomBox();
   clearInterval(interval);
 
   interval = setInterval(() => {
     randomBox();
+
     time += 1;
     timer.textContent = time;
   }, 1000);
 
   setTimeout(() => {
     clearInterval(interval);
+    overlay.style.display = "flex";
   }, 10000);
+});
+
+box.addEventListener("click", () => {
+  score += 1;
+
+  scoreee.textContent = score;
 });

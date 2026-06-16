@@ -9,62 +9,32 @@
 //   console.log(e.target);
 // });
 
-const main = document.querySelector("main");
+let main = document.querySelector("main");
 
-const box = document.createElement("div");
+let box = document.createElement("div");
 box.classList.add("box");
+main.append(box);
 
-const btn = document.querySelector("button");
+let timer = document.querySelector("#timer");
 
-const timer = document.querySelector("#timer");
-const scoreee = document.querySelector("#score");
-
-const overlay = document.querySelector("#overlay");
+let btn = document.querySelector("button");
 
 let time = 0;
-let score = 0;
-let interval;
-
-const randomBox = () => {
-  box.style.backgroundColor = randomColor();
-  main.append(box);
-
-  let mainH = main.clientHeight - box.offsetHeight;
-  let mainW = main.clientWidth - box.offsetWidth;
-
-  const randomY = Math.random() * mainH;
-  const randomX = Math.random() * mainW;
-
-  box.style.top = `${randomY}px`;
-  box.style.left = `${randomX}px`;
-};
-
-const randomColor = () => {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-
-  return `rgb(${r},${g},${b})`;
-};
 
 btn.addEventListener("click", () => {
-  randomBox();
-  clearInterval(interval);
+  let randomY = Math.random() * 100;
+  let randomX = Math.random() * 100;
+
+  box.style.top = `${randomX}%`;
+  box.style.left = `${randomY}%`;
 
   interval = setInterval(() => {
-    randomBox();
     time += 1;
 
-    timer.textContent = time;
+    timer.textContent = time
   }, 1000);
 
   setTimeout(() => {
     clearInterval(interval);
-    overlay.style.display = "flex";
   }, 10000);
 });
-
-box.addEventListener('click', () => {
-  score += 1;
-  scoreee.textContent = score
-})

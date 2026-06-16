@@ -7,6 +7,8 @@ const form = document.querySelector("form");
 
 const productsArr = [];
 
+let updateIndex = null;
+
 let ui = () => {
   productDiv.innerHTML = "";
   productsArr.forEach((e) => {
@@ -65,8 +67,14 @@ form.addEventListener("submit", (e) => {
     image,
   };
 
+  if (updateIndex !== null) {
+    productsArr[updateIndex] = obj;
+    updateIndex = null;
+  } else {
+    productsArr.push(obj);
+  }
+
   ui();
-  productsArr.push(obj);
 
   form.reset();
 
@@ -76,6 +84,7 @@ form.addEventListener("submit", (e) => {
 const updateProduct = (name) => {
   formDiv.style.display = "flex";
   let product = productsArr.find((elem) => elem.productName === name);
+  updateIndex = productsArr.findIndex((elem) => elem.productName === name);
 
   form[0].value = product.productName;
   form[1].value = product.description;

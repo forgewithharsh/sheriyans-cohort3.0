@@ -9,21 +9,25 @@
 //   console.log(e.target);
 // });
 
-let main = document.querySelector("main");
+const main = document.querySelector("main");
+
+const timer = document.querySelector("#timer");
+const scoreee = document.querySelector("#score");
+
+const btn = document.querySelector("button");
+
+const overlay = document.querySelector("#overlay");
 
 let box = document.createElement("div");
 box.classList.add("box");
 
-let timer = document.querySelector("#timer");
-let scoreee = document.querySelector("#score");
-
-let btn = document.querySelector("button");
-
-let overlay = document.querySelector("#overlay");
-
 let time = 0;
 let interval;
+let timeout;
 let score = 0;
+let overlayTimeout;
+
+let boxClicked = false;
 
 const randomColor = () => {
   let r = Math.floor(Math.random() * 256);
@@ -34,6 +38,8 @@ const randomColor = () => {
 };
 
 const randomBox = () => {
+  boxClicked = false;
+
   box.style.backgroundColor = randomColor();
   main.append(box);
 
@@ -49,7 +55,16 @@ const randomBox = () => {
 
 btn.addEventListener("click", () => {
   clearInterval(interval);
+  clearTimeout(timeout);
+  clearTimeout(overlayTimeout);
+  overlay.style.display = "none";
 
+  time = 0;
+  score = 0;
+  timer.textContent = 0;
+  scoreee.textContent = 0;
+
+  randomBox();
   interval = setInterval(() => {
     randomBox();
 
@@ -57,14 +72,23 @@ btn.addEventListener("click", () => {
     timer.textContent = time;
   }, 1000);
 
-  setTimeout(() => {
+  timeout = setTimeout(() => {
     clearInterval(interval);
+    box.remove();
+
     overlay.style.display = "flex";
+
+    overlayTimeout = setTimeout(() => {
+      overlay.style.display = "none";
+    }, 3000);
   }, 10000);
 });
 
 box.addEventListener("click", () => {
-  score += 1;
+  if (boxClicked) return;
 
+  score += 1;
   scoreee.textContent = score;
+
+  boxClicked = true;
 });

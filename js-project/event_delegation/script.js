@@ -13,25 +13,43 @@ let main = document.querySelector("main");
 
 let box = document.createElement("div");
 box.classList.add("box");
-main.append(box);
 
 let timer = document.querySelector("#timer");
 
 let btn = document.querySelector("button");
 
 let time = 0;
+let interval;
 
-btn.addEventListener("click", () => {
+const randomColor = () => {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
+const randomBox = () => {
+  box.style.backgroundColor = randomColor();
+
+  main.append(box);
+
+  time += 1;
+  timer.textContent = time;
+
   let randomY = Math.random() * 100;
   let randomX = Math.random() * 100;
 
   box.style.top = `${randomX}%`;
   box.style.left = `${randomY}%`;
+};
+
+btn.addEventListener("click", () => {
+  randomBox();
+  clearInterval(interval);
 
   interval = setInterval(() => {
-    time += 1;
-
-    timer.textContent = time
+    randomBox();
   }, 1000);
 
   setTimeout(() => {

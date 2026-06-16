@@ -34,14 +34,14 @@ const randomBox = () => {
 
   main.append(box);
 
-  time += 1;
-  timer.textContent = time;
+  let mainH = main.clientHeight - box.offsetHeight;
+  let mainW = main.clientWeight - box.offsetWidth;
 
-  let randomY = Math.random() * 100;
-  let randomX = Math.random() * 100;
+  let randomY = Math.random() * mainH;
+  let randomX = Math.random() * mainW;
 
-  box.style.top = `${randomX}%`;
-  box.style.left = `${randomY}%`;
+  box.style.top = `${randomX}px`;
+  box.style.left = `${randomY}px`;
 };
 
 btn.addEventListener("click", () => {
@@ -50,6 +50,8 @@ btn.addEventListener("click", () => {
 
   interval = setInterval(() => {
     randomBox();
+    time += 1;
+    timer.textContent = time;
   }, 1000);
 
   setTimeout(() => {

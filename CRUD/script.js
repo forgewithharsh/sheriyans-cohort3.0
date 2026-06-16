@@ -25,7 +25,7 @@ let ui = () => {
           </div>
 
           <div class="btns">
-            <button id="update">Update</button>
+            <button onclick="updateProduct('${e.productName}')" id="update">Update</button>
             <button id="delete">Delete</button>
           </div>
         </div>`;
@@ -69,4 +69,16 @@ form.addEventListener("submit", (e) => {
   productsArr.push(obj);
 
   form.reset();
+
+  formDiv.style.display = "none";
 });
+
+const updateProduct = (name) => {
+  formDiv.style.display = "flex";
+  let product = productsArr.find((elem) => elem.productName === name);
+
+  form[0].value = product.productName;
+  form[1].value = product.description;
+  form[2].value = product.price;
+  form[3].value = product.image;
+};

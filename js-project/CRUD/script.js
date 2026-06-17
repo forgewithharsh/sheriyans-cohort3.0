@@ -5,7 +5,7 @@ const closeBtn = document.querySelector("#close");
 const productDiv = document.querySelector(".products");
 const form = document.querySelector("form");
 
-const productsArr = JSON.parse(localStorage.getItem("products"));
+const productsArr = JSON.parse(localStorage.getItem("products")) || [];
 
 let updateIndex = null;
 

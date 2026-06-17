@@ -93,6 +93,6 @@ const updateProduct = (name) => {
 };
 
 const deleteProduct = (index) => {
-  productArr.splice(index, 1);
+  productsArr.splice(index, 1);
   ui();
 };

@@ -96,3 +96,43 @@ const deleteProduct = (index) => {
   productsArr.splice(index, 1);
   ui();
 };
+
+const users = [
+  {
+    name: "Harsh Sharma",
+    age: 21,
+    address: "Sector 15",
+    city: "Noida",
+  },
+  {
+    name: "Rohit Kumar",
+    age: 24,
+    address: "MG Road",
+    city: "Bengaluru",
+  },
+  {
+    name: "Priya Singh",
+    age: 22,
+    address: "Civil Lines",
+    city: "Prayagraj",
+  },
+  {
+    name: "Amit Verma",
+    age: 26,
+    address: "Rajendra Nagar",
+    city: "Patna",
+  },
+  {
+    name: "Neha Gupta",
+    age: 23,
+    address: "Vaishali Nagar",
+    city: "Jaipur",
+  },
+];
+
+localStorage.setItem("name", JSON.stringify(users));
+
+let lsd = localStorage.getItem("name");
+
+let value = JSON.parse(lsd)
+console.log(value);

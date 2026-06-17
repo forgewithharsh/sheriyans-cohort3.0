@@ -167,10 +167,19 @@ function add(a, b) {
 //   return numbers.reduce((acc, curr) => acc + curr, 0);
 // }
 
-function sumOfAll() {
+// function sumOfAll() {
+//   let ans = 0;
+//   for (let i = 0; i < arguments.length; i = i + 1) {
+//     ans = ans + arguments[i];
+//   }
+//   return ans;
+// }
+
+function sumOfAll(...numbers) {
+  // spread operator
   let ans = 0;
-  for (let i = 0; i < arguments.length; i = i + 1) {
-    ans = ans + arguments[i];
+  for (let i = 0; i < numbers.length; i++) {
+    ans += numbers[i];
   }
   return ans;
 }

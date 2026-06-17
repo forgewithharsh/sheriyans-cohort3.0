@@ -43,4 +43,54 @@ const person = {
 
 // console.log(person.age);
 
+// If - else
+const age1 = 90;
 
+if (age1 >= 80) {
+  console.log("yes, you are an adult");
+} else if (age1 >= 18) {
+  console.log("yes, you can vote");
+} else {
+  console.log("no, you can't vote");
+}
+
+// Ternary Operator
+
+let result = age1 >= 18 ? "Yes" : "No";
+
+// console.log(result);
+
+// Switch Case
+const option = 3;
+switch (option) {
+  case 1:
+    console.log("Namaste");
+    break;
+
+  case 2:
+    console.log("Hello");
+    break;
+  default:
+    console.log("Bonjor!");
+}
+
+let a = 30;
+let opt = "+";
+let b = 40;
+
+switch (opt) {
+  case "+":
+    console.log(a + b);
+    break;
+  case "-":
+    console.log(a - b);
+    break;
+  case "*":
+    console.log(a * b);
+    break;
+  case "/":
+    console.log(a / b);
+    break;
+  default:
+    console.log("IDK");
+}

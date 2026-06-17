@@ -221,12 +221,14 @@ function add(a, b, cb) {
 // add(400, 10, (val) => console.log(val));
 
 // Arrays
-const students = ["Harsh", "Harry", "John"]
+const students = ["Harsh", "Harry", "John"];
 // console.log(students);
 // console.log(students[0]);
 
-students[0] = "harsh guleria"
-students.push({appleIntelligence: "Siri"})
+students[0] = "harsh guleria";
+students.push({ appleIntelligence: "Siri" });
+students.reverse();
 
-console.log(students);
+// console.log(students);
+
 

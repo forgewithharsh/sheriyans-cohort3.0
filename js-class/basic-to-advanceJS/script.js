@@ -209,4 +209,13 @@ const obj2 = {
   },
 };
 
-obj2.myFunction();
+// obj2.myFunction();
+
+// High Order Functions and Callback
+function add(a, b, cb) {
+  let result = a + b;
+  cb(result);
+}
+
+add(2, 4, (val) => console.log(val));
+add(400, 10, (val) => console.log(val));

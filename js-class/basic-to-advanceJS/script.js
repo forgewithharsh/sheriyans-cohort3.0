@@ -134,15 +134,15 @@ if (number % 2 != 0) {
 
 // guess the input
 
-let number1 = 40;
+// let number1 = 40;
 
-let guess = 0;
+// let guess = 0;
 
-do {
-  guess = parseInt(prompt("Guess a number: "));
+// do {
+//   guess = parseInt(prompt("Guess a number: "));
 
-  if (guess === number1) {
-    alert("Winner");
-    break;
-  }
-} while (guess != 0);
+//   if (guess === number1) {
+//     alert("Winner");
+//     break;
+//   }
+// } while (guess != 0);

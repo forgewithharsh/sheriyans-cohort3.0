@@ -217,5 +217,16 @@ function add(a, b, cb) {
   cb(result);
 }
 
-add(2, 4, (val) => console.log(val));
-add(400, 10, (val) => console.log(val));
+// add(2, 4, (val) => console.log(val));
+// add(400, 10, (val) => console.log(val));
+
+// Arrays
+const students = ["Harsh", "Harry", "John"]
+// console.log(students);
+// console.log(students[0]);
+
+students[0] = "harsh guleria"
+students.push({appleIntelligence: "Siri"})
+
+console.log(students);
+

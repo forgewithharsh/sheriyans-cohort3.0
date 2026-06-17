@@ -94,3 +94,23 @@ switch (opt) {
   default:
     console.log("IDK");
 }
+
+// Logical Operators
+// AND, OR, NOT
+
+const age2 = 2;
+const gender = "male";
+
+if (age >= 18 && gender == "male") {
+  // console.log("You are adult male");
+}
+
+if (age2 >= 18 || gender == "male") {
+  // console.log("You are adult male");
+}
+
+const number = 5;
+
+if (number % 2 != 0) {
+  console.log("Odd");
+}

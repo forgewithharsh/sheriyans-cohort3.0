@@ -184,4 +184,29 @@ function sumOfAll(...numbers) {
   return ans;
 }
 
-console.log(sumOfAll(2, 4, 5, 2));
+// console.log(sumOfAll(2, 4, 5, 2));
+
+const add2 = (a, b) => {
+  return a + b;
+};
+
+const addV2 = (a, b) => a + b; // One-linear
+
+// console.log(add2(23, 3));
+
+// Hoisting
+sayHellov2();
+
+function sayHellov2() {
+  console.log("Hey there");
+}
+
+// This keyword
+const obj2 = {
+  value: 20,
+  myFunction: function () {
+    console.log("Value is: " + this.value);
+  },
+};
+
+obj2.myFunction();

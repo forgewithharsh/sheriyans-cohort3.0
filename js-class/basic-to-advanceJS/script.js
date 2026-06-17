@@ -146,3 +146,33 @@ if (number % 2 != 0) {
 //     break;
 //   }
 // } while (guess != 0);
+
+// Function
+
+function sayHello() {
+  console.log("Hey Harsh");
+}
+
+// sayHello(); // calling the function
+
+function add(a, b) {
+  return a + b;
+}
+
+// console.log(add(2, 5));
+
+// let arr = [2, 5, 4, 2];
+
+// function sumOfAll(...numbers) {
+//   return numbers.reduce((acc, curr) => acc + curr, 0);
+// }
+
+function sumOfAll() {
+  let ans = 0;
+  for (let i = 0; i < arguments.length; i = i + 1) {
+    ans = ans + arguments[i];
+  }
+  return ans;
+}
+
+console.log(sumOfAll(2, 4, 5, 2));

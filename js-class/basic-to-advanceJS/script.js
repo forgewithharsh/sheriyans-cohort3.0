@@ -114,3 +114,35 @@ const number = 5;
 if (number % 2 != 0) {
   console.log("Odd");
 }
+
+// Loops
+// for (let i = 1; i <= 10; i += 1) {
+// console.log("Harsh", i);
+// }
+
+// let ip = 50;
+// let house = 50;
+// while (ip != house) {
+//   ip += 1;
+//   console.log("Step Taken", ip);
+// }
+
+// do {
+//   ip += 1;
+//   console.log("Step Taken", ip);
+// } while (ip <= house);
+
+// guess the input
+
+let number1 = 40;
+
+let guess = 0;
+
+do {
+  guess = parseInt(prompt("Guess a number: "));
+
+  if (guess === number1) {
+    alert("Winner");
+    break;
+  }
+} while (guess != 0);

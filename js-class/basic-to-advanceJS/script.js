@@ -367,26 +367,44 @@ async function getData() {
 //     console.log(err);
 //   });
 
-const button = document.querySelector("#search-button");
-const input = document.querySelector("#city-input");
+// const button = document.querySelector("#search-button");
+// const input = document.querySelector("#city-input");
 
-const h2 = document.querySelector("#heading2");
-const h3 = document.querySelector("#heading3");
-const h4 = document.querySelector("#heading4");
+// const h2 = document.querySelector("#heading2");
+// const h3 = document.querySelector("#heading3");
+// const h4 = document.querySelector("#heading4");
 
-async function getWeatherData(cityName) {
-  const promise = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=73e82a815be433495f38f0fa9dde83fb&units=metric`,
-  );
+// async function getWeatherData(cityName) {
+//   const promise = await fetch(
+//     `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=73e82a815433495f38f0fa9dde83fb&units=metric`,
+//   );
 
-  return await promise.json();
-}
+//   return await promise.json();
+// }
 
-button.addEventListener("click", async () => {
-  const value = input.value;
-  const result = await getWeatherData(value);
+// button.addEventListener("click", async () => {
+//   const value = input.value;
+//   const result = await getWeatherData(value);
 
-  h2.innerHTML = `City: ${result.name}`;
-  h3.innerHTML = `Temperature: ${result.main.temp}`;
-  h4.innerHTML = `Weather: ${result.weather[0].description}`;
+//   h2.innerHTML = `City: ${result.name}`;
+//   h3.innerHTML = `Temperature: ${result.main.temp}`;
+//   h4.innerHTML = `Weather: ${result.weather[0].description}`;
+// });
+
+const button = document.querySelector("#clickButton");
+const uname = document.querySelector("#input-username");
+
+const username = document.querySelector(".username");
+
+button.addEventListener("click", () => {
+  const value = uname.value;
+  localStorage.setItem("name", value);
+
+  location.reload();
+});
+
+window.addEventListener("load", () => {
+  const value = localStorage.getItem("name");
+
+  username.innerText = value;
 });

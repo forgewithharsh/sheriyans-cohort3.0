@@ -291,7 +291,7 @@ const remove = document.getElementsByClassName("remove");
 
 for (let i = 0; i < elements.length; i++) {
   // elements.item(i).style.backgroundColor = "royalblue";
-  console.log(elements.item(i));
+  // console.log(elements.item(i));
 }
 
 // remove.item(0).remove()
@@ -334,14 +334,35 @@ const nameBlock = document.querySelector("#name-block");
 //   });
 // }
 
-const button = document.querySelector("#clickButton");
-const container = document.querySelector(".my-container");
+// const button = document.querySelector("#clickButton");
+// const container = document.querySelector(".my-container");
 
-let count = 1;
+// let count = 1;
 
-button.addEventListener("click", () => {
-  const el = document.createElement("li");
-  el.innerText = count;
-  container.appendChild(el);
-  count++;
-});
+// button.addEventListener("click", () => {
+//   const el = document.createElement("li");
+//   el.innerText = count;
+//   container.appendChild(el);
+//   count++;
+// });
+
+// Promises
+async function getData() {
+  let resultFromServer = await fetch(
+    "https://jsonplaceholder.typicode.com/posts",
+  );
+
+  let data = await resultFromServer.json();
+
+  console.log(data);
+}
+
+// getData();
+
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });

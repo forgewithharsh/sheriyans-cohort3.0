@@ -270,6 +270,10 @@ const body = document.querySelector("body");
 
 const username = document.querySelector("#username");
 username.textContent = "It'z Harry!";
+username.classList.add("red-color", "underline");
+
+username.classList.remove('red-color')
+username.setAttribute("aria", "123")
 
 const ele = document.querySelector(".paragraph");
 // console.log(ele.innerHTML);
@@ -279,5 +283,5 @@ const ele2 = document.querySelector("div");
 
 const block = document.querySelectorAll(".block");
 block.forEach((e) => {
-  console.log(e.innerHTML);
+  // console.log(e.innerHTML);
 });

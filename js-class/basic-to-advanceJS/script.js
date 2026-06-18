@@ -272,4 +272,12 @@ const username = document.querySelector("#username");
 username.textContent = "It'z Harry!";
 
 const ele = document.querySelector(".paragraph");
-console.log(ele.innerHTML);
+// console.log(ele.innerHTML);
+
+const ele2 = document.querySelector("div");
+// console.log(ele2.parentElement.children);
+
+const block = document.querySelectorAll(".block");
+block.forEach((e) => {
+  console.log(e.innerHTML);
+});

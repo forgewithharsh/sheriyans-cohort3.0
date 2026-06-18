@@ -255,3 +255,13 @@ let newArr1 = numbers2.splice(1, 4);
 // console.log(newArr1);
 // console.log(numbers2);
 
+// DOM
+// const value = prompt("What's your name?", "harsh")
+// console.log(value);
+
+// document.title = "DOM";
+// document.write("This is hacked...");
+
+// const name = prompt("What's your name?")
+// document.write("Hello, " + name)
+

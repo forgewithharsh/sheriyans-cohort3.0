@@ -272,8 +272,8 @@ const username = document.querySelector("#username");
 username.textContent = "It'z Harry!";
 username.classList.add("red-color", "underline");
 
-username.classList.remove('red-color')
-username.setAttribute("aria", "123")
+// username.classList.remove("red-color");
+username.setAttribute("aria", "123");
 
 const ele = document.querySelector(".paragraph");
 // console.log(ele.innerHTML);
@@ -285,3 +285,13 @@ const block = document.querySelectorAll(".block");
 block.forEach((e) => {
   // console.log(e.innerHTML);
 });
+
+const elements = document.getElementsByClassName("block");
+const remove = document.getElementsByClassName("remove");
+
+for (let i = 0; i < elements.length; i++) {
+  // elements.item(i).style.backgroundColor = "royalblue";
+  console.log(elements.item(i))
+}
+
+// remove.item(0).remove()

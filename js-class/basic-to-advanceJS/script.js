@@ -291,7 +291,45 @@ const remove = document.getElementsByClassName("remove");
 
 for (let i = 0; i < elements.length; i++) {
   // elements.item(i).style.backgroundColor = "royalblue";
-  console.log(elements.item(i))
+  console.log(elements.item(i));
 }
 
 // remove.item(0).remove()
+
+function handleButtonClick() {
+  // console.log("That Button is clicked")
+  // alert("Hey i am clicked")
+}
+
+const el = document.querySelector("button");
+const nameBlock = document.querySelector("#name-block");
+
+// el.onclick = () => {
+//   console.log('hacked')
+// }
+
+el.addEventListener("click", () => {
+  console.log("I am clicked");
+
+  // body.style.backgroundColor = "#121212";
+  // body.style.color = "#fff";
+
+  // body.classList.toggle("dark")
+  if (body.classList.contains("dark")) {
+    body.classList.remove("dark");
+  } else {
+    body.classList.add("dark");
+  }
+
+  nameBlock.textContent = "Hello, Harsh Guleria!";
+
+  nameBlock.classList.add("red-color");
+});
+
+const allChildren = document.querySelector("body").children;
+
+for(let i = 0; i < allChildren.length; i++){
+  allChildren.item(i).addEventListener('click' , () => {
+    allChildren.item(i).remove()
+  })
+}

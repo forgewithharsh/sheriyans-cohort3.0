@@ -5,3 +5,13 @@
 .underline{
   text-decoration: underline;
 }
+
+.dark {
+  color: white;
+  background-color: #131313;
+}
+
+.white {
+  background-color: white;
+  color: #131313;
+}

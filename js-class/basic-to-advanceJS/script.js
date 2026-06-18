@@ -225,10 +225,33 @@ const students = ["Harsh", "Harry", "John"];
 // console.log(students);
 // console.log(students[0]);
 
-students[0] = "harsh guleria";
-students.push({ appleIntelligence: "Siri" });
+// students[0] = "harsh guleria";
+// students.push({ appleIntelligence: "Siri" });
 students.reverse();
 
 // console.log(students);
 
+// Arrays High Order Functions
+
+students.forEach((val) => console.log(val));
+let stud = students.map((val) => {
+  return val;
+});
+// console.log(stud);
+
+let ans = students.findIndex((name) => name === "Harry");
+// console.log(ans);
+
+let filter = students.filter((fil) => fil.length > 4);
+// console.log(filter);
+
+let numbers2 = [1, 2, 3, 4, 5, 6];
+
+let number1 = numbers2.slice(1, 4);
+// console.log(number1);
+
+let newArr1 = numbers2.splice(1, 4);
+
+// console.log(newArr1);
+// console.log(numbers2);
 

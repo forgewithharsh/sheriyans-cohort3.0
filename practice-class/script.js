@@ -511,17 +511,54 @@ let fn = outer();
 
 // Q5.
 function largest2(arr) {
-  let largest2  = arr[0];
+  let largest2 = arr[0];
 
-  for(let i = 0; i< arr.length; i++){
-    if(arr[i] > largest2){
-      largest2 = arr[i]
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > largest2) {
+      largest2 = arr[i];
     }
   }
-  return largest2
+  return largest2;
 }
 
 // console.log(largest2([5, 124, 3, 25, 8]));
 
+// Q6.
+const productsv2 = [
+  {
+    productName: "iPhone 15",
+    price: 79999,
+    category: "Electronics",
+  },
+  {
+    productName: "Nike Air Max",
+    price: 5999,
+    category: "Footwear",
+  },
+  {
+    productName: "Wooden Study Chair",
+    price: 6999,
+    category: "Furniture",
+  },
+  {
+    productName: "Wooden Study Table",
+    price: 8999,
+    category: "Furniture",
+  },
+];
 
+const productNames = productsv2.map((product) => product.productName);
 
+console.log(productNames);
+
+const furnitureProducts = productsv2.filter(
+  (product) => product.category === "Furniture"
+);
+
+console.log(furnitureProducts);
+
+const totalPrice = productsv2.reduce((acc, curr) => {
+  return acc + curr.price;
+}, 0);
+
+console.log(totalPrice);

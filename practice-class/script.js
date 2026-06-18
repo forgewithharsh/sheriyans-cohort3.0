@@ -463,4 +463,65 @@ function show() {
 
 // show();
 
-//////////////////
+// Q1.
+function checker() {
+  let check = prompt("Enter a number to check even and odd number: ");
+
+  if (check % 2 == 0) {
+    alert("Even Number");
+  } else {
+    alert("Odd number");
+  }
+}
+
+// console.log(checker());
+
+// Q2.
+function greeting() {
+  let name = prompt("Enter name:");
+  let age = prompt("Enter age:");
+
+  return `Hello, ${name}! You are ${age} years old.`;
+}
+
+// console.log(greeting());
+
+// Q3.
+function rectArea(w, h) {
+  let width = prompt("Enter width:");
+  let height = prompt("Enter height:");
+
+  return `${width}* ${height}`;
+}
+
+// console.log(rectArea());
+
+// Q4.
+function outer() {
+  let counter = 0;
+  function inner() {
+    counter++;
+    console.log(counter);
+  }
+  return inner;
+}
+
+let fn = outer();
+// fn()
+
+// Q5.
+function largest2(arr) {
+  let largest2  = arr[0];
+
+  for(let i = 0; i< arr.length; i++){
+    if(arr[i] > largest2){
+      largest2 = arr[i]
+    }
+  }
+  return largest2
+}
+
+// console.log(largest2([5, 124, 3, 25, 8]));
+
+
+

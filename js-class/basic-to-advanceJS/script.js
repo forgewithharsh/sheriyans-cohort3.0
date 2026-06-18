@@ -268,14 +268,14 @@ let newArr1 = numbers2.splice(1, 4);
 const body = document.querySelector("body");
 // body.innerHTML = "<h1>Hacked!</h1>"
 
-const username = document.querySelector("#username");
-username.textContent = "It'z Harry!";
-username.classList.add("red-color", "underline");
+// const username = document.querySelector("#username");
+// username.textContent = "It'z Harry!";
+// username.classList.add("red-color", "underline");
 
 // username.classList.remove("red-color");
-username.setAttribute("aria", "123");
+// username.setAttribute("aria", "123");
 
-const ele = document.querySelector(".paragraph");
+// const ele = document.querySelector(".paragraph");
 // console.log(ele.innerHTML);
 
 const ele2 = document.querySelector("div");
@@ -359,10 +359,34 @@ async function getData() {
 
 // getData();
 
-fetch("https://jsonplaceholder.typicode.com/posts")
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// fetch("https://jsonplaceholder.typicode.com/posts")
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+const button = document.querySelector("#search-button");
+const input = document.querySelector("#city-input");
+
+const h2 = document.querySelector("#heading2");
+const h3 = document.querySelector("#heading3");
+const h4 = document.querySelector("#heading4");
+
+async function getWeatherData(cityName) {
+  const promise = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=73e82a815be433495f38f0fa9dde83fb&units=metric`,
+  );
+
+  return await promise.json();
+}
+
+button.addEventListener("click", async () => {
+  const value = input.value;
+  const result = await getWeatherData(value);
+
+  h2.innerHTML = `City: ${result.name}`;
+  h3.innerHTML = `Temperature: ${result.main.temp}`;
+  h4.innerHTML = `Weather: ${result.weather[0].description}`;
+});

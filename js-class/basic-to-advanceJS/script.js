@@ -265,3 +265,11 @@ let newArr1 = numbers2.splice(1, 4);
 // const name = prompt("What's your name?")
 // document.write("Hello, " + name)
 
+const body = document.querySelector("body");
+// body.innerHTML = "<h1>Hacked!</h1>"
+
+const username = document.querySelector("#username");
+username.textContent = "It'z Harry!";
+
+const ele = document.querySelector(".paragraph");
+console.log(ele.innerHTML);

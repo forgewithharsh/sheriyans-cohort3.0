@@ -20,10 +20,13 @@ function addingElement() {
 
   const status = document.querySelector("#status-select").value;
 
+  li.dataset.status = status;
+
   li.innerHTML = `
   <input type="checkbox">
   <span>${inputValue}</span>
   <small class="${status}">${status}</small>
+  <button class="edit-btn">Edit</button>
   <button class="delete-btn">Delete</button>
 `;
 
@@ -42,6 +45,20 @@ input.addEventListener("keydown", (e) => {
 });
 
 ul.addEventListener("click", (e) => {
+  if (e.target.classList.contains("edit-btn")) {
+    const li = e.target.parentElement;
+
+    const span = li.querySelector("span");
+
+    const newTask = prompt("Edit Task: ", span.textContent);
+
+    if (newTask && newTask.trim() !== "") {
+      e.target.textContent = newTask.trim();
+
+      localStorage.setItem("tasks", ul.innerHTML);
+    }
+  }
+
   if (e.target.classList.contains("delete-btn")) {
     e.target.parentElement.remove();
     localStorage.setItem("tasks", ul.innerHTML);

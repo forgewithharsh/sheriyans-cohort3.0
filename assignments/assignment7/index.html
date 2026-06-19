@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,17 +7,43 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Simple Todo List</h1>
-    <p>Welcome to this todo list.</p>
+    <!doctype html>
 
-    <input
-      type="text"
-      id="todo-input"
-      placeholder="Enter a todo and press Add or Enter"
-    />
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Task Manager</title>
+        <link rel="stylesheet" href="style.css" />
+      </head>
+      <body>
+        <div class="container">
+          <h1>Task Manager</h1>
+          <p>Manage your daily tasks</p>
 
-    <button id="add-btn">Add</button>
-    <ul id="todo-list"></ul>
+          <div class="task-form">
+            <input type="text" id="task-input" placeholder="Enter a task" />
+
+            <select id="status-select">
+              <option value="progress">In Progress</option>
+              <option value="later">Do Later</option>
+              <option value="done">Done</option>
+            </select>
+
+            <button id="add-task-btn">Add Task</button>
+          </div>
+
+          <div class="controls">
+            <input type="text" id="search-input" placeholder="Search task" />
+          </div>
+
+          <ul id="task-list"></ul>
+        </div>
+
+        <script src="script.js"></script>
+      </body>
+    </html>
+
     <script src="script.js"></script>
   </body>
 </html>

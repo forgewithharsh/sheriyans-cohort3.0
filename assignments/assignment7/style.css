@@ -2,158 +2,111 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+  font-family: Poppins, sans-serif;
+  }
 
 body {
-  background: linear-gradient(135deg, #f46e09, #f7e949);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  padding-top: 80px;
-  color: #333;
+min-height: 100vh;
+background: linear-gradient(135deg, #f46e09, #f7e949);
+display: flex;
+justify-content: center;
+align-items: start;
+padding-top: 50px;
+}
+
+.container {
+width: 420px;
+background: white;
+padding: 25px;
+border-radius: 12px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: #fff;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+text-align: center;
+margin-bottom: 10px;
 }
 
 p {
-  color: #e0e0e0;
-  margin-bottom: 25px;
-  font-size: 1rem;
+text-align: center;
+color: gray;
+margin-bottom: 20px;
 }
 
-#todo-input {
-  width: 320px;
-  padding: 10px 14px;
-  margin: 20px 0;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+.task-form,
+.controls {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-bottom: 20px;
 }
 
-#todo-input:focus {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  transform: scale(1.02);
+#task-input,
+#search-input,
+#status-select,
+#filter-select {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 6px;
+outline: none;
 }
 
-#add-btn {
-  margin-left: 10px;
-  padding: 10px 20px;
-  background: #f41c1c;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+#task-input:focus,
+#search-input:focus,
+#status-select:focus,
+#filter-select:focus {
+border-color: orange;
 }
 
-#add-btn:hover {
-  background: rgb(255, 26, 1);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+#add-task-btn {
+padding: 10px;
+border: none;
+background: orange;
+color: white;
+border-radius: 6px;
+cursor: pointer;
+font-size: 16px;
 }
 
-#todo-list {
-  list-style: none;
-  margin-top: 30px;
-  padding: 0;
-  width: 360px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+#add-task-btn:hover {
+background: #ff7b00;
 }
 
-#todo-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: background 0.3s ease;
+#task-list {
+list-style: none;
 }
 
-#todo-list li:hover {
-  background: rgba(255, 255, 255, 0.1);
+#task-list li {
+background: #f5f5f5;
+padding: 12px;
+margin-bottom: 10px;
+border-radius: 6px;
+border-left: 5px solid orange;
 }
 
-#todo-list input[type="checkbox"] {
-  accent-color: #22f256;
-  transform: scale(1.3);
-  margin-right: 10px;
+.progress {
+  color: orange;
+  font-weight: bold;
 }
 
-#todo-list span {
-  flex: 1;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+.done {
+  color: limegreen;
+  font-weight: bold;
 }
 
-#todo-list span:hover {
-  color: #3693ea;
+.later {
+  color: crimson;
+  font-weight: bold;
 }
 
-#todo-list button {
-  background: #ff4b5c;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+.task-status {
+font-size: 13px;
+color: gray;
+margin-top: 5px;
 }
 
-#todo-list button:hover {
-  background: #ff6b81;
-  transform: scale(1.05);
+@media (max-width: 500px) {
+.container {
+width: 90%;
 }
-
-#todo-list li input[type="checkbox"]:checked + span {
-  text-decoration: line-through;
-  color: #b0b0b0;
-  transition: all 0.3s ease;
-}
-
-#todo-list li {
-  animation: fadeIn 0.4s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding-top: 50px;
-  }
-  #todo-input {
-    width: 200px;
-  }
-  #todo-list {
-    width: 300px;
-  }
 }

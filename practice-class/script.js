@@ -618,6 +618,53 @@ function fetchUser(callback) {
   }, 2000);
 }
 
-fetchUser((val) => {
-  console.log(val);
+// fetchUser((val) => {
+//   console.log(val);
+// });
+
+const receive = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Data Received");
+  }, 2000);
 });
+
+// receive.then((val) => console.log(val));
+
+function addTen(num) {
+  return new Promise((resolve) => {
+    resolve(num + 10);
+  });
+}
+
+addTen(0)
+  .then((res) => {
+    console.log(res);
+    return addTen(res);
+  })
+  .then((res) => {
+    console.log(res);
+    return addTen(res);
+  })
+  .then((res) => {
+    console.log(res);
+  });
+
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data Received");
+    }, 2000);
+  });
+}
+
+const getData = async () => {
+  try {
+    const data = await fetchData()
+    console.log(data);
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getData()

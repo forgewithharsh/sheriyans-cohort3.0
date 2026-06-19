@@ -391,20 +391,37 @@ async function getData() {
 //   h4.innerHTML = `Weather: ${result.weather[0].description}`;
 // });
 
-const button = document.querySelector("#clickButton");
-const uname = document.querySelector("#input-username");
+// const button = document.querySelector("#clickButton");
+// const uname = document.querySelector("#input-username");
 
-const username = document.querySelector(".username");
+// const username = document.querySelector(".username");
 
-button.addEventListener("click", () => {
-  const value = uname.value;
-  localStorage.setItem("name", value);
+// button.addEventListener("click", () => {
+//   const value = uname.value;
+//   localStorage.setItem("name", value);
 
-  location.reload();
-});
+//   location.reload();
+// });
 
-window.addEventListener("load", () => {
-  const value = localStorage.getItem("name");
+// window.addEventListener("load", () => {
+//   const value = localStorage.getItem("name");
 
-  username.innerText = value;
+//   username.innerText = value;
+// });
+
+const btn = document.querySelector("#get-location-button");
+
+function gotLocation(position) {
+  // console.log(position);
+}
+
+function failedToGet() {
+  console.log("There was some issue");
+}
+
+btn.addEventListener("click", () => {
+  const result = navigator.geolocation.getCurrentPosition(
+    gotLocation,
+    failedToGet,
+  );
 });

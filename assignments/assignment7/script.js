@@ -2,6 +2,21 @@ const input = document.querySelector("#task-input");
 const btn = document.querySelector("#add-task-btn");
 const ul = document.querySelector("#task-list");
 const searchInput = document.querySelector("#search-input");
+const themeBtn = document.querySelector("#theme-btn");
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+
+  if(document.body.classList.toggle('dark')){
+    themeBtn.textContent = "Light Mode";
+
+    localStorage.setItem("theme", "dark");
+  } else {
+    themeBtn.textContent = "Dark Mode";
+
+    localStorage.setItem("theme", "light");
+  }
+})
 
 window.addEventListener("DOMContentLoaded", () => {
   const savedTasks = localStorage.getItem("tasks");

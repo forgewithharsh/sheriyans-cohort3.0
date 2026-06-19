@@ -659,12 +659,29 @@ function fetchData() {
 
 const getData = async () => {
   try {
-    const data = await fetchData()
+    const data = await fetchData();
     console.log(data);
-
   } catch (error) {
     console.log(error);
   }
 };
 
-getData()
+// getData()
+
+const miniProject = async () => {
+  try {
+    const data = await fetch("https://jsonplaceholder.typicode.com/users/1");
+
+    if (!data.ok) {
+      throw new Error("Data not received");
+    }
+
+    const json = await data.json();
+
+    console.log(json.name);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+miniProject();

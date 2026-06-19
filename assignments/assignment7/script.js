@@ -67,6 +67,22 @@ input.addEventListener("keydown", (e) => {
   }
 });
 
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  const allTasks = ul.querySelectorAll("li");
+
+  allTasks.forEach((t) => {
+    const taskText = t.querySelector("span").textContent.toLowerCase();
+
+    if (taskText.includes(value)) {
+      t.style.display = "flex";
+    } else {
+      t.style.display = "none";
+    }
+  });
+});
+
 ul.addEventListener("change", (e) => {
   if (e.target.type === "checkbox") {
     const li = e.target.parentElement;

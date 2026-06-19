@@ -419,9 +419,25 @@ function failedToGet() {
   console.log("There was some issue");
 }
 
-btn.addEventListener("click", () => {
-  const result = navigator.geolocation.getCurrentPosition(
-    gotLocation,
-    failedToGet,
-  );
+// btn.addEventListener("click", () => {
+//   const result = navigator.geolocation.getCurrentPosition(
+//     gotLocation,
+//     failedToGet,
+//   );
+// });
+
+const stopBtn = document.getElementById("stop-btn");
+
+function showTime() {
+  const currTime = new Date();
+
+  const time = `${currTime.getHours()}:${currTime.getMinutes()}:${currTime.getSeconds()}`;
+
+  document.getElementById("time").innerText = time;
+}
+
+let interval = setInterval(showTime, 1000);
+
+stopBtn.addEventListener("click", () => {
+  clearInterval(interval);
 });

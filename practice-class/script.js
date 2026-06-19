@@ -565,13 +565,13 @@ const totalPrice = productsv2.reduce((acc, curr) => {
 
 // Asynchronous JS
 
-console.log("Start");
+// console.log("Start");
 
-setTimeout(() => {
-  console.log("Timer");
-}, 2000);
+// setTimeout(() => {
+//   console.log("Timer");
+// }, 2000);
 
-console.log("End");
+// console.log("End");
 
 function greetv2(name) {
   console.log(`Hello, ${name}`);
@@ -588,4 +588,36 @@ function greetv3(name) {
   console.log(`Welcome, ${name}`);
 }
 
-setTimeout(greetv3, 2000, "harsh");
+// setTimeout(greetv3, 2000, "harsh");
+
+let timer = setTimeout(() => {
+  // console.log(`Hello,  harry!`);
+}, 5000);
+
+// clearTimeout(timer)
+
+let countv2 = 5;
+
+// const int = setInterval(() => {
+//   console.log(countv2);
+//   countv2--;
+//   if (countv2 == 0) {
+//     clearInterval(int);
+//     console.log("Done");
+//   }
+// }, 1000);
+
+function fetchUser(callback) {
+  console.log("Fetching User...");
+  setTimeout(() => {
+    let user = {
+      id: 1,
+      name: "Harsh",
+    };
+    callback(user);
+  }, 2000);
+}
+
+fetchUser((val) => {
+  console.log(val);
+});

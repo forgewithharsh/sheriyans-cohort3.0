@@ -4,10 +4,10 @@ const ul = document.querySelector("#task-list");
 const searchInput = document.querySelector("#search-input");
 const themeBtn = document.querySelector("#theme-btn");
 
-themeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark')
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 
-  if(document.body.classList.toggle('dark')){
+  if (document.body.classList.contains("dark")) {
     themeBtn.textContent = "Light Mode";
 
     localStorage.setItem("theme", "dark");
@@ -16,10 +16,18 @@ themeBtn.addEventListener('click', () => {
 
     localStorage.setItem("theme", "light");
   }
-})
+});
 
 window.addEventListener("DOMContentLoaded", () => {
   const savedTasks = localStorage.getItem("tasks");
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+
+    themeBtn.textContent = "Light Mode";
+  }
 
   if (savedTasks) {
     ul.innerHTML = savedTasks;

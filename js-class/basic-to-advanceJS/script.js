@@ -426,18 +426,29 @@ function failedToGet() {
 //   );
 // });
 
-const stopBtn = document.getElementById("stop-btn");
+// const stopBtn = document.getElementById("stop-btn");
 
-function showTime() {
-  const currTime = new Date();
+// function showTime() {
+//   const currTime = new Date();
 
-  const time = `${currTime.getHours()}:${currTime.getMinutes()}:${currTime.getSeconds()}`;
+//   const time = `${currTime.getHours()}:${currTime.getMinutes()}:${currTime.getSeconds()}`;
 
-  document.getElementById("time").innerText = time;
+//   document.getElementById("time").innerText = time;
+// }
+
+// let interval = setInterval(showTime, 1000);
+
+// stopBtn.addEventListener("click", () => {
+//   clearInterval(interval);
+// });
+
+function main() {
+  const name = "Harsh Guleria";
+
+  function sayMyName() {
+    console.log(name);
+  }
+  return sayMyName;
 }
 
-let interval = setInterval(showTime, 1000);
-
-stopBtn.addEventListener("click", () => {
-  clearInterval(interval);
-});
+main()();

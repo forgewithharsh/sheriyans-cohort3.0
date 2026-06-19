@@ -549,16 +549,43 @@ const productsv2 = [
 
 const productNames = productsv2.map((product) => product.productName);
 
-console.log(productNames);
+// console.log(productNames);
 
 const furnitureProducts = productsv2.filter(
-  (product) => product.category === "Furniture"
+  (product) => product.category === "Furniture",
 );
 
-console.log(furnitureProducts);
+// console.log(furnitureProducts);
 
 const totalPrice = productsv2.reduce((acc, curr) => {
   return acc + curr.price;
 }, 0);
 
-console.log(totalPrice);
+// console.log(totalPrice);
+
+// Asynchronous JS
+
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timer");
+}, 2000);
+
+console.log("End");
+
+function greetv2(name) {
+  console.log(`Hello, ${name}`);
+}
+
+function welcome(cb) {
+  let user = "Harsh";
+  cb(user);
+}
+
+// welcome(greetv2)
+
+function greetv3(name) {
+  console.log(`Welcome, ${name}`);
+}
+
+setTimeout(greetv3, 2000, "harsh");

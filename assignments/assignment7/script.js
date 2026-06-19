@@ -44,6 +44,15 @@ input.addEventListener("keydown", (e) => {
   }
 });
 
+ul.addEventListener("change", (e) => {
+  if (e.target.type === "checkbox") {
+    const li = e.target.parentElement;
+
+    li.classList.toggle("completed");
+    localStorage.setItem("tasks", ul.innerHTML);
+  }
+});
+
 ul.addEventListener("click", (e) => {
   if (e.target.classList.contains("edit-btn")) {
     const li = e.target.parentElement;

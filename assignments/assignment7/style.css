@@ -159,8 +159,14 @@ list-style: none;
 }
 
 .completed {
+  border-left: 5px solid limegreen !important;
+  background: #e8ffe8 !important;
+  box-shadow: 0 0 15px rgba(50, 205, 50, 0.4);
+}
+
+.completed span {
   text-decoration: line-through;
-  opacity: 0.6;
+  color: gray;
 }
 
 .task-status {

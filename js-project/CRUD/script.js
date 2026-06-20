@@ -8,9 +8,10 @@ const form = document.querySelector("form");
 
 let productsArr = [];
 
+let updateIndex = null;
+
 let ui = () => {
   productDiv.innerHTML = "";
-
 
   productsArr.forEach((elem) => {
     productDiv.innerHTML += `<div class="product-card">
@@ -28,7 +29,7 @@ let ui = () => {
           </div>
 
           <div class="btns">
-            <button id="update">Update</button>
+            <button onclick="updateProduct('${elem.productName}')" id="update">Update</button>
             <button id="delete">Delete</button>
           </div>
         </div>`;
@@ -76,3 +77,13 @@ form.addEventListener("submit", (event) => {
 
   form.reset();
 });
+
+const updateProduct = (name) => {
+  let product = productsArr.find((elem) => elem.productName === name);
+  updateIndex.find((elem) => elem.productName === name)
+
+  form[0].value = product.productName;
+  form[1].value = product.description;
+  form[2].value = product.price;
+  form[3].value = product.image;
+};

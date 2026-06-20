@@ -477,8 +477,8 @@ const addTo5 = adder(5);
 // addTo5(10)
 // addTo5(15)
 
-const myName = document.querySelector("#my-name");
-const btn = document.getElementById("my-btn");
+// const myName = document.querySelector("#my-name");
+// const btn = document.getElementById("my-btn");
 
 // function makeTextSizer(size) {
 //   function changeSize() {
@@ -501,6 +501,46 @@ function counter(count) {
 
 const countv4 = counter();
 
-countv4();
-countv4();
-countv4();
+// countv4();
+// countv4();
+// countv4();
+
+// Javascript Curry
+
+// function add(a) {
+//   return function (b) {
+//     return function (c) {
+//       return a + b + c;
+//     };
+//   };
+// }
+
+const addv2 = (a) => (b) => (c) => a + b + c;
+console.log(addv2(1)(2)(3));
+
+// console.log(add(2)(3)(10));
+
+// function sendAutoEmail(to) {
+//   return function (subject) {
+//     return function (body) {
+//       console.log(
+//         `Sending Email to ${to} the subject is ${subject} and the information is ${body}`,
+//       );
+//     };
+//   };
+// }
+
+const sendAutoEmail = (to) => (subject) => (body) =>
+  `Sending Email to ${to} the subject is ${subject} and the information is ${body}`;
+
+console.log(
+  sendAutoEmail("harsh@gmail.com")("New Order Confirmation")(
+    "Hey Harsh, something for you!",
+  ),
+);
+
+// let step1 = sendAutoEmail("harsh@gmail.com");
+
+// let step2 = step1("New Order Confirmation");
+
+// step2("Hey Harsh, something for you!");

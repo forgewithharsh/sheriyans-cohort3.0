@@ -480,13 +480,27 @@ const addTo5 = adder(5);
 const myName = document.querySelector("#my-name");
 const btn = document.getElementById("my-btn");
 
-function makeTextSizer(size) {
-  function changeSize() {
-    myName.style.fontSize = `${size}px`;
+// function makeTextSizer(size) {
+//   function changeSize() {
+//     myName.style.fontSize = `${size}px`;
+//   }
+//   return changeSize;
+// }
+
+// const sizeChangeByUser = makeTextSizer(72);
+
+// btn.addEventListener("click", sizeChangeByUser);
+
+function counter(count) {
+  let countv3 = 1;
+  function increment() {
+    console.log(countv3++);
   }
-  return changeSize;
+  return increment;
 }
 
-const sizeChangeByUser = makeTextSizer(72);
+const countv4 = counter();
 
-btn.addEventListener("click", sizeChangeByUser);
+countv4();
+countv4();
+countv4();

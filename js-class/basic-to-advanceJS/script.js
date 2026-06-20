@@ -571,4 +571,36 @@ const c2f = (fn1, fn2) => (a, b) => fn2(fn1(a, b));
 
 const task = c2f(addv3, square);
 
-console.log(task(2, 3));
+// console.log(task(2, 3));
+
+// IIFE - Immediately Invoked Function Expression
+
+(function add(a, b) {
+  console.log(a + b);
+})(2, 3);
+
+(function add() {
+  console.log("Hey");
+})();
+
+(() => console.log("I am ES6"))();
+
+const atm = function (intialBalance){
+  let balance = intialBalance;
+
+  function withdraw(amt){
+    if(amt > balance){
+      return 'Are you kidding';
+
+    }else {
+      balance -= amt;
+      return balance
+    }
+  }
+  return {withdraw}
+}
+
+const harsh = atm(1000);
+
+console.log(harsh.withdraw(100));
+

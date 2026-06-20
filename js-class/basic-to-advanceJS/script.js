@@ -212,10 +212,10 @@ const obj2 = {
 // obj2.myFunction();
 
 // High Order Functions and Callback
-function add(a, b, cb) {
-  let result = a + b;
-  cb(result);
-}
+// function add(a, b, cb) {
+//   let result = a + b;
+//   cb(result);
+// }
 
 // add(2, 4, (val) => console.log(val));
 // add(400, 10, (val) => console.log(val));
@@ -544,3 +544,18 @@ console.log(
 // let step2 = step1("New Order Confirmation");
 
 // step2("Hey Harsh, something for you!");
+
+function addv3(a, b) {
+  return a + b;
+}
+
+function square(val) {
+  return val * val;
+}
+
+const addTwoAndSquare = (a, b) => {
+  return square(add(a, b));
+};
+
+// const addResult = addv3(2, 3);
+console.log(addTwoAndSquare(2, 3));

@@ -558,4 +558,17 @@ const addTwoAndSquare = (a, b) => {
 };
 
 // const addResult = addv3(2, 3);
-console.log(addTwoAndSquare(2, 3));
+// console.log(addTwoAndSquare(2, 3));
+
+// Composition
+// function composeTwoFunction(fn1, fn2){
+//   return function(a, b){
+//     return fn2(fn1(a, b))
+//   }
+// }
+
+const c2f = (fn1, fn2) => (a, b) => fn2(fn1(a, b));
+
+const task = c2f(addv3, square);
+
+console.log(task(2, 3));

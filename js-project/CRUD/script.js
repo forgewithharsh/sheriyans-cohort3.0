@@ -9,6 +9,9 @@ const form = document.querySelector("form");
 let productsArr = [];
 
 let ui = () => {
+  productDiv.innerHTML = "";
+
+
   productsArr.forEach((elem) => {
     productDiv.innerHTML += `<div class="product-card">
           <div class="img">

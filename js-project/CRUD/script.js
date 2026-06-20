@@ -69,7 +69,13 @@ form.addEventListener("submit", (event) => {
     image,
   };
 
-  productsArr.push(obj);
+  if (updateIndex !== null) {
+    productsArr[updateIndex] = obj;
+    updateIndex = null;
+  } else {
+    productsArr.push(obj);
+  }
+
   ui();
   // console.log(productsArr);
 
@@ -80,7 +86,7 @@ form.addEventListener("submit", (event) => {
 
 const updateProduct = (name) => {
   let product = productsArr.find((elem) => elem.productName === name);
-  updateIndex.find((elem) => elem.productName === name)
+  updateIndex.find((elem) => elem.productName === name);
 
   form[0].value = product.productName;
   form[1].value = product.description;

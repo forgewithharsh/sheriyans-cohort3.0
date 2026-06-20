@@ -283,15 +283,15 @@ let newArr1 = numbers2.splice(1, 4);
 
 // const block = document.querySelectorAll(".block");
 // block.forEach((e) => {
-   // console.log(e.innerHTML);
+// console.log(e.innerHTML);
 // });
 
 // const elements = document.getElementsByClassName("block");
 // const remove = document.getElementsByClassName("remove");
 
 // for (let i = 0; i < elements.length; i++) {
-  // elements.item(i).style.backgroundColor = "royalblue";
-  // console.log(elements.item(i));
+// elements.item(i).style.backgroundColor = "royalblue";
+// console.log(elements.item(i));
 // }
 
 // remove.item(0).remove()
@@ -465,14 +465,28 @@ const consoleHarsh = main("Harsh Guleria");
 
 // consoleHarsh()
 
-function adder(num){
-  function add(b){
-    console.log(num + b)
+function adder(num) {
+  function add(b) {
+    console.log(num + b);
   }
-  return add
+  return add;
 }
 
-const addTo5 = adder(5)
+const addTo5 = adder(5);
 
-addTo5(10)
-addTo5(15)
+// addTo5(10)
+// addTo5(15)
+
+const myName = document.querySelector("#my-name");
+const btn = document.getElementById("my-btn");
+
+function makeTextSizer(size) {
+  function changeSize() {
+    myName.style.fontSize = `${size}px`;
+  }
+  return changeSize;
+}
+
+const sizeChangeByUser = makeTextSizer(72);
+
+btn.addEventListener("click", sizeChangeByUser);

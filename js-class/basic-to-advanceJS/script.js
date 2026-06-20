@@ -265,7 +265,7 @@ let newArr1 = numbers2.splice(1, 4);
 // const name = prompt("What's your name?")
 // document.write("Hello, " + name)
 
-const body = document.querySelector("body");
+// const body = document.querySelector("body");
 // body.innerHTML = "<h1>Hacked!</h1>"
 
 // const username = document.querySelector("#username");
@@ -278,21 +278,21 @@ const body = document.querySelector("body");
 // const ele = document.querySelector(".paragraph");
 // console.log(ele.innerHTML);
 
-const ele2 = document.querySelector("div");
+// const ele2 = document.querySelector("div");
 // console.log(ele2.parentElement.children);
 
-const block = document.querySelectorAll(".block");
-block.forEach((e) => {
-  // console.log(e.innerHTML);
-});
+// const block = document.querySelectorAll(".block");
+// block.forEach((e) => {
+   // console.log(e.innerHTML);
+// });
 
-const elements = document.getElementsByClassName("block");
-const remove = document.getElementsByClassName("remove");
+// const elements = document.getElementsByClassName("block");
+// const remove = document.getElementsByClassName("remove");
 
-for (let i = 0; i < elements.length; i++) {
+// for (let i = 0; i < elements.length; i++) {
   // elements.item(i).style.backgroundColor = "royalblue";
   // console.log(elements.item(i));
-}
+// }
 
 // remove.item(0).remove()
 
@@ -301,8 +301,8 @@ for (let i = 0; i < elements.length; i++) {
 // alert("Hey i am clicked")
 // }
 
-const el = document.querySelector("button");
-const nameBlock = document.querySelector("#name-block");
+// const el = document.querySelector("button");
+// const nameBlock = document.querySelector("#name-block");
 
 // el.onclick = () => {
 //   console.log('hacked')
@@ -409,7 +409,7 @@ async function getData() {
 //   username.innerText = value;
 // });
 
-const btn = document.querySelector("#get-location-button");
+// const btn = document.querySelector("#get-location-button");
 
 function gotLocation(position) {
   // console.log(position);
@@ -451,4 +451,28 @@ function main() {
   return sayMyName;
 }
 
-main()();
+// main()();
+
+function main(name) {
+  function sayMyName() {
+    console.log(name);
+  }
+
+  return sayMyName;
+}
+
+const consoleHarsh = main("Harsh Guleria");
+
+// consoleHarsh()
+
+function adder(num){
+  function add(b){
+    console.log(num + b)
+  }
+  return add
+}
+
+const addTo5 = adder(5)
+
+addTo5(10)
+addTo5(15)

@@ -1,6 +1,7 @@
 const colorCodeContainer = document.getElementById("color-code");
-let randomColor = null;
 const optionContainer = document.getElementById("options-container");
+const scoreContainer = document.getElementById("score");
+let randomColor = null;
 let score = 0;
 
 function generateRandomNumbersBetween(min, max) {
@@ -17,17 +18,24 @@ function generateRandomColorRGB() {
 
 function incrementScore() {
   score++;
-  document.getElementById("score").innerText = score;
+  scoreContainer.innerText = score;
 }
 
 function validateResult(el) {
   const selectedColor = el.target.style.backgroundColor;
   if (selectedColor === randomColor) {
-    incrementScore()
+    incrementScore();
+  } else {
+    score = 0;
   }
+  window.localStorage.setItem("score", score);
+  startGame();
 }
 
 function startGame() {
+  score = Number(window.localStorage.getItem("score")) ?? 0;
+  scoreContainer.innerText = score;
+  optionContainer.innerHTML = null;
   randomColor = generateRandomColorRGB();
   colorCodeContainer.innerText = randomColor;
 

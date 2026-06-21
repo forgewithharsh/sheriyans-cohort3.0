@@ -11,28 +11,28 @@ const winPatterns = [
   [2, 5, 8], // Column 3
 
   [0, 4, 8], // Diagonal
-  [2, 4, 6]  // Diagonal
+  [2, 4, 6], // Diagonal
 ];
 
-function checkWinner(){
-for(let pattern of winPatterns){
-  let [a, b, c] = pattern;
+function checkWinner() {
+  for (let pattern of winPatterns) {
+    let [a, b, c] = pattern;
 
-  if(arr[a] && arr[a] === arr[b] && arr[b] === arr[c]){
-    document.write('Winner!')
-    return ;
+    if (arr[a] !== null && arr[a] === arr[b] && arr[b] === arr[c]) {
+      document.write(`Winner! is ${currentPlayer} :)`);
+      return;
+    }
+
+    if (!arr.some((e) => e === null)) {
+      document.write("Draw! No one is the Winner :(");
+      return;
+    }
   }
-
-//   if(!arr.includes("")){
-//   document.write('Draw!')
-// }
-
-}
-
 }
 
 function handleClick(el) {
   const id = Number(el.id);
+  if (arr[id] !== null) return;
   arr[id] = currentPlayer;
   el.innerText = currentPlayer;
   checkWinner();

@@ -585,22 +585,20 @@ const task = c2f(addv3, square);
 
 (() => console.log("I am ES6"))();
 
-const atm = function (intialBalance){
+const atm = function (intialBalance) {
   let balance = intialBalance;
 
-  function withdraw(amt){
-    if(amt > balance){
-      return 'Are you kidding';
-
-    }else {
+  function withdraw(amt) {
+    if (amt > balance) {
+      return "Are you kidding";
+    } else {
       balance -= amt;
-      return balance
+      return balance;
     }
   }
-  return {withdraw}
-}
+  return { withdraw };
+};
 
 const harsh = atm(1000);
 
-console.log(harsh.withdraw(100));
-
+// console.log(harsh.withdraw(100));

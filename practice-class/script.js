@@ -862,3 +862,5 @@ addProducts.forEach((item) =>
     totalEl.innerText = totalf;
   }),
 );
+
+

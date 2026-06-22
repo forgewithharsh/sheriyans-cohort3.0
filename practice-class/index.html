@@ -191,7 +191,7 @@
         background: #0056b3;
       } */
 
-      body {
+      /* body {
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -233,6 +233,49 @@
 
       .show {
         display: block;
+      } */
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f4f4f4;
+      }
+
+      .container {
+        width: 600px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .tab {
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        background: #ddd;
+        border-radius: 5px;
+      }
+
+      .active {
+        background: #007bff;
+        color: white;
+      }
+
+      .panel {
+        display: none;
+      }
+
+      .show {
+        display: block;
       }
     </style>
   </head>
@@ -264,7 +307,7 @@
       <button id="save-btn">Save Note</button>
     </div> -->
 
-    <div class="container">
+    <!-- <div class="container">
       <h1>FAQs</h1>
 
       <div class="faq">
@@ -289,6 +332,31 @@
         <div class="question">What is React?</div>
         <div class="answer">
           React is a JavaScript library for building user interfaces.
+        </div>
+      </div>
+    </div> -->
+
+    <div class="container">
+      <div class="tabs">
+        <button class="tab active" data-tab="home">Home</button>
+        <button class="tab" data-tab="about">About</button>
+        <button class="tab" data-tab="contact">Contact</button>
+      </div>
+
+      <div class="content">
+        <div class="panel show" id="home">
+          <h2>Home</h2>
+          <p>Welcome to the home page.</p>
+        </div>
+
+        <div class="panel" id="about">
+          <h2>About</h2>
+          <p>This is the about section.</p>
+        </div>
+
+        <div class="panel" id="contact">
+          <h2>Contact</h2>
+          <p>This is the contact section.</p>
         </div>
       </div>
     </div>

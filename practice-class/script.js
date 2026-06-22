@@ -792,18 +792,39 @@ async function all() {
 //   localStorage.setItem("save", JSON.stringify(note.value));
 // });
 
-const questions = document.querySelectorAll(".question");
+// const questions = document.querySelectorAll(".question");
 
-questions.forEach((q) => {
-  q.addEventListener("click", () => {
-    const answer = q.nextElementSibling;
+// questions.forEach((q) => {
+//   q.addEventListener("click", () => {
+//     const answer = q.nextElementSibling;
 
-    document.querySelectorAll(".answer").forEach((item) => {
-      if (item !== answer) {
-        item.classList.remove("show");
-      }
+//     document.querySelectorAll(".answer").forEach((item) => {
+//       if (item !== answer) {
+//         item.classList.remove("show");
+//       }
+//     });
+
+//     answer.classList.toggle('show')
+//   });
+// });
+
+const tabs = document.querySelectorAll(".tab");
+const panels = document.querySelectorAll(".panel");
+
+tabs.forEach((e) => {
+  const target = e.dataset.tab;
+
+  e.addEventListener("click", () => {
+    tabs.forEach((item) => {
+      item.classList.remove("active");
     });
 
-    answer.classList.toggle('show')
+    panels.forEach((item) => {
+      item.classList.remove("show");
+    });
+
+    e.classList.add("active");
+
+    document.getElementById(target).classList.add('show');
   });
 });

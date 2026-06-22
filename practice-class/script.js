@@ -705,5 +705,35 @@ function search() {
 const debouncedSearch = debounce(search, 1000);
 // debouncedSearch();
 
+function one() {
+  return new Promise((res) => {
+    setTimeout(() => {
+      console.log("Step 1 done");
+      res();
+    }, 1000);
+  });
+}
+function two() {
+  return new Promise((res) => {
+    setTimeout(() => {
+      console.log("Step 2 done");
+      res();
+    }, 1000);
+  });
+}
+function three() {
+  return new Promise((res) => {
+    setTimeout(() => {
+      console.log("Step 3 done");
+      res();
+    }, 1000);
+  });
+}
 
+async function all() {
+  await one();
+  await two();
+  await three();
+}
 
+all();

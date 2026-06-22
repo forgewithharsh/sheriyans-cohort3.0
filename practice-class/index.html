@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Practice</title>
     <style>
-      * {
+      /* * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -91,11 +91,61 @@
       .completed {
         text-decoration: line-through;
         opacity: 0.5;
+      } */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: white;
+        color: black;
+
+        transition: 0.3s;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 15px;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      /* Dark Theme */
+
+      .dark {
+        background: #121212;
+        color: white;
+      }
+
+      .dark button {
+        background: white;
+        color: black;
       }
     </style>
   </head>
   <body>
-    <div class="container">
+    <!-- <div class="container">
       <h1>Todo List</h1>
 
       <div class="input-box">
@@ -104,6 +154,14 @@
       </div>
 
       <ul id="all-tasks" class="todo-list"></ul>
+    </div> -->
+
+    <div class="container">
+      <h1>Theme Toggle</h1>
+
+      <p>Click the button below to switch between light and dark mode.</p>
+
+      <button id="theme-btn">Toggle Theme</button>
     </div>
 
     <script src="script.js"></script>

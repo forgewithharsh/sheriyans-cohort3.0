@@ -738,39 +738,45 @@ async function all() {
 
 // all();
 
-const btn = document.querySelector("#add");
-const input = document.querySelector("#input-text");
-const ul = document.querySelector("#all-tasks");
+// const btn = document.querySelector("#add");
+// const input = document.querySelector("#input-text");
+// const ul = document.querySelector("#all-tasks");
 
-btn.addEventListener("click", () => {
-  const value = input.value;
+// btn.addEventListener("click", () => {
+//   const value = input.value;
 
-  if (value.trim() === "") return;
+//   if (value.trim() === "") return;
 
-  const li = document.createElement("li");
+//   const li = document.createElement("li");
 
-  li.innerText = value;
+//   li.innerText = value;
 
-  const delButton = document.createElement("button");
-  delButton.classList.add("delete");
-  delButton.innerText = "Delete";
+//   const delButton = document.createElement("button");
+//   delButton.classList.add("delete");
+//   delButton.innerText = "Delete";
 
-  delButton.addEventListener("click", (e) => {
-    li.remove();
-  });
+//   delButton.addEventListener("click", (e) => {
+//     li.remove();
+//   });
 
-  const span = document.createElement("span");
-  span.innerText = "Done";
+//   const span = document.createElement("span");
+//   span.innerText = "Done";
 
-  span.addEventListener("click", () => {
-    li.classList.toggle("completed");
-  });
+//   span.addEventListener("click", () => {
+//     li.classList.toggle("completed");
+//   });
 
-  li.append(span);
+//   li.append(span);
 
-  li.append(delButton);
+//   li.append(delButton);
 
-  ul.appendChild(li);
+//   ul.appendChild(li);
 
-  input.value = "";
-});
+//   input.value = "";
+// });
+
+// const themeBtn = document.querySelector("#theme-btn");
+
+// themeBtn.addEventListener("click", () => {
+//   document.body.classList.toggle("dark");
+// });

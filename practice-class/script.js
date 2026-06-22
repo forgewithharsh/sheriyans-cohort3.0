@@ -781,13 +781,13 @@ async function all() {
 //   document.body.classList.toggle("dark");
 // });
 
-const saveBtn = document.querySelector("#save-btn");
-const note = document.querySelector("#note");
+// const saveBtn = document.querySelector("#save-btn");
+// const note = document.querySelector("#note");
 
-window.addEventListener("load", () => {
-  note.value = JSON.parse(localStorage.getItem("save")) || "";
-});
+// window.addEventListener("load", () => {
+//   note.value = JSON.parse(localStorage.getItem("save")) || "";
+// });
 
-saveBtn.addEventListener("click", () => {
-  localStorage.setItem("save", JSON.stringify(note.value));
-});
+// saveBtn.addEventListener("click", () => {
+//   localStorage.setItem("save", JSON.stringify(note.value));
+// });

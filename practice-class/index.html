@@ -143,7 +143,7 @@
         color: black;
       } */
 
-      body {
+      /* body {
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -189,6 +189,50 @@
 
       #save-btn:hover {
         background: #0056b3;
+      } */
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f4f4f4;
+      }
+
+      .container {
+        width: 600px;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .faq {
+        margin-bottom: 10px;
+      }
+
+      .question {
+        background: #007bff;
+        color: white;
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .answer {
+        display: none;
+        padding: 15px;
+        background: #f8f8f8;
+        border-radius: 0 0 5px 5px;
+      }
+
+      .show {
+        display: block;
       }
     </style>
   </head>
@@ -212,12 +256,41 @@
       <button id="theme-btn">Toggle Theme</button>
     </div> -->
 
-    <div class="container">
+    <!-- <div class="container">
       <h1>Notes App</h1>
 
       <textarea id="note" placeholder="Write your note here..."></textarea>
 
       <button id="save-btn">Save Note</button>
+    </div> -->
+
+    <div class="container">
+      <h1>FAQs</h1>
+
+      <div class="faq">
+        <div class="question">What is JavaScript?</div>
+        <div class="answer">
+          JavaScript is a programming language used to make websites
+          interactive.
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">What is DOM?</div>
+        <div class="answer">DOM stands for Document Object Model.</div>
+      </div>
+
+      <div class="faq">
+        <div class="question">What is localStorage?</div>
+        <div class="answer">localStorage stores data in the browser.</div>
+      </div>
+
+      <div class="faq">
+        <div class="question">What is React?</div>
+        <div class="answer">
+          React is a JavaScript library for building user interfaces.
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>

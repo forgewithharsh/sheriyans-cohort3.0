@@ -791,3 +791,19 @@ async function all() {
 // saveBtn.addEventListener("click", () => {
 //   localStorage.setItem("save", JSON.stringify(note.value));
 // });
+
+const questions = document.querySelectorAll(".question");
+
+questions.forEach((q) => {
+  q.addEventListener("click", () => {
+    const answer = q.nextElementSibling;
+
+    document.querySelectorAll(".answer").forEach((item) => {
+      if (item !== answer) {
+        item.classList.remove("show");
+      }
+    });
+
+    answer.classList.toggle('show')
+  });
+});

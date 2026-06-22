@@ -100,7 +100,7 @@
         font-family: sans-serif;
       }
 
-      body {
+      /* body {
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -133,7 +133,7 @@
 
       /* Dark Theme */
 
-      .dark {
+      /* .dark {
         background: #121212;
         color: white;
       }
@@ -141,6 +141,54 @@
       .dark button {
         background: white;
         color: black;
+      } */
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f4f4f4;
+      }
+
+      .container {
+        width: 500px;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 250px;
+        resize: none;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      #save-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      #save-btn:hover {
+        background: #0056b3;
       }
     </style>
   </head>
@@ -156,12 +204,20 @@
       <ul id="all-tasks" class="todo-list"></ul>
     </div> -->
 
-    <div class="container">
+    <!-- <div class="container">
       <h1>Theme Toggle</h1>
 
       <p>Click the button below to switch between light and dark mode.</p>
 
       <button id="theme-btn">Toggle Theme</button>
+    </div> -->
+
+    <div class="container">
+      <h1>Notes App</h1>
+
+      <textarea id="note" placeholder="Write your note here..."></textarea>
+
+      <button id="save-btn">Save Note</button>
     </div>
 
     <script src="script.js"></script>

@@ -738,4 +738,39 @@ async function all() {
 
 // all();
 
+const btn = document.querySelector("#add");
+const input = document.querySelector("#input-text");
+const ul = document.querySelector("#all-tasks");
 
+btn.addEventListener("click", () => {
+  const value = input.value;
+
+  if (value.trim() === "") return;
+
+  const li = document.createElement("li");
+
+  li.innerText = value;
+
+  const delButton = document.createElement("button");
+  delButton.classList.add("delete");
+  delButton.innerText = "Delete";
+
+  delButton.addEventListener("click", (e) => {
+    li.remove();
+  });
+
+  const span = document.createElement("span");
+  span.innerText = "Done";
+
+  span.addEventListener("click", () => {
+    li.classList.toggle("completed");
+  });
+
+  li.append(span);
+
+  li.append(delButton);
+
+  ul.appendChild(li);
+
+  input.value = "";
+});

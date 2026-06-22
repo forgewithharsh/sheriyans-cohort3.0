@@ -88,7 +88,7 @@
         cursor: pointer;
       }
 
-      .completed span {
+      .completed {
         text-decoration: line-through;
         opacity: 0.5;
       }
@@ -99,27 +99,11 @@
       <h1>Todo List</h1>
 
       <div class="input-box">
-        <input type="text" placeholder="Enter a task" />
+        <input id="input-text" type="text" placeholder="Enter a task" />
         <button id="add">Add</button>
       </div>
 
-      <ul class="todo-list">
-        <li>
-          <span>Learn JavaScript</span>
-
-          <div class="actions">
-            <button class="delete">Delete</button>
-          </div>
-        </li>
-
-        <li class="completed">
-          <span>Practice DOM</span>
-
-          <div class="actions">
-            <button class="delete">Delete</button>
-          </div>
-        </li>
-      </ul>
+      <ul id="all-tasks" class="todo-list"></ul>
     </div>
 
     <script src="script.js"></script>

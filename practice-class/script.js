@@ -842,3 +842,23 @@ stars.forEach((star, index) => {
     });
   });
 });
+
+const addProducts = document.querySelectorAll(".add");
+
+const countEl = document.querySelector("#count");
+const totalEl = document.querySelector("#total");
+
+let countf = 0;
+let totalf = 0;
+
+addProducts.forEach((item) =>
+  item.addEventListener("click", () => {
+    const price = Number(item.dataset.price);
+
+    countf++;
+    totalf = totalf + price;
+
+    countEl.innerText = countf;
+    totalEl.innerText = totalf;
+  }),
+);

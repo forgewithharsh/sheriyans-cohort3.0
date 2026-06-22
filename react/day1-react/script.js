@@ -8,7 +8,7 @@ let fn = ({ name, company }) => {
   console.log(name, company);
 };
 
-fn(obj);
+// fn(obj);
 
 let a = 990;
 
@@ -22,4 +22,8 @@ let ab = () => {
   print();
 };
 
-ab();
+// ab();
+
+console.log(window);
+
+console.log(React);

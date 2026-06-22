@@ -780,3 +780,14 @@ async function all() {
 // themeBtn.addEventListener("click", () => {
 //   document.body.classList.toggle("dark");
 // });
+
+const saveBtn = document.querySelector("#save-btn");
+const note = document.querySelector("#note");
+
+window.addEventListener("load", () => {
+  note.value = JSON.parse(localStorage.getItem("save")) || "";
+});
+
+saveBtn.addEventListener("click", () => {
+  localStorage.setItem("save", JSON.stringify(note.value));
+});

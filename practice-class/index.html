@@ -235,7 +235,7 @@
         display: block;
       } */
 
-      body {
+      /* body {
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -276,6 +276,32 @@
 
       .show {
         display: block;
+      } */
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      #stars {
+        margin-top: 20px;
+      }
+
+      .star {
+        font-size: 50px;
+        cursor: pointer;
+        color: gray;
+      }
+
+      .active {
+        color: gold;
       }
     </style>
   </head>
@@ -336,7 +362,7 @@
       </div>
     </div> -->
 
-    <div class="container">
+    <!-- <div class="container">
       <div class="tabs">
         <button class="tab active" data-tab="home">Home</button>
         <button class="tab" data-tab="about">About</button>
@@ -358,6 +384,18 @@
           <h2>Contact</h2>
           <p>This is the contact section.</p>
         </div>
+      </div>
+    </div> -->
+
+    <div class="container">
+      <h1>Star Rating</h1>
+
+      <div id="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
       </div>
     </div>
 

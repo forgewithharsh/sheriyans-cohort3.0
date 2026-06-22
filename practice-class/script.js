@@ -808,23 +808,37 @@ async function all() {
 //   });
 // });
 
-const tabs = document.querySelectorAll(".tab");
-const panels = document.querySelectorAll(".panel");
+// const tabs = document.querySelectorAll(".tab");
+// const panels = document.querySelectorAll(".panel");
 
-tabs.forEach((e) => {
-  const target = e.dataset.tab;
+// tabs.forEach((e) => {
+//   const target = e.dataset.tab;
 
-  e.addEventListener("click", () => {
-    tabs.forEach((item) => {
-      item.classList.remove("active");
+//   e.addEventListener("click", () => {
+//     tabs.forEach((item) => {
+//       item.classList.remove("active");
+//     });
+
+//     panels.forEach((item) => {
+//       item.classList.remove("show");
+//     });
+
+//     e.classList.add("active");
+
+//     document.getElementById(target).classList.add('show');
+//   });
+// });
+
+const stars = document.querySelectorAll(".star");
+
+stars.forEach((star, index) => {
+  star.addEventListener("click", () => {
+    stars.forEach((s, i) => {
+      if (i <= index) {
+        s.classList.add("active");
+      } else {
+        s.classList.remove("active");
+      }
     });
-
-    panels.forEach((item) => {
-      item.classList.remove("show");
-    });
-
-    e.classList.add("active");
-
-    document.getElementById(target).classList.add('show');
   });
 });

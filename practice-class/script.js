@@ -863,4 +863,25 @@ addProducts.forEach((item) =>
   }),
 );
 
+const tableUsers = [
+  { name: "Harsh", age: 21, city: "Delhi" },
+  { name: "Aman", age: 19, city: "Mumbai" },
+  { name: "Rohit", age: 25, city: "Pune" },
+  { name: "Karan", age: 22, city: "Jaipur" },
+];
 
+const tbody = document.querySelector("#tbody");
+
+function renderUI() {
+  tbody.innerHTML = "";
+
+  tableUsers.forEach((user) => {
+    tbody.innerHTML += `<tr>
+    <td>${user.name}</td>
+    <td>${user.age}</td>
+    <td>${user.city}</td>
+    </tr>`;
+  });
+}
+
+renderUI();

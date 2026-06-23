@@ -871,6 +871,9 @@ const tableUsers = [
 ];
 
 const tbody = document.querySelector("#tbody");
+const headers = document.querySelectorAll("th");
+
+let isAscending = true;
 
 function renderUI() {
   tbody.innerHTML = "";
@@ -885,3 +888,25 @@ function renderUI() {
 }
 
 renderUI();
+
+headers.forEach((header) => {
+  header.addEventListener("click", () => {
+    const column = header.dataset.column;
+
+    tableUsers.sort((a, b) => {
+      if (a[column] < b[column]) {
+        return isAscending ? -1 : 1;
+      }
+
+      if (a[column] > b[column]) {
+        return isAscending ? 1 : -1;
+      }
+
+      return 0;
+    });
+
+    isAscending = !isAscending;
+
+    renderUI();
+  });
+});

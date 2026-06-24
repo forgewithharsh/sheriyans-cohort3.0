@@ -1,13 +1,13 @@
 import React from "react";
 let App = () => {
 
-  let ui = React.createElement('div', {} , [
-    React.createElement('h1', {}, 'hello'),
-    React.createElement('h2', {}, 'bye'),
-    React.createElement('h3', {}, 'vapus aao'),
-  ])
-
-  return ui;
+  return (
+    <div>
+      <h1>hello</h1>
+      <h2>bye</h2>
+      <h3>vapus aoo</h3>
+    </div>
+  );
 };
 
 export default App;

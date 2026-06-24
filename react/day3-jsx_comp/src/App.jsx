@@ -7,7 +7,7 @@ let App = () => {
       <h1>hello</h1>
       <h2>bye</h2>
       <h3>vapus aoo</h3>
-      <About/>
+      <About width="300" name="harsh"/>
     </div>
   );
 };

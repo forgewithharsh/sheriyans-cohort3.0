@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
+import Contact from "./Contact";
 
 const App = () => {
   return (
     <div>
-      Hey i am app.
+      <h1>Hey i am app.</h1>
+      <Contact />
     </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;

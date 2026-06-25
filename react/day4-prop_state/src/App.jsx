@@ -1,11 +1,19 @@
 import React from "react";
-import Contact from "./Contact";
 
 const App = () => {
+  let count = 10;
+
   return (
     <div>
-      <h1>Hey i am app.</h1>
-      <Contact />
+      <h1>Count is - {count}</h1>
+
+      <button
+        onClick={() => {
+          count++;
+        }}
+      >
+        Increment
+      </button>
     </div>
   );
 };

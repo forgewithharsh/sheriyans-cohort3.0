@@ -10,6 +10,7 @@ const App = () => {
       <button
         onClick={() => {
           count++;
+          console.log(count);
         }}
       >
         Increment

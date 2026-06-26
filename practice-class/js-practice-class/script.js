@@ -78,24 +78,80 @@
 // });
 
 // Q9.
-const images = [
-  "https://picsum.photos/id/237/400/400",
-  "https://picsum.photos/id/238/400/400",
-  "https://picsum.photos/id/239/400/400",
-  "https://picsum.photos/id/240/400/400",
-  "https://picsum.photos/id/241/400/400",
-];
+// const images = [
+//   "https://picsum.photos/id/237/400/400",
+//   "https://picsum.photos/id/238/400/400",
+//   "https://picsum.photos/id/239/400/400",
+//   "https://picsum.photos/id/240/400/400",
+//   "https://picsum.photos/id/241/400/400",
+// ];
 
-const img = document.getElementById("image");
-const btn = document.querySelector("button");
+// const img = document.getElementById("image");
+// const btn = document.querySelector("button");
 
-let index = 0;
-img.src = images[index];
+// let index = 0;
+// img.src = images[index];
 
-btn.addEventListener("click", () => {
-  index++;
-  if (index >= images.length) {
-    index = 0;
-  }
-  img.src = images[index];
+// btn.addEventListener("click", () => {
+//   index++;
+//   if (index >= images.length) {
+//     index = 0;
+//   }
+//   img.src = images[index];
+// });
+
+// Q10.
+const nameInput = document.getElementById("name");
+const courseInput = document.getElementById("course");
+const studentDiv = document.getElementById("students");
+const addBtn = document.getElementById("addBtn");
+
+let students = [];
+
+addBtn.addEventListener("click", () => {
+  let name = nameInput.value.trim();
+  let course = courseInput.value.trim();
+
+  if (name === "" || course === "") return;
+
+  students.push({
+    name,
+    course,
+  });
+
+  renderStudents()
+
+  nameInput.value = ""
+  courseInput.value = ""
 });
+
+function renderStudents() {
+  studentDiv.innerHTML = ""
+
+  students.forEach((student, index) => {
+    const card = document.createElement('div');
+    card.classList.add('card')
+
+    const h1 = document.createElement('h1')
+    h1.textContent = `${student.name}`
+
+    const p = document.createElement('p')
+    p.textContent = `${student.course}`
+
+    const delBtn = document.createElement('button')
+    delBtn.textContent = 'Delete'
+
+
+    card.appendChild(h1)
+    card.appendChild(p)
+    card.appendChild(delBtn)
+
+    studentDiv.append(card)
+
+    delBtn.addEventListener('click', () => {
+      students.splice(index, 1)
+      renderStudents()
+    })
+
+  })
+}

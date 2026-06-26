@@ -18,6 +18,89 @@
         height: 100%;
         width: 100%;
       }
+
+      .container {
+        width: 700px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+
+      .form input {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        font-size: 16px;
+      }
+
+      .form input:focus {
+        border-color: #007bff;
+      }
+
+      #addBtn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      #addBtn:hover {
+        background: #0056d2;
+      }
+
+      #students {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background: white;
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .card h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #222;
+      }
+
+      .card p {
+        color: #666;
+        margin-bottom: 15px;
+        font-size: 15px;
+      }
+
+      .card button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #dc3545;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .card button:hover {
+        background: #b52a37;
+      }
     </style>
   </head>
   <body>
@@ -49,8 +132,20 @@
     <button>Add</button>
     <ul></ul> -->
 
-    <img id="image" />
-    <button>Next</button>
+    <!-- <img id="image" />
+    <button>Next</button> -->
+
+    <div class="container">
+      <h1>Student Management System</h1>
+
+      <div class="form">
+        <input id="name" type="text" placeholder="Student Name" />
+        <input id="course" type="text" placeholder="Course" />
+        <button id="addBtn">Add Student</button>
+      </div>
+
+      <div id="students"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>

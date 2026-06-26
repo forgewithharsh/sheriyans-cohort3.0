@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 
 const App = () => {
-  let count = 10;
+
+  const [count, setCount] = useState(0);
 
   return (
     <div>
@@ -12,8 +13,7 @@ const App = () => {
 
       <button
         onClick={() => {
-          count++;
-          console.log(count);
+          setCount(count + 1)
         }}
       >
         Increment

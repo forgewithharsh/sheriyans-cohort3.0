@@ -53,10 +53,49 @@
 // });
 
 // Q7.
-const textArea = document.querySelector("textarea");
-const character = document.querySelector(".char");
+// const textArea = document.querySelector("textarea");
+// const character = document.querySelector(".char");
 
-textArea.addEventListener("input", () => {
-  let count = textArea.value.length;
-  character.textContent = `Characters: ${count}`;
+// textArea.addEventListener("input", () => {
+//   let count = textArea.value.length;
+//   character.textContent = `Characters: ${count}`;
+// });
+
+// Q8.
+// const input = document.querySelector("input");
+// const list = document.querySelector("ul");
+// const btn = document.querySelector("button");
+
+// btn.addEventListener("click", () => {
+//   let value = input.value;
+
+//   const li = document.createElement('li');
+//   li.textContent = value;
+
+//   list.appendChild(li);
+
+//   input.value = "";
+// });
+
+// Q9.
+const images = [
+  "https://picsum.photos/id/237/400/400",
+  "https://picsum.photos/id/238/400/400",
+  "https://picsum.photos/id/239/400/400",
+  "https://picsum.photos/id/240/400/400",
+  "https://picsum.photos/id/241/400/400",
+];
+
+const img = document.getElementById("image");
+const btn = document.querySelector("button");
+
+let index = 0;
+img.src = images[index];
+
+btn.addEventListener("click", () => {
+  index++;
+  if (index >= images.length) {
+    index = 0;
+  }
+  img.src = images[index];
 });

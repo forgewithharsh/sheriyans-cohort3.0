@@ -105,6 +105,7 @@ const nameInput = document.getElementById("name");
 const courseInput = document.getElementById("course");
 const studentDiv = document.getElementById("students");
 const addBtn = document.getElementById("addBtn");
+let count = document.querySelector(".count");
 
 let students = [];
 
@@ -119,39 +120,37 @@ addBtn.addEventListener("click", () => {
     course,
   });
 
-  renderStudents()
+  renderStudents();
 
-  nameInput.value = ""
-  courseInput.value = ""
+  nameInput.value = "";
+  courseInput.value = "";
 });
 
 function renderStudents() {
-  studentDiv.innerHTML = ""
+  studentDiv.innerHTML = "";
+
+  count.textContent = students.length;
 
   students.forEach((student, index) => {
-    const card = document.createElement('div');
-    card.classList.add('card')
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-    const h1 = document.createElement('h1')
-    h1.textContent = `${student.name}`
+    const h1 = document.createElement("h1");
+    h1.textContent = `${student.name}`;
 
-    const p = document.createElement('p')
-    p.textContent = `${student.course}`
+    const p = document.createElement("p");
+    p.textContent = `${student.course}`;
 
-    const delBtn = document.createElement('button')
-    delBtn.textContent = 'Delete'
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
 
+    card.append(h1, p, delBtn);
 
-    card.appendChild(h1)
-    card.appendChild(p)
-    card.appendChild(delBtn)
+    studentDiv.append(card);
 
-    studentDiv.append(card)
-
-    delBtn.addEventListener('click', () => {
-      students.splice(index, 1)
-      renderStudents()
-    })
-
-  })
+    delBtn.addEventListener("click", () => {
+      students.splice(index, 1);
+      renderStudents();
+    });
+  });
 }

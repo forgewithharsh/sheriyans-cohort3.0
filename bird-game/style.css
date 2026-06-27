@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue';
+}
+
+html,
+body{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game{
+  width: 80%;
+  height: 90%;
+  background-color: rgb(58, 167, 240);
+  position: relative;
+}
+
+.bird-png{
+  height: 80px;
+  position: absolute;
+  object-fit: cover;
+}

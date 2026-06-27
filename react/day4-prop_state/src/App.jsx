@@ -7,6 +7,10 @@ const App = () => {
 
   const [count, setCount] = useState(0);
 
+  let [flag, setFlag] = useState(true)
+  console.log(flag);
+
+
   return (
     <div>
       <h1>Count is - {count}</h1>
@@ -18,6 +22,8 @@ const App = () => {
       >
         Increment
       </button>
+
+      <button onClick={() => setFlag(false)}>Change Boolean</button>
     </div>
 
     // <div>

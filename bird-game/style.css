@@ -12,17 +12,25 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(41, 89, 232, 0.908);
 }
 
 .game{
   width: 80%;
   height: 90%;
-  background-color: rgb(58, 167, 240);
+  background-color: rgb(51, 165, 241);
   position: relative;
+  overflow: hidden;
 }
 
 .bird-png{
   height: 80px;
   position: absolute;
   object-fit: cover;
+}
+
+.pipe{
+  width: 40px;
+  background-color: green;
+  position: absolute;
 }

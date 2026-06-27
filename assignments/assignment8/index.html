@@ -11,109 +11,115 @@
 </head>
 <body>
 
-<div class="toast" id="toast"></div>
+<!-- TOAST -->
+<div id="toast"></div>
 
 <!-- AUTH -->
-<div id="authWrap" class="auth-wrap">
+<div id="auth">
 
-  <div id="loginCard" class="auth-card">
-    <div class="auth-brand">
-      <div class="brand-icon"><i class="ri-line-chart-fill"></i></div>
-      <strong>FinTrack Pro</strong>
+  <div class="auth-box" id="login-box">
+    <div class="auth-logo">
+      <div class="icon"><i class="ri-line-chart-fill"></i></div>
+      <span>FinTrack Pro</span>
     </div>
     <h2>Welcome Back</h2>
-    <p class="sub">Login to <b>FinTrack Pro</b></p>
+    <p>Login to <b>FinTrack Pro</b></p>
     <div class="field">
       <label>Username</label>
-      <input type="text" id="loginUser" placeholder="Enter your username" />
+      <input type="text" id="l-user" placeholder="Enter your username" />
     </div>
     <div class="field">
       <label>Password</label>
-      <input type="password" id="loginPass" placeholder="Enter your password" />
+      <input type="password" id="l-pass" placeholder="Enter your password" />
     </div>
-    <button class="btn-accent" onclick="doLogin()">Login</button>
-    <p class="auth-switch">Don't have an account? <a onclick="showRegister()">Register here</a></p>
+    <button class="auth-btn" onclick="doLogin()">Login</button>
+    <p class="auth-switch">Don't have an account? <a onclick="show('reg')">Register here</a></p>
   </div>
 
-  <div id="registerCard" class="auth-card" style="display:none">
-    <div class="auth-brand">
-      <div class="brand-icon"><i class="ri-line-chart-fill"></i></div>
-      <strong>FinTrack Pro</strong>
+  <div class="auth-box" id="reg-box" style="display:none">
+    <div class="auth-logo">
+      <div class="icon"><i class="ri-line-chart-fill"></i></div>
+      <span>FinTrack Pro</span>
     </div>
     <h2>Create Account</h2>
-    <p class="sub">Join <b>FinTrack Pro</b></p>
+    <p>Join <b>FinTrack Pro</b></p>
     <div class="field">
       <label>Choose a Username</label>
-      <input type="text" id="regUser" placeholder="Enter a username" />
+      <input type="text" id="r-user" placeholder="e.g. harsh123" />
     </div>
     <div class="field">
       <label>Password</label>
-      <input type="password" id="regPass" placeholder="Enter a password" />
+      <input type="password" id="r-pass" placeholder="Choose a password" />
     </div>
-    <button class="btn-accent" style="background:#16a34a" onclick="doRegister()">Register</button>
-    <p class="auth-switch">Already have an account? <a onclick="showLogin()">Login here</a></p>
+    <button class="auth-btn green" onclick="doReg()">Register</button>
+    <p class="auth-switch">Already have an account? <a onclick="show('login')">Login here</a></p>
   </div>
 
 </div>
 
 <!-- APP -->
 <div id="app">
+
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="sb-brand">
-      <div class="brand-icon"><i class="ri-line-chart-fill"></i></div>
+    <div class="sb-logo">
+      <div class="icon"><i class="ri-line-chart-fill"></i></div>
       <div>
-        <div class="brand-text">FinTrack Pro</div>
-        <div class="brand-sub">Enterprise Finance</div>
+        <div class="name">FinTrack Pro</div>
+        <div class="sub">Enterprise Finance</div>
       </div>
     </div>
     <nav class="sb-nav">
-      <div class="nav-item active" id="navDash" onclick="showPage('dashboard')">
-        <i class="ri-dashboard-line"></i><span>Dashboard</span>
+      <div class="nav-link active" id="n-dash" onclick="page('dash')">
+        <i class="ri-dashboard-line"></i> Dashboard
       </div>
-      <div class="nav-item" id="navSettings" onclick="showPage('settings')">
-        <i class="ri-settings-3-line"></i><span>Settings</span>
+      <div class="nav-link" id="n-set" onclick="page('set')">
+        <i class="ri-settings-3-line"></i> Settings
       </div>
     </nav>
-    <div class="sb-bottom">
+    <div class="sb-foot">
       <button class="add-btn" onclick="openModal()">
-        <i class="ri-add-line"></i><span>Add Transaction</span>
+        <i class="ri-add-line"></i> Add Transaction
       </button>
     </div>
   </aside>
 
+  <!-- Main -->
   <div class="main">
+
+    <!-- Topbar -->
     <div class="topbar">
-      <span class="username" id="topUsername"></span>
+      <span class="user" id="top-user"></span>
       <button class="logout-btn" onclick="doLogout()">
         <i class="ri-logout-box-r-line"></i> Logout
       </button>
     </div>
 
-    <!-- Dashboard -->
-    <div class="page active" id="dashPage">
+    <!-- Dashboard Page -->
+    <div class="page on" id="p-dash">
       <div class="page-title">Financial Overview</div>
       <div class="page-sub">Real-time tracking application</div>
 
       <div class="cards">
         <div class="card">
-          <div class="card-icon b"><i class="ri-bank-line"></i></div>
+          <div class="card-icon blue"><i class="ri-bank-line"></i></div>
           <div class="card-label">Current Balance</div>
-          <div class="card-value" id="cardBalance">$0.00</div>
+          <div class="card-val" id="c-bal">$0.00</div>
         </div>
         <div class="card">
-          <div class="card-icon i"><i class="ri-arrow-up-line"></i></div>
+          <div class="card-icon green"><i class="ri-arrow-up-line"></i></div>
           <div class="card-label">Total Income</div>
-          <div class="card-value i" id="cardIncome">$0.00</div>
+          <div class="card-val green" id="c-inc">$0.00</div>
         </div>
         <div class="card">
-          <div class="card-icon e"><i class="ri-arrow-down-line"></i></div>
+          <div class="card-icon red"><i class="ri-arrow-down-line"></i></div>
           <div class="card-label">Total Expense</div>
-          <div class="card-value e" id="cardExpense">$0.00</div>
+          <div class="card-val red" id="c-exp">$0.00</div>
         </div>
         <div class="card">
-          <div class="card-icon c"><i class="ri-exchange-line"></i></div>
+          <div class="card-icon orange"><i class="ri-exchange-line"></i></div>
           <div class="card-label">Total Transactions</div>
-          <div class="card-value" id="cardCount">0</div>
+          <div class="card-val" id="c-cnt">0</div>
         </div>
       </div>
 
@@ -121,16 +127,16 @@
         <div>
           <div class="panel">
             <div class="panel-title">Cash Flow Analysis</div>
-            <div class="chart-wrap"><canvas id="cashChart"></canvas></div>
+            <div class="chart-box"><canvas id="chart"></canvas></div>
           </div>
           <div class="panel">
             <div class="panel-title">All Transactions</div>
-            <div class="tx-controls">
-              <div class="search-wrap">
+            <div class="tx-bar">
+              <div class="search">
                 <i class="ri-search-line"></i>
-                <input type="text" placeholder="Search transactions..." id="searchInput" oninput="renderTable()" />
+                <input type="text" id="search" placeholder="Search transactions..." oninput="renderTx()" />
               </div>
-              <select class="filter-select" id="filterSelect" onchange="renderTable()">
+              <select id="filter" onchange="renderTx()">
                 <option value="all">All Types</option>
                 <option value="income">Income Only</option>
                 <option value="expense">Expense Only</option>
@@ -139,14 +145,18 @@
             <table>
               <thead>
                 <tr>
-                  <th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Actions</th>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
-              <tbody id="txBody"></tbody>
+              <tbody id="tx-body"></tbody>
             </table>
-            <div id="emptyState" class="empty-state" style="display:none">
+            <div class="empty" id="empty" style="display:none">
               <i class="ri-inbox-line"></i>
-              <p>No transactions yet. Add your first one!</p>
+              No transactions yet.
             </div>
           </div>
         </div>
@@ -155,10 +165,10 @@
           <div class="panel">
             <div class="panel-title">Preferences</div>
             <div class="pref-row">
-              <span class="pref-label">Dark Mode</span>
+              <span>Dark Mode</span>
               <label class="toggle">
-                <input type="checkbox" id="darkToggle" onchange="toggleDark()" />
-                <span class="slider"></span>
+                <input type="checkbox" id="dark-toggle" onchange="toggleDark()" />
+                <span class="track"></span>
               </label>
             </div>
             <button class="reset-btn" onclick="resetAll()">
@@ -169,20 +179,20 @@
       </div>
     </div>
 
-    <!-- Settings -->
-    <div class="page" id="settingsPage">
+    <!-- Settings Page -->
+    <div class="page" id="p-set">
       <div class="page-title">Settings</div>
       <div class="page-sub">Manage your account profile and app formatting.</div>
-      <div class="settings-card">
+      <div class="settings-box">
         <h3>Profile Details</h3>
-        <div class="form-row">
+        <div class="two-col">
           <div>
             <label>Full Name</label>
-            <input type="text" id="settingsName" placeholder="Your display name" />
+            <input type="text" id="s-name" placeholder="Your display name" />
           </div>
           <div>
             <label>Primary Currency</label>
-            <select id="settingsCurrency">
+            <select id="s-cur">
               <option value="$">USD ($)</option>
               <option value="€">EUR (€)</option>
               <option value="£">GBP (£)</option>
@@ -194,40 +204,41 @@
         <button class="save-btn" onclick="saveSettings()">Save Changes</button>
       </div>
     </div>
+
   </div>
 </div>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="overlayClick(event)">
+<div class="overlay" id="overlay" onclick="bgClose(event)">
   <div class="modal">
     <div class="modal-head">
-      <h3 id="modalTitle">Add Transaction</h3>
+      <h3 id="m-title">Add Transaction</h3>
       <button class="close-btn" onclick="closeModal()"><i class="ri-close-line"></i></button>
     </div>
     <div class="field">
       <label>Type</label>
-      <select id="txType">
+      <select id="m-type">
         <option value="expense">Expense</option>
         <option value="income">Income</option>
       </select>
     </div>
     <div class="field">
       <label>Description</label>
-      <input type="text" id="txDesc" placeholder="e.g. Amazon, Salary, Coffee" />
+      <input type="text" id="m-desc" placeholder="e.g. Amazon, Salary, Coffee" />
     </div>
-    <div class="modal-row">
+    <div class="two-half">
       <div class="field">
         <label>Amount</label>
-        <input type="number" id="txAmount" placeholder="0.00" min="0" step="0.01" />
+        <input type="number" id="m-amt" placeholder="0.00" min="0" step="0.01" />
       </div>
       <div class="field">
         <label>Date</label>
-        <input type="date" id="txDate" />
+        <input type="date" id="m-date" />
       </div>
     </div>
     <div class="field">
       <label>Category</label>
-      <select id="txCategory">
+      <select id="m-cat">
         <option value="">Select a category</option>
         <option>Food &amp; Dining</option>
         <option>Shopping</option>
@@ -239,7 +250,7 @@
         <option>Other</option>
       </select>
     </div>
-    <button class="save-tx-btn" onclick="saveTransaction()">Save Transaction</button>
+    <button class="modal-save" onclick="saveTx()">Save Transaction</button>
   </div>
 </div>
 

@@ -35,8 +35,10 @@ function createPipe() {
   pipeTop.style.height = topPipeHeight + "px";
   pipeBottom.style.height = bottomPipeHeight + "px"
 
-  pipeTop.style.top = 0 
-  pipeBottom.style.bottom = 0 
+  pipeTop.style.top = 0
+  pipeBottom.style.bottom = 0
 
   game.append(pipeTop, pipeBottom)
+
+  // let pipeLeft =
 }

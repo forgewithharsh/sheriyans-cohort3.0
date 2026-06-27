@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinTrack Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- AUTH -->
+<div id="authWrap" class="auth-wrap">
+
+  <div id="loginCard" class="auth-card">
+    <div class="auth-brand">
+      <div class="brand-icon"><i class="ri-line-chart-fill"></i></div>
+      <strong>FinTrack Pro</strong>
+    </div>
+    <h2>Welcome Back</h2>
+    <p class="sub">Login to <b>FinTrack Pro</b></p>
+    <div class="field">
+      <label>Username</label>
+      <input type="text" id="loginUser" placeholder="Enter your username" />
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="loginPass" placeholder="Enter your password" />
+    </div>
+    <button class="btn-accent" onclick="doLogin()">Login</button>
+    <p class="auth-switch">Don't have an account? <a onclick="showRegister()">Register here</a></p>
+  </div>
+
+  <div id="registerCard" class="auth-card" style="display:none">
+    <div class="auth-brand">
+      <div class="brand-icon"><i class="ri-line-chart-fill"></i></div>
+      <strong>FinTrack Pro</strong>
+    </div>
+    <h2>Create Account</h2>
+    <p class="sub">Join <b>FinTrack Pro</b></p>
+    <div class="field">
+      <label>Choose a Username</label>
+      <input type="text" id="regUser" placeholder="Enter a username" />
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="regPass" placeholder="Enter a password" />
+    </div>
+    <button class="btn-accent" style="background:#16a34a" onclick="doRegister()">Register</button>
+    <p class="auth-switch">Already have an account? <a onclick="showLogin()">Login here</a></p>
+  </div>
+
+</div>
+
+<!-- APP -->
+<div id="app">
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <div class="brand-icon"><i class="ri-line-chart-fill"></i></div>
+      <div>
+        <div class="brand-text">FinTrack Pro</div>
+        <div class="brand-sub">Enterprise Finance</div>
+      </div>
+    </div>
+    <nav class="sb-nav">
+      <div class="nav-item active" id="navDash" onclick="showPage('dashboard')">
+        <i class="ri-dashboard-line"></i><span>Dashboard</span>
+      </div>
+      <div class="nav-item" id="navSettings" onclick="showPage('settings')">
+        <i class="ri-settings-3-line"></i><span>Settings</span>
+      </div>
+    </nav>
+    <div class="sb-bottom">
+      <button class="add-btn" onclick="openModal()">
+        <i class="ri-add-line"></i><span>Add Transaction</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="username" id="topUsername"></span>
+      <button class="logout-btn" onclick="doLogout()">
+        <i class="ri-logout-box-r-line"></i> Logout
+      </button>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="page active" id="dashPage">
+      <div class="page-title">Financial Overview</div>
+      <div class="page-sub">Real-time tracking application</div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon b"><i class="ri-bank-line"></i></div>
+          <div class="card-label">Current Balance</div>
+          <div class="card-value" id="cardBalance">$0.00</div>
+        </div>
+        <div class="card">
+          <div class="card-icon i"><i class="ri-arrow-up-line"></i></div>
+          <div class="card-label">Total Income</div>
+          <div class="card-value i" id="cardIncome">$0.00</div>
+        </div>
+        <div class="card">
+          <div class="card-icon e"><i class="ri-arrow-down-line"></i></div>
+          <div class="card-label">Total Expense</div>
+          <div class="card-value e" id="cardExpense">$0.00</div>
+        </div>
+        <div class="card">
+          <div class="card-icon c"><i class="ri-exchange-line"></i></div>
+          <div class="card-label">Total Transactions</div>
+          <div class="card-value" id="cardCount">0</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div>
+          <div class="panel">
+            <div class="panel-title">Cash Flow Analysis</div>
+            <div class="chart-wrap"><canvas id="cashChart"></canvas></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">All Transactions</div>
+            <div class="tx-controls">
+              <div class="search-wrap">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search transactions..." id="searchInput" oninput="renderTable()" />
+              </div>
+              <select class="filter-select" id="filterSelect" onchange="renderTable()">
+                <option value="all">All Types</option>
+                <option value="income">Income Only</option>
+                <option value="expense">Expense Only</option>
+              </select>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="txBody"></tbody>
+            </table>
+            <div id="emptyState" class="empty-state" style="display:none">
+              <i class="ri-inbox-line"></i>
+              <p>No transactions yet. Add your first one!</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <div class="panel-title">Preferences</div>
+            <div class="pref-row">
+              <span class="pref-label">Dark Mode</span>
+              <label class="toggle">
+                <input type="checkbox" id="darkToggle" onchange="toggleDark()" />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <button class="reset-btn" onclick="resetAll()">
+              <i class="ri-delete-bin-line"></i> Reset All Data
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="page" id="settingsPage">
+      <div class="page-title">Settings</div>
+      <div class="page-sub">Manage your account profile and app formatting.</div>
+      <div class="settings-card">
+        <h3>Profile Details</h3>
+        <div class="form-row">
+          <div>
+            <label>Full Name</label>
+            <input type="text" id="settingsName" placeholder="Your display name" />
+          </div>
+          <div>
+            <label>Primary Currency</label>
+            <select id="settingsCurrency">
+              <option value="$">USD ($)</option>
+              <option value="€">EUR (€)</option>
+              <option value="£">GBP (£)</option>
+              <option value="₹">INR (₹)</option>
+              <option value="¥">JPY (¥)</option>
+            </select>
+          </div>
+        </div>
+        <button class="save-btn" onclick="saveSettings()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="overlayClick(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle">Add Transaction</h3>
+      <button class="close-btn" onclick="closeModal()"><i class="ri-close-line"></i></button>
+    </div>
+    <div class="field">
+      <label>Type</label>
+      <select id="txType">
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <input type="text" id="txDesc" placeholder="e.g. Amazon, Salary, Coffee" />
+    </div>
+    <div class="modal-row">
+      <div class="field">
+        <label>Amount</label>
+        <input type="number" id="txAmount" placeholder="0.00" min="0" step="0.01" />
+      </div>
+      <div class="field">
+        <label>Date</label>
+        <input type="date" id="txDate" />
+      </div>
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <select id="txCategory">
+        <option value="">Select a category</option>
+        <option>Food &amp; Dining</option>
+        <option>Shopping</option>
+        <option>Recharge &amp; Bills</option>
+        <option>Petrol &amp; Auto</option>
+        <option>Utilities</option>
+        <option>Salary</option>
+        <option>Entertainment</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <button class="save-tx-btn" onclick="saveTransaction()">Save Transaction</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

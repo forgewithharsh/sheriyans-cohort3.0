@@ -1,259 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FinTrack Pro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinTrack Pro</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
 
-<!-- TOAST -->
-<div id="toast"></div>
-
-<!-- AUTH -->
-<div id="auth">
-
-  <div class="auth-box" id="login-box">
-    <div class="auth-logo">
-      <div class="icon"><i class="ri-line-chart-fill"></i></div>
-      <span>FinTrack Pro</span>
-    </div>
-    <h2>Welcome Back</h2>
-    <p>Login to <b>FinTrack Pro</b></p>
-    <div class="field">
-      <label>Username</label>
-      <input type="text" id="l-user" placeholder="Enter your username" />
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="password" id="l-pass" placeholder="Enter your password" />
-    </div>
-    <button class="auth-btn" onclick="doLogin()">Login</button>
-    <p class="auth-switch">Don't have an account? <a onclick="show('reg')">Register here</a></p>
-  </div>
-
-  <div class="auth-box" id="reg-box" style="display:none">
-    <div class="auth-logo">
-      <div class="icon"><i class="ri-line-chart-fill"></i></div>
-      <span>FinTrack Pro</span>
-    </div>
-    <h2>Create Account</h2>
-    <p>Join <b>FinTrack Pro</b></p>
-    <div class="field">
-      <label>Choose a Username</label>
-      <input type="text" id="r-user" placeholder="e.g. harsh123" />
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="password" id="r-pass" placeholder="Choose a password" />
-    </div>
-    <button class="auth-btn green" onclick="doReg()">Register</button>
-    <p class="auth-switch">Already have an account? <a onclick="show('login')">Login here</a></p>
-  </div>
-
-</div>
-
-<!-- APP -->
-<div id="app">
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sb-logo">
-      <div class="icon"><i class="ri-line-chart-fill"></i></div>
-      <div>
-        <div class="name">FinTrack Pro</div>
-        <div class="sub">Enterprise Finance</div>
-      </div>
-    </div>
-    <nav class="sb-nav">
-      <div class="nav-link active" id="n-dash" onclick="page('dash')">
-        <i class="ri-dashboard-line"></i> Dashboard
-      </div>
-      <div class="nav-link" id="n-set" onclick="page('set')">
-        <i class="ri-settings-3-line"></i> Settings
-      </div>
-    </nav>
-    <div class="sb-foot">
-      <button class="add-btn" onclick="openModal()">
-        <i class="ri-add-line"></i> Add Transaction
-      </button>
-    </div>
-  </aside>
-
-  <!-- Main -->
-  <div class="main">
-
-    <!-- Topbar -->
-    <div class="topbar">
-      <span class="user" id="top-user"></span>
-      <button class="logout-btn" onclick="doLogout()">
-        <i class="ri-logout-box-r-line"></i> Logout
-      </button>
-    </div>
-
-    <!-- Dashboard Page -->
-    <div class="page on" id="p-dash">
-      <div class="page-title">Financial Overview</div>
-      <div class="page-sub">Real-time tracking application</div>
-
-      <div class="cards">
-        <div class="card">
-          <div class="card-icon blue"><i class="ri-bank-line"></i></div>
-          <div class="card-label">Current Balance</div>
-          <div class="card-val" id="c-bal">$0.00</div>
+    <!-- AUTH -->
+    <div id="auth">
+      <div class="auth-box" id="login-box">
+        <div class="auth-logo">
+          <div class="icon"><i class="ri-line-chart-fill"></i></div>
+          <span>FinTrack Pro</span>
         </div>
-        <div class="card">
-          <div class="card-icon green"><i class="ri-arrow-up-line"></i></div>
-          <div class="card-label">Total Income</div>
-          <div class="card-val green" id="c-inc">$0.00</div>
+        <h2>Welcome Back</h2>
+        <p>Login to <b>FinTrack Pro</b></p>
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="l-user" placeholder="Enter your username" />
         </div>
-        <div class="card">
-          <div class="card-icon red"><i class="ri-arrow-down-line"></i></div>
-          <div class="card-label">Total Expense</div>
-          <div class="card-val red" id="c-exp">$0.00</div>
+        <div class="field">
+          <label>Password</label>
+          <input
+            type="password"
+            id="l-pass"
+            placeholder="Enter your password"
+          />
         </div>
-        <div class="card">
-          <div class="card-icon orange"><i class="ri-exchange-line"></i></div>
-          <div class="card-label">Total Transactions</div>
-          <div class="card-val" id="c-cnt">0</div>
-        </div>
+        <button class="auth-btn" onclick="doLogin()">Login</button>
+        <p class="auth-switch">
+          Don't have an account? <a onclick="show('reg')">Register here</a>
+        </p>
       </div>
 
-      <div class="dash-grid">
-        <div>
-          <div class="panel">
-            <div class="panel-title">Cash Flow Analysis</div>
-            <div class="chart-box"><canvas id="chart"></canvas></div>
+      <div class="auth-box" id="reg-box" style="display: none">
+        <div class="auth-logo">
+          <div class="icon"><i class="ri-line-chart-fill"></i></div>
+          <span>FinTrack Pro</span>
+        </div>
+        <h2>Create Account</h2>
+        <p>Join <b>FinTrack Pro</b></p>
+        <div class="field">
+          <label>Choose a Username</label>
+          <input type="text" id="r-user" placeholder="e.g. harsh123" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="r-pass" placeholder="Choose a password" />
+        </div>
+        <button class="auth-btn green" onclick="doReg()">Register</button>
+        <p class="auth-switch">
+          Already have an account? <a onclick="show('login')">Login here</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- APP -->
+    <div id="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sb-logo">
+          <div class="icon"><i class="ri-line-chart-fill"></i></div>
+          <div>
+            <div class="name">FinTrack Pro</div>
+            <div class="sub">Enterprise Finance</div>
           </div>
-          <div class="panel">
-            <div class="panel-title">All Transactions</div>
-            <div class="tx-bar">
-              <div class="search">
-                <i class="ri-search-line"></i>
-                <input type="text" id="search" placeholder="Search transactions..." oninput="renderTx()" />
+        </div>
+        <nav class="sb-nav">
+          <div class="nav-link active" id="n-dash" onclick="page('dash')">
+            <i class="ri-dashboard-line"></i> Dashboard
+          </div>
+          <div class="nav-link" id="n-set" onclick="page('set')">
+            <i class="ri-settings-3-line"></i> Settings
+          </div>
+        </nav>
+        <div class="sb-foot">
+          <button class="add-btn" onclick="openModal()">
+            <i class="ri-add-line"></i> Add Transaction
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <div class="main">
+        <!-- Topbar -->
+        <div class="topbar">
+          <span class="user" id="top-user"></span>
+          <button class="logout-btn" onclick="doLogout()">
+            <i class="ri-logout-box-r-line"></i> Logout
+          </button>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div class="page on" id="p-dash">
+          <div class="page-title">Financial Overview</div>
+          <div class="page-sub">Real-time tracking application</div>
+
+          <div class="cards">
+            <div class="card">
+              <div class="card-icon blue"><i class="ri-bank-line"></i></div>
+              <div class="card-label">Current Balance</div>
+              <div class="card-val" id="c-bal">$0.00</div>
+            </div>
+            <div class="card">
+              <div class="card-icon green">
+                <i class="ri-arrow-up-line"></i>
               </div>
-              <select id="filter" onchange="renderTx()">
-                <option value="all">All Types</option>
-                <option value="income">Income Only</option>
-                <option value="expense">Expense Only</option>
-              </select>
+              <div class="card-label">Total Income</div>
+              <div class="card-val green" id="c-inc">$0.00</div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Category</th>
-                  <th>Amount</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="tx-body"></tbody>
-            </table>
-            <div class="empty" id="empty" style="display:none">
-              <i class="ri-inbox-line"></i>
-              No transactions yet.
+            <div class="card">
+              <div class="card-icon red">
+                <i class="ri-arrow-down-line"></i>
+              </div>
+              <div class="card-label">Total Expense</div>
+              <div class="card-val red" id="c-exp">$0.00</div>
+            </div>
+            <div class="card">
+              <div class="card-icon orange">
+                <i class="ri-exchange-line"></i>
+              </div>
+              <div class="card-label">Total Transactions</div>
+              <div class="card-val" id="c-cnt">0</div>
+            </div>
+          </div>
+
+          <div class="dash-grid">
+            <div>
+              <div class="panel">
+                <div class="panel-title">Cash Flow Analysis</div>
+                <div class="chart-box"><canvas id="chart"></canvas></div>
+              </div>
+              <div class="panel">
+                <div class="panel-title">All Transactions</div>
+                <div class="tx-bar">
+                  <div class="search">
+                    <i class="ri-search-line"></i>
+                    <input
+                      type="text"
+                      id="search"
+                      placeholder="Search transactions..."
+                      oninput="renderTx()"
+                    />
+                  </div>
+                  <select id="filter" onchange="renderTx()">
+                    <option value="all">All Types</option>
+                    <option value="income">Income Only</option>
+                    <option value="expense">Expense Only</option>
+                  </select>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Description</th>
+                      <th>Category</th>
+                      <th>Amount</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tx-body"></tbody>
+                </table>
+                <div class="empty" id="empty" style="display: none">
+                  <i class="ri-inbox-line"></i>
+                  No transactions yet.
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="panel">
+                <div class="panel-title">Preferences</div>
+                <div class="pref-row">
+                  <span>Dark Mode</span>
+                  <label class="toggle">
+                    <input
+                      type="checkbox"
+                      id="dark-toggle"
+                      onchange="toggleDark()"
+                    />
+                    <span class="track"></span>
+                  </label>
+                </div>
+                <button class="reset-btn" onclick="resetAll()">
+                  <i class="ri-delete-bin-line"></i> Reset All Data
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <div class="panel">
-            <div class="panel-title">Preferences</div>
-            <div class="pref-row">
-              <span>Dark Mode</span>
-              <label class="toggle">
-                <input type="checkbox" id="dark-toggle" onchange="toggleDark()" />
-                <span class="track"></span>
-              </label>
+        <!-- Settings Page -->
+        <div class="page" id="p-set">
+          <div class="page-title">Settings</div>
+          <div class="page-sub">
+            Manage your account profile and app formatting.
+          </div>
+          <div class="settings-box">
+            <h3>Profile Details</h3>
+            <div class="two-col">
+              <div>
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  id="s-name"
+                  placeholder="Your display name"
+                />
+              </div>
+              <div>
+                <label>Primary Currency</label>
+                <select id="s-cur">
+                  <option value="$">USD ($)</option>
+                  <option value="€">EUR (€)</option>
+                  <option value="£">GBP (£)</option>
+                  <option value="₹">INR (₹)</option>
+                  <option value="¥">JPY (¥)</option>
+                </select>
+              </div>
             </div>
-            <button class="reset-btn" onclick="resetAll()">
-              <i class="ri-delete-bin-line"></i> Reset All Data
+            <button class="save-btn" onclick="saveSettings()">
+              Save Changes
             </button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Settings Page -->
-    <div class="page" id="p-set">
-      <div class="page-title">Settings</div>
-      <div class="page-sub">Manage your account profile and app formatting.</div>
-      <div class="settings-box">
-        <h3>Profile Details</h3>
-        <div class="two-col">
-          <div>
-            <label>Full Name</label>
-            <input type="text" id="s-name" placeholder="Your display name" />
+    <!-- MODAL -->
+    <div class="overlay" id="overlay" onclick="bgClose(event)">
+      <div class="modal">
+        <div class="modal-head">
+          <h3 id="m-title">Add Transaction</h3>
+          <button class="close-btn" onclick="closeModal()">
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div class="field">
+          <label>Type</label>
+          <select id="m-type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <input
+            type="text"
+            id="m-desc"
+            placeholder="e.g. Amazon, Salary, Coffee"
+          />
+        </div>
+        <div class="two-half">
+          <div class="field">
+            <label>Amount</label>
+            <input
+              type="number"
+              id="m-amt"
+              placeholder="0.00"
+              min="0"
+              step="0.01"
+            />
           </div>
-          <div>
-            <label>Primary Currency</label>
-            <select id="s-cur">
-              <option value="$">USD ($)</option>
-              <option value="€">EUR (€)</option>
-              <option value="£">GBP (£)</option>
-              <option value="₹">INR (₹)</option>
-              <option value="¥">JPY (¥)</option>
-            </select>
+          <div class="field">
+            <label>Date</label>
+            <input type="date" id="m-date" />
           </div>
         </div>
-        <button class="save-btn" onclick="saveSettings()">Save Changes</button>
+        <div class="field">
+          <label>Category</label>
+          <select id="m-cat">
+            <option value="">Select a category</option>
+            <option>Food &amp; Dining</option>
+            <option>Shopping</option>
+            <option>Recharge &amp; Bills</option>
+            <option>Petrol &amp; Auto</option>
+            <option>Utilities</option>
+            <option>Salary</option>
+            <option>Entertainment</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button class="modal-save" onclick="saveTx()">Save Transaction</button>
       </div>
     </div>
 
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="overlay" id="overlay" onclick="bgClose(event)">
-  <div class="modal">
-    <div class="modal-head">
-      <h3 id="m-title">Add Transaction</h3>
-      <button class="close-btn" onclick="closeModal()"><i class="ri-close-line"></i></button>
-    </div>
-    <div class="field">
-      <label>Type</label>
-      <select id="m-type">
-        <option value="expense">Expense</option>
-        <option value="income">Income</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Description</label>
-      <input type="text" id="m-desc" placeholder="e.g. Amazon, Salary, Coffee" />
-    </div>
-    <div class="two-half">
-      <div class="field">
-        <label>Amount</label>
-        <input type="number" id="m-amt" placeholder="0.00" min="0" step="0.01" />
-      </div>
-      <div class="field">
-        <label>Date</label>
-        <input type="date" id="m-date" />
-      </div>
-    </div>
-    <div class="field">
-      <label>Category</label>
-      <select id="m-cat">
-        <option value="">Select a category</option>
-        <option>Food &amp; Dining</option>
-        <option>Shopping</option>
-        <option>Recharge &amp; Bills</option>
-        <option>Petrol &amp; Auto</option>
-        <option>Utilities</option>
-        <option>Salary</option>
-        <option>Entertainment</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <button class="modal-save" onclick="saveTx()">Save Transaction</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

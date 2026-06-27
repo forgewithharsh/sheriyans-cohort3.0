@@ -68,34 +68,6 @@ label {
   color: var(--text);
 }
 
-/* === TOAST === */
-#toast {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  background: var(--text);
-  color: var(--white);
-  padding: 10px 16px;
-  border-radius: var(--r);
-  font-size: 13px;
-  font-weight: 500;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-  z-index: 9999;
-}
-#toast.show {
-  opacity: 1;
-}
-#toast.ok {
-  background: var(--green);
-  color: #fff;
-}
-#toast.err {
-  background: var(--red);
-  color: #fff;
-}
-
 /* === AUTH === */
 #auth {
   min-height: 100vh;

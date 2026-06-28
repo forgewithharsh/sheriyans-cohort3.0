@@ -5,8 +5,13 @@ let birdTop = 200;
 let gravity = 2;
 
 setInterval(() => {
+  if (isGameOver) return;
   birdTop += gravity;
   bird.style.top = birdTop + "px";
+
+  if (birdTop > game.clientHeight || birdTop < 0) {
+    gameOver();
+  }
 }, 20);
 
 document.addEventListener("keydown", (e) => {
@@ -16,6 +21,8 @@ document.addEventListener("keydown", (e) => {
 });
 
 function createPipe() {
+  if (isGameOver) return;
+
   const pipeTop = document.createElement("div");
   const pipeBottom = document.createElement("div");
 
@@ -50,12 +57,32 @@ function createPipe() {
     pipeTop.style.left = pipeLeft + "px";
     pipeBottom.style.left = pipeLeft + "px";
 
-    if (pipeLeft.left > -70) {
-      pipeTop.remove;
-      pipeBottom.remove;
+    let birdRect = bird.getBoundingClientRect();
+    let topRect = pipeTop.getBoundingClientRect();
+    let bottomRect = pipeBottom.getBoundingClientRect();
+
+    if (
+      birdRect.right > topRect.left &&
+      birdRect.left < topRect.right &&
+      (birdRect.top > topRect.bottom || birdRect.bottom > bottomRect.top)
+    ) {
+    }
+
+    if (pipeLeft < -70) {
+      pipeTop.remove();
+      pipeBottom.remove();
       clearInterval(move);
     }
   }, 20);
 }
 
 setInterval(createPipe, 2000);
+
+let isGameOver = false;
+function gameOver() {
+  if (isGameOver) return;
+
+  isGameOver = true;
+  alert("Your game is over");
+  location.reload();
+}

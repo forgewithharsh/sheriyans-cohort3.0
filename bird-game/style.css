@@ -88,29 +88,3 @@ body {
   border-top: 3px solid #a07030;
   z-index: 3;
 }
-
-/* .score {
-  position: absolute;
-  top: 12px;
-  width: 100%;
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 0 #333;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.message {
-  position: absolute;
-  top: 40%;
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-shadow: 1px 1px 0 #333;
-  z-index: 10;
-  pointer-events: none;
-} */

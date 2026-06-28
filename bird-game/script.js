@@ -36,7 +36,7 @@ function createPipe() {
   let maxheight = gameHeight - gap - 70;
 
   let topPipeHeight = Math.random() * maxheight + 50;
-  let bottomPipeHeight = maxheight - topPipeHeight - gap;
+  let bottomPipeHeight = gameHeight - topPipeHeight - gap;
 
   pipeTop.style.height = topPipeHeight + "px";
   pipeBottom.style.height = bottomPipeHeight + "px";
@@ -64,8 +64,9 @@ function createPipe() {
     if (
       birdRect.right > topRect.left &&
       birdRect.left < topRect.right &&
-      (birdRect.top > topRect.bottom || birdRect.bottom > bottomRect.top)
+      (birdRect.top < topRect.bottom || birdRect.bottom > bottomRect.top)
     ) {
+      gameOver();
     }
 
     if (pipeLeft < -70) {

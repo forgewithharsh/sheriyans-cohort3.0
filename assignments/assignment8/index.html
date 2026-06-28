@@ -16,145 +16,168 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <!-- AUTH -->
-    <div id="auth">
+    <div id="auth-screen">
       <div class="auth-box" id="login-box">
         <div class="auth-logo">
-          <div class="icon"><i class="ri-line-chart-fill"></i></div>
+          <div class="logo-icon"><i class="ri-line-chart-fill"></i></div>
           <span>FinTrack Pro</span>
         </div>
         <h2>Welcome Back</h2>
         <p>Login to <b>FinTrack Pro</b></p>
         <div class="field">
           <label>Username</label>
-          <input type="text" id="l-user" placeholder="Enter your username" />
+          <input
+            type="text"
+            id="login-username"
+            placeholder="Enter your username"
+          />
         </div>
         <div class="field">
           <label>Password</label>
           <input
             type="password"
-            id="l-pass"
+            id="login-password"
             placeholder="Enter your password"
           />
         </div>
         <button class="auth-btn" onclick="doLogin()">Login</button>
         <p class="auth-switch">
-          Don't have an account? <a onclick="show('reg')">Register here</a>
+          Don't have an account?
+          <a onclick="showAuthScreen('register')">Register here</a>
         </p>
       </div>
 
-      <div class="auth-box" id="reg-box" style="display: none">
+      <div class="auth-box" id="register-box" style="display: none">
         <div class="auth-logo">
-          <div class="icon"><i class="ri-line-chart-fill"></i></div>
+          <div class="logo-icon"><i class="ri-line-chart-fill"></i></div>
           <span>FinTrack Pro</span>
         </div>
         <h2>Create Account</h2>
         <p>Join <b>FinTrack Pro</b></p>
         <div class="field">
           <label>Choose a Username</label>
-          <input type="text" id="r-user" placeholder="e.g. harsh123" />
+          <input
+            type="text"
+            id="register-username"
+            placeholder="e.g. harsh123"
+          />
         </div>
         <div class="field">
           <label>Password</label>
-          <input type="password" id="r-pass" placeholder="Choose a password" />
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Choose a password"
+          />
         </div>
-        <button class="auth-btn green" onclick="doReg()">Register</button>
+        <button class="auth-btn green" onclick="doRegister()">Register</button>
         <p class="auth-switch">
-          Already have an account? <a onclick="show('login')">Login here</a>
+          Already have an account?
+          <a onclick="showAuthScreen('login')">Login here</a>
         </p>
       </div>
     </div>
 
     <!-- APP -->
-    <div id="app">
+    <div id="app-screen">
       <!-- Sidebar -->
       <aside class="sidebar">
-        <div class="sb-logo">
-          <div class="icon"><i class="ri-line-chart-fill"></i></div>
+        <div class="sidebar-logo">
+          <div class="logo-icon"><i class="ri-line-chart-fill"></i></div>
           <div>
-            <div class="name">FinTrack Pro</div>
-            <div class="sub">Enterprise Finance</div>
+            <div class="app-name">FinTrack Pro</div>
+            <div class="app-tagline">Enterprise Finance</div>
           </div>
         </div>
-        <nav class="sb-nav">
-          <div class="nav-link active" id="n-dash" onclick="page('dash')">
+        <nav class="sidebar-nav">
+          <div
+            class="nav-link active"
+            id="nav-dashboard"
+            onclick="showPage('dashboard')"
+          >
             <i class="ri-dashboard-line"></i> Dashboard
           </div>
-          <div class="nav-link" id="n-set" onclick="page('set')">
+          <div
+            class="nav-link"
+            id="nav-settings"
+            onclick="showPage('settings')"
+          >
             <i class="ri-settings-3-line"></i> Settings
           </div>
         </nav>
-        <div class="sb-foot">
-          <button class="add-btn" onclick="openModal()">
+        <div class="sidebar-footer">
+          <button class="add-transaction-btn" onclick="openTransactionModal()">
             <i class="ri-add-line"></i> Add Transaction
           </button>
         </div>
       </aside>
 
-      <!-- Main -->
-      <div class="main">
+      <!-- Main Content -->
+      <div class="main-content">
         <!-- Topbar -->
         <div class="topbar">
-          <span class="user" id="top-user"></span>
+          <span class="topbar-username" id="topbar-username"></span>
           <button class="logout-btn" onclick="doLogout()">
             <i class="ri-logout-box-r-line"></i> Logout
           </button>
         </div>
 
         <!-- Dashboard Page -->
-        <div class="page on" id="p-dash">
+        <div class="page on" id="dashboard-page">
           <div class="page-title">Financial Overview</div>
-          <div class="page-sub">Real-time tracking application</div>
+          <div class="page-subtitle">Real-time tracking application</div>
 
-          <div class="cards">
+          <div class="summary-cards">
             <div class="card">
               <div class="card-icon blue"><i class="ri-bank-line"></i></div>
               <div class="card-label">Current Balance</div>
-              <div class="card-val" id="c-bal">$0.00</div>
+              <div class="card-value" id="balance-value">$0.00</div>
             </div>
             <div class="card">
               <div class="card-icon green">
                 <i class="ri-arrow-up-line"></i>
               </div>
               <div class="card-label">Total Income</div>
-              <div class="card-val green" id="c-inc">$0.00</div>
+              <div class="card-value green" id="income-value">$0.00</div>
             </div>
             <div class="card">
               <div class="card-icon red">
                 <i class="ri-arrow-down-line"></i>
               </div>
               <div class="card-label">Total Expense</div>
-              <div class="card-val red" id="c-exp">$0.00</div>
+              <div class="card-value red" id="expense-value">$0.00</div>
             </div>
             <div class="card">
               <div class="card-icon orange">
                 <i class="ri-exchange-line"></i>
               </div>
               <div class="card-label">Total Transactions</div>
-              <div class="card-val" id="c-cnt">0</div>
+              <div class="card-value" id="transaction-count">0</div>
             </div>
           </div>
 
-          <div class="dash-grid">
+          <div class="dashboard-grid">
             <div>
               <div class="panel">
                 <div class="panel-title">Cash Flow Analysis</div>
-                <div class="chart-box"><canvas id="chart"></canvas></div>
+                <div class="chart-box">
+                  <canvas id="cashflow-chart"></canvas>
+                </div>
               </div>
               <div class="panel">
                 <div class="panel-title">All Transactions</div>
-                <div class="tx-bar">
-                  <div class="search">
+                <div class="transaction-controls">
+                  <div class="search-box">
                     <i class="ri-search-line"></i>
                     <input
                       type="text"
-                      id="search"
+                      id="search-input"
                       placeholder="Search transactions..."
-                      oninput="renderTx()"
+                      oninput="renderTransactionTable()"
                     />
                   </div>
-                  <select id="filter" onchange="renderTx()">
+                  <select id="type-filter" onchange="renderTransactionTable()">
                     <option value="all">All Types</option>
                     <option value="income">Income Only</option>
                     <option value="expense">Expense Only</option>
@@ -170,9 +193,9 @@
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody id="tx-body"></tbody>
+                  <tbody id="transaction-table-body"></tbody>
                 </table>
-                <div class="empty" id="empty" style="display: none">
+                <div class="empty-state" id="empty-state" style="display: none">
                   <i class="ri-inbox-line"></i>
                   No transactions yet.
                 </div>
@@ -182,18 +205,18 @@
             <div>
               <div class="panel">
                 <div class="panel-title">Preferences</div>
-                <div class="pref-row">
+                <div class="preference-row">
                   <span>Dark Mode</span>
                   <label class="toggle">
                     <input
                       type="checkbox"
-                      id="dark-toggle"
-                      onchange="toggleDark()"
+                      id="darkmode-toggle"
+                      onchange="toggleDarkMode()"
                     />
                     <span class="track"></span>
                   </label>
                 </div>
-                <button class="reset-btn" onclick="resetAll()">
+                <button class="reset-data-btn" onclick="resetAllData()">
                   <i class="ri-delete-bin-line"></i> Reset All Data
                 </button>
               </div>
@@ -202,9 +225,9 @@
         </div>
 
         <!-- Settings Page -->
-        <div class="page" id="p-set">
+        <div class="page" id="settings-page">
           <div class="page-title">Settings</div>
-          <div class="page-sub">
+          <div class="page-subtitle">
             Manage your account profile and app formatting.
           </div>
           <div class="settings-box">
@@ -214,13 +237,13 @@
                 <label>Full Name</label>
                 <input
                   type="text"
-                  id="s-name"
+                  id="settings-fullname"
                   placeholder="Your display name"
                 />
               </div>
               <div>
                 <label>Primary Currency</label>
-                <select id="s-cur">
+                <select id="settings-currency">
                   <option value="$">USD ($)</option>
                   <option value="€">EUR (€)</option>
                   <option value="£">GBP (£)</option>
@@ -229,7 +252,7 @@
                 </select>
               </div>
             </div>
-            <button class="save-btn" onclick="saveSettings()">
+            <button class="save-settings-btn" onclick="saveSettings()">
               Save Changes
             </button>
           </div>
@@ -237,18 +260,22 @@
       </div>
     </div>
 
-    <!-- MODAL -->
-    <div class="overlay" id="overlay" onclick="bgClose(event)">
+    <!-- ADD / EDIT TRANSACTION MODAL -->
+    <div
+      class="modal-overlay"
+      id="transaction-modal-overlay"
+      onclick="closeOnOverlayClick(event)"
+    >
       <div class="modal">
-        <div class="modal-head">
-          <h3 id="m-title">Add Transaction</h3>
-          <button class="close-btn" onclick="closeModal()">
+        <div class="modal-header">
+          <h3 id="modal-title">Add Transaction</h3>
+          <button class="modal-close-btn" onclick="closeTransactionModal()">
             <i class="ri-close-line"></i>
           </button>
         </div>
         <div class="field">
           <label>Type</label>
-          <select id="m-type">
+          <select id="transaction-type">
             <option value="expense">Expense</option>
             <option value="income">Income</option>
           </select>
@@ -257,7 +284,7 @@
           <label>Description</label>
           <input
             type="text"
-            id="m-desc"
+            id="transaction-description"
             placeholder="e.g. Amazon, Salary, Coffee"
           />
         </div>
@@ -266,7 +293,7 @@
             <label>Amount</label>
             <input
               type="number"
-              id="m-amt"
+              id="transaction-amount"
               placeholder="0.00"
               min="0"
               step="0.01"
@@ -274,12 +301,12 @@
           </div>
           <div class="field">
             <label>Date</label>
-            <input type="date" id="m-date" />
+            <input type="date" id="transaction-date" />
           </div>
         </div>
         <div class="field">
           <label>Category</label>
-          <select id="m-cat">
+          <select id="transaction-category">
             <option value="">Select a category</option>
             <option>Food &amp; Dining</option>
             <option>Shopping</option>
@@ -291,7 +318,9 @@
             <option>Other</option>
           </select>
         </div>
-        <button class="modal-save" onclick="saveTx()">Save Transaction</button>
+        <button class="save-transaction-btn" onclick="saveTransaction()">
+          Save Transaction
+        </button>
       </div>
     </div>
 

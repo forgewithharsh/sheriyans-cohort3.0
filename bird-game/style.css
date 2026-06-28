@@ -18,7 +18,11 @@ body{
 .game{
   width: 80%;
   height: 90%;
-  background-color: rgb(51, 165, 241);
+  background-image: url(./background-day.png);
+  /* background-position: cover; */
+  background-repeat: no-repeat;
+  background-size: contain;
+
   position: relative;
   overflow: hidden;
 }

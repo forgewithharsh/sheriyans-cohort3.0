@@ -19,14 +19,25 @@ function createPipe() {
   const pipeTop = document.createElement("div");
   const pipeBottom = document.createElement("div");
 
-  pipeTop.className = "pipe";
-  pipeBottom.className = "pipe";
+  pipeTop.className = "pipe top";
+  pipeBottom.className = "pipe bottom";
 
-  let maxheight = game.clientHeight;
+  let gap = 100;
 
-  let gap = 150;
+  let gameHeight = game.clientHeight;
+
+  let maxheight = gameHeight - gap - 50;
 
   let topPipeHeight = Math.random() * maxheight + 50;
+  let bottomPipeHeight = maxheight - topPipeHeight - gap;
 
-  // let BottomPipeHeight =
+  pipeTop.style.height = topPipeHeight + "px";
+  pipeBottom.style.height = bottomPipeHeight + "px";
+
+  pipeTop.style.top = 0;
+  pipeBottom.style.bottom = 0;
+
+  game.append(pipeTop, pipeBottom);
 }
+
+createPipe();

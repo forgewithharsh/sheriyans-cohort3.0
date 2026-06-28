@@ -30,7 +30,7 @@ body {
 .bird-png {
   height: 50px;
   position: absolute;
-  left: 60px; /* fixed: was missing */
+  left: 60px;
   top: 200px;
   object-fit: contain;
   z-index: 2;
@@ -40,44 +40,40 @@ body {
 .pipe {
   position: absolute;
   width: 70px;
-  background: linear-gradient(to right,
-      #4caf50 0%,
-      #7ed957 20%,
-      #8cff66 50%,
-      #7ed957 80%,
-      #4caf50 100%);
+  background: linear-gradient(
+    to right,
+    #4caf50 0%,
+    #7ed957 20%,
+    #8cff66 50%,
+    #7ed957 80%,
+    #4caf50 100%
+  );
   border: 3px solid #2e7d32;
   box-shadow:
-    inset 4px 0 0 rgba(255,255,255,0.25),
-    inset -4px 0 0 rgba(0,0,0,0.2),
-    3px 3px 10px rgba(0,0,0,0.3);
+    inset 4px 0 0 rgba(255, 255, 255, 0.25),
+    inset -4px 0 0 rgba(0, 0, 0, 0.2),
+    3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Pipe Head */
 .pipe::before {
   content: "";
   position: absolute;
   left: -8px;
   width: 86px;
   height: 30px;
-  background: linear-gradient(to right,
-      #4caf50,
-      #8cff66,
-      #4caf50);
+  background: linear-gradient(to right, #4caf50, #8cff66, #4caf50);
   border: 3px solid #2e7d32;
   border-radius: 4px;
   box-sizing: border-box;
   box-shadow:
-    inset 3px 0 rgba(255,255,255,0.25),
-    inset -3px 0 rgba(0,0,0,0.15);
+    inset 3px 0 rgba(255, 255, 255, 0.25),
+    inset -3px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* Top Pipe */
 .pipe.top::before {
   bottom: 0;
 }
 
-/* Bottom Pipe */
 .pipe.bottom::before {
   top: 0;
 }

@@ -26,7 +26,7 @@ function createPipe() {
 
   let gameHeight = game.clientHeight;
 
-  let maxheight = gameHeight - gap - 50;
+  let maxheight = gameHeight - gap - 70;
 
   let topPipeHeight = Math.random() * maxheight + 50;
   let bottomPipeHeight = maxheight - topPipeHeight - gap;
@@ -38,6 +38,24 @@ function createPipe() {
   pipeBottom.style.bottom = 0;
 
   game.append(pipeTop, pipeBottom);
+
+  let pipeLeft = game.clientWidth;
+
+  pipeTop.style.left = pipeLeft + "px";
+  pipeBottom.style.left = pipeLeft + "px";
+
+  let move = setInterval(() => {
+    pipeLeft -= 2;
+
+    pipeTop.style.left = pipeLeft + "px";
+    pipeBottom.style.left = pipeLeft + "px";
+
+    if (pipeLeft.left > -70) {
+      pipeTop.remove;
+      pipeBottom.remove;
+      clearInterval(move);
+    }
+  }, 20);
 }
 
-createPipe();
+setInterval(createPipe, 2000);

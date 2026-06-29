@@ -32,7 +32,7 @@ function getTransaction() {
   return JSON.parse(data);
 }
 
-function saveTransaction(rs) {
+function saveTransactionData(rs) {
   localStorage.setItem("transactions", JSON.stringify(rs));
 }
 
@@ -152,6 +152,11 @@ function startApp() {
 
   showPage("dashboard");
 
+  const prefs = getUserPrefer();
+  document.getElementById("settings-fullname").value =
+    prefs.fullname || user.username;
+  document.getElementById("settings-currency").value = prefs.currency || "$";
+
   refreshDashboard();
 }
 
@@ -217,7 +222,7 @@ function resetAllData() {
   const result = confirm("Delete all transactions?");
 
   if (result) {
-    saveTransaction([]);
+    saveTransactionData([]);
     refreshDashboard();
     alert("All transactions deleted.");
   }
@@ -282,7 +287,7 @@ window.onload = function () {
     .split("T")[0];
 };
 
-function saveTransactionData() {
+function saveTransactionForm() {
   const type = document.getElementById("transaction-type").value;
   const description = document
     .getElementById("transaction-description")
@@ -295,12 +300,10 @@ function saveTransactionData() {
     alert("Enter Description");
     return;
   }
-
   if (amount <= 0) {
     alert("Enter Valid Amount");
     return;
   }
-
   if (category === "") {
     alert("Select Category");
     return;
@@ -329,47 +332,65 @@ function saveTransactionData() {
     });
   }
 
-  saveTransaction(allTransactions);
+  saveTransactionData(allTransactions);
 
   closeTransactionModal();
-
   refreshDashboard();
 }
 
 function renderTransactionTable() {
   const tableBody = document.getElementById("transaction-table-body");
-  const transactions = getTransaction();
+  const emptyState = document.getElementById("empty-state");
+  const selectedFilter = document.getElementById("type-filter").value;
+  const searchQuery = document
+    .getElementById("search-input")
+    .value.toLowerCase();
+
+  let transactions = getTransaction();
+
+  if (selectedFilter !== "all") {
+    transactions = transactions.filter((t) => t.type === selectedFilter);
+  }
+
+  if (searchQuery) {
+    transactions = transactions.filter(
+      (t) =>
+        t.description.toLowerCase().includes(searchQuery) ||
+        t.category.toLowerCase().includes(searchQuery),
+    );
+  }
+
+  transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   tableBody.innerHTML = "";
 
   if (transactions.length === 0) {
+    emptyState.style.display = "";
     return;
   }
+  emptyState.style.display = "none";
 
   for (let i = 0; i < transactions.length; i++) {
     const t = transactions[i];
-
     const row = document.createElement("tr");
-
     row.innerHTML = `
       <td>${t.date}</td>
-      <td>${t.description}</td>
-      <td>${t.category}</td>
-      <td>
-      ${t.type == "income" ? "+" : "-"}${formatAmt(t.amount)}
+      <td class="description-cell">${t.description}</td>
+      <td><span class="category-badge">${t.category}</span></td>
+      <td class="${t.type === "income" ? "amount-positive" : "amount-negative"}">
+        ${t.type === "income" ? "+" : "-"}${formatAmt(t.amount)}
       </td>
-      <td>${t.type}</td>
       <td>
-        <button onclick="openTransactionModal(${t.id})">
-          Edit
-        </button>
-
-        <button onclick="deleteTransaction(${t.id})">
-          Delete
-        </button>
+        <div class="row-action-buttons">
+          <button class="edit-btn" onclick="openTransactionModal(${t.id})" title="Edit">
+            <i class="ri-pencil-line"></i>
+          </button>
+          <button class="delete-btn" onclick="deleteTransaction(${t.id})" title="Delete">
+            <i class="ri-delete-bin-line"></i>
+          </button>
+        </div>
       </td>
     `;
-
     tableBody.appendChild(row);
   }
 }
@@ -391,7 +412,7 @@ function deleteTransaction(id) {
     }
   }
 
-  saveTransaction(newTransactions);
+  saveTransactionData(newTransactions);
 
   refreshDashboard();
 }

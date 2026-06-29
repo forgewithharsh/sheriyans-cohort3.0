@@ -282,7 +282,7 @@ body.dark .nav-link.active {
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  padding: 12px 22px;
+  padding: 16.2px 22px;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;

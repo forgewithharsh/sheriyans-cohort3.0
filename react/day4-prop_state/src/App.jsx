@@ -4,26 +4,26 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 
 const App = () => {
-
   const [count, setCount] = useState(0);
 
-  let [flag, setFlag] = useState(true)
+  let [flag, setFlag] = useState(true);
   console.log(flag);
 
+  let [hide, setHide] = useState('false');
 
   return (
     <div>
       <h1>Count is - {count}</h1>
-
       <button
         onClick={() => {
-          setCount(count + 1)
+          setCount(count + 1);
         }}
       >
         Increment
       </button>
-
       <button onClick={() => setFlag(false)}>Change Boolean</button>
+      <h1 onClick={() => setHide(!hide)}>Click Me </h1>
+      {!hide && <p>Hello React</p>}
     </div>
 
     // <div>

@@ -4,33 +4,49 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
-  let [flag, setFlag] = useState(true);
-  console.log(flag);
+  // let [flag, setFlag] = useState(true);
+  // console.log(flag);
 
-  let [hide, setHide] = useState('false');
+  // let [hide, setHide] = useState('false');
+
+  const [dark, setDark] = useState(false);
 
   return (
-    <div>
-      <h1>Count is - {count}</h1>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        Increment
-      </button>
-      <button onClick={() => setFlag(false)}>Change Boolean</button>
-      <h1 onClick={() => setHide(!hide)}>Click Me </h1>
-      {!hide && <p>Hello React</p>}
-    </div>
+    // <div>
+    //   <h1>Count is - {count}</h1>
+    //   <button
+    //     onClick={() => {
+    //       setCount(count + 1);
+    //     }}
+    //   >
+    //     Increment
+    //   </button>
+    //   <button onClick={() => setFlag(false)}>Change Boolean</button>
+    //   <h1 onClick={() => setHide(!hide)}>Click Me </h1>
+    //   {!hide && <p>Hello React</p>}
+    // </div>
 
     // <div>
     //   <Navbar />
     //   <Hero />
     //   <Footer />
     // </div>
+
+    <div
+      style={{
+        backgroundColor: dark ? "black" : "white",
+        color: dark ? "white" : "black",
+        minHeight: "100vh",
+        padding: "20px",
+      }}
+    >
+      <h1>{dark ? "DarkMode" : "Light Mode"}</h1>
+      <button onClick={() => setDark(!dark)}>
+        {dark ? "Light Mode" : "Dark Mode"}
+      </button>
+    </div>
   );
 };
 

@@ -1,10 +1,9 @@
 import React from 'react'
-import "./App.css"
 
 const App = () => {
   return (
-    <div className='background'>
-      <h1>Hello World</h1>
+    <div className='bg-red-400'>
+      <h1 className='text-4xl'>Hello World</h1>
     </div>
   )
 }

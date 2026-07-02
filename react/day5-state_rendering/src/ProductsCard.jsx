@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product, del }) => {
   return (
     <div className="p-2 border-2 flex flex-col gap-4 rounded">
       <div className="w-40">
@@ -11,7 +11,9 @@ const ProductsCard = ({ product }) => {
         <p className="text-xs">{product.category}</p>
         <p className="text-green-600">{product.price}</p>
       </div>
-      <button className="p-2 bg-red-500">Delete</button>
+      <button onClick={() => del(product.id)} className="p-2 bg-red-500">
+        Delete
+      </button>
     </div>
   );
 };

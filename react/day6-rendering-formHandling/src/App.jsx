@@ -13,7 +13,7 @@ const App = () => {
       <h1>Name is - {user.name}</h1>
 
       <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => (user.name = "Gullu")}>Change name</button>
+      <button onClick={() => setUser({ name: "Harry" })}>Change name</button>
     </div>
   );
 };

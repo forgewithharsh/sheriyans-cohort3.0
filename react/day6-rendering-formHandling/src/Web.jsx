@@ -5,11 +5,8 @@ import About from "./components/About";
 
 const Web = () => {
   return (
-    <div>
-      <h1>Web</h1>
+    <div className="">
       <Card />
-      <Contact />
-      <About />
     </div>
   );
 };

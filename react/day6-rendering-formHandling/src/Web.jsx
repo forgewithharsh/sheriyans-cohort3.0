@@ -4,13 +4,13 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 
 const Web = () => {
-  let arr = [2, 3, 4, 5, 6, 7, 8, 9, 0, 8, 7, 6, 5, 4, 3, 2, 1];
 
   return (
-    <div className="">
-      {arr.map((index) => {
-        return <Card key={index}/>
-      })}
+    <div className="flex flex-col gap-5 w-60 m-auto">
+      <input className="border-2" type="text" placeholder="Name"/>
+      <input className="border-2" type="text" placeholder="Email"/>
+      <input className="border-2" type="text" placeholder="Password"/>
+      <button className="border-2">Submit</button>
     </div>
   );
 };

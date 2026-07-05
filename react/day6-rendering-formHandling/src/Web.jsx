@@ -5,7 +5,8 @@ import About from "./components/About";
 
 const Web = () => {
   const [name, setName] = useState("");
-  console.log(name);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div className="flex flex-col gap-5 w-60">
@@ -16,7 +17,23 @@ const Web = () => {
         placeholder="Name"
       />
 
+      <input
+        onChange={(e) => setEmail(e.target.value)}
+        className="border-2"
+        type="text"
+        placeholder="Email"
+      />
+
+      <input
+        onChange={(e) => setPassword(e.target.value)}
+        className="border-2"
+        type="password"
+        placeholder="Password"
+      />
+
       <h1>This is Name - {name}</h1>
+      <h1>This is Name - {email}</h1>
+      <h1>This is Name - {password}</h1>
     </div>
   );
 };

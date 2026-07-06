@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 
 const Register = ({ setToggle }) => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
   const [users, setUsers] = useState([]);
 
-  console.log(users);
+  console.log(formData);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -14,6 +19,11 @@ const Register = ({ setToggle }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setUsers([...users, formData]);
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -21,25 +31,31 @@ const Register = ({ setToggle }) => {
       <h1>Register</h1>
       <form onSubmit={handleSubmit} action="" className="flex flex-col gap-4">
         <input
+          required
+          value={formData.name}
           name="name"
           onChange={handleChange}
           className="p-2 border border-gray-400 rounded"
           type="text"
-          placeholder="Name"
+          placeholder="Enter your Name"
         />
         <input
+          required
+          value={formData.email}
           name="email"
           onChange={handleChange}
           className="p-2 border border-gray-400 rounded"
           type="text"
-          placeholder="Email"
+          placeholder="Enter your Email"
         />
         <input
+          required
+          value={formData.password}
           name="password"
           onChange={handleChange}
           className="p-2 border border-gray-400 rounded"
           type="password"
-          placeholder="Password"
+          placeholder="Enter your Password"
         />
         <button className="p-2 bg-blue-600 text-white rounded">Register</button>
       </form>

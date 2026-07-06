@@ -5,6 +5,7 @@ const Register = ({ setToggle, setUsers }) => {
     name: "",
     email: "",
     password: "",
+    image: "",
   });
 
   const handleChange = (e) => {
@@ -19,6 +20,7 @@ const Register = ({ setToggle, setUsers }) => {
       name: "",
       email: "",
       password: "",
+      image: "",
     });
   };
 
@@ -52,6 +54,15 @@ const Register = ({ setToggle, setUsers }) => {
           className="p-2 border border-gray-400 rounded"
           type="password"
           placeholder="Enter your Password"
+        />
+        <input
+          required
+          value={formData.image}
+          name="image"
+          onChange={handleChange}
+          className="p-2 border border-gray-400 rounded"
+          type="url"
+          placeholder="Enter your Image"
         />
         <button className="p-2 bg-blue-600 text-white rounded">Register</button>
       </form>

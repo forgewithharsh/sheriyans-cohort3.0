@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 
-const Register = ({ setToggle }) => {
+const Register = ({ setToggle, setUsers }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
-
-  const [users, setUsers] = useState([]);
-
-  console.log(formData);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -18,7 +14,7 @@ const Register = ({ setToggle }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUsers([...users, formData]);
+    setUsers((prev) => [...prev, formData]);
     setFormData({
       name: "",
       email: "",

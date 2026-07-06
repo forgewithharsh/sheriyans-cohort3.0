@@ -6,24 +6,31 @@ import About from "./components/About";
 const Web = () => {
   const [formData, setFormData] = useState({});
 
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
   return (
     <div className="flex flex-col gap-5 w-60">
       <input
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        name="name"
+        onChange={handleChange}
         className="border-2"
         type="text"
         placeholder="Name"
       />
 
       <input
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        name="email"
+        onChange={handleChange}
         className="border-2"
         type="text"
         placeholder="Email"
       />
 
       <input
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+        name="password"
+        onChange={handleChange}
         className="border-2"
         type="password"
         placeholder="Password"

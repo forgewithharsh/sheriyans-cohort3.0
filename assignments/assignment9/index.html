@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productivity Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var mode = localStorage.getItem("periodMode") || "auto";
+        var period, theme;
+        if (mode === "day") {
+          period = "day";
+          theme = "light";
+        } else if (mode === "night") {
+          period = "night";
+          theme = "dark";
+        } else {
+          var hour = new Date().getHours();
+          if (hour >= 5 && hour < 11) period = "morning";
+          else if (hour >= 11 && hour < 17) period = "day";
+          else if (hour >= 17 && hour < 20) period = "evening";
+          else period = "night";
+          theme = period === "morning" || period === "day" ? "light" : "dark";
+        }
+        document.documentElement.dataset.activePeriod = period;
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="sky-layer">
+      <div class="sky-stars"></div>
+      <div class="sky-clouds"></div>
+    </div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"><i class="ri-dashboard-3-line"></i></span>
+        <h1>Productivity Dashboard</h1>
+      </div>
+      <button
+        id="periodToggle"
+        class="period-toggle"
+        aria-label="Toggle day / night background"
+      >
+        <i class="ri-time-line toggle-icon icon-auto"></i>
+        <i class="ri-sun-line toggle-icon icon-day"></i>
+        <i class="ri-moon-line toggle-icon icon-night"></i>
+        <span id="periodLabel" class="period-label">Auto</span>
+      </button>
+    </header>
+
+    <main id="dashboardView" class="dashboard">
+      <section class="widget-row">
+        <div class="widget datetime-widget">
+          <p class="widget-eyebrow">Today</p>
+          <p id="dateDisplay" class="date-text"></p>
+          <p id="timeDisplay" class="time-text"></p>
+        </div>
+
+        <div class="widget weather-widget">
+          <p class="widget-eyebrow">Weather</p>
+          <div id="weatherContent" class="weather-content">
+            <p class="weather-loading">Fetching weather…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards-grid">
+        <button class="feature-card" data-target="todoView">
+          <span class="card-icon"><i class="ri-list-check-3"></i></span>
+          <span class="card-title">Todo List</span>
+          <span class="card-sub">Add, complete, prioritize</span>
+        </button>
+
+        <button class="feature-card" data-target="goalsView">
+          <span class="card-icon"><i class="ri-focus-3-line"></i></span>
+          <span class="card-title">Daily Goals</span>
+          <span class="card-sub">Track today's wins</span>
+        </button>
+
+        <button class="feature-card" data-target="pomodoroView">
+          <span class="card-icon"><i class="ri-timer-line"></i></span>
+          <span class="card-title">Pomodoro Timer</span>
+          <span class="card-sub">Focus in sprints</span>
+        </button>
+
+        <button class="feature-card" data-target="motivationView">
+          <span class="card-icon"><i class="ri-lightbulb-flash-line"></i></span>
+          <span class="card-title">Motivation</span>
+          <span class="card-sub">A quote to keep you going</span>
+        </button>
+      </section>
+    </main>
+
+    <section id="todoView" class="feature-view">
+      <div class="feature-header">
+        <button class="back-btn" data-back>
+          <i class="ri-arrow-left-line"></i> Back
+        </button>
+        <h2>Todo List</h2>
+      </div>
+      <div class="feature-body">
+        <form id="todoForm" class="input-row">
+          <input
+            type="text"
+            id="todoInput"
+            placeholder="What needs doing?"
+            autocomplete="off"
+          />
+          <button type="submit" class="primary-btn">Add</button>
+        </form>
+        <ul id="todoList" class="item-list"></ul>
+      </div>
+    </section>
+
+    <section id="goalsView" class="feature-view">
+      <div class="feature-header">
+        <button class="back-btn" data-back>
+          <i class="ri-arrow-left-line"></i> Back
+        </button>
+        <h2>Daily Goals</h2>
+      </div>
+      <div class="feature-body">
+        <form id="goalForm" class="input-row">
+          <input
+            type="text"
+            id="goalInput"
+            placeholder="Set a goal for today"
+            autocomplete="off"
+          />
+          <button type="submit" class="primary-btn">Add</button>
+        </form>
+        <p id="goalProgress" class="progress-text">0 of 0 completed</p>
+        <ul id="goalList" class="item-list"></ul>
+      </div>
+    </section>
+
+    <section id="pomodoroView" class="feature-view">
+      <div class="feature-header">
+        <button class="back-btn" data-back>
+          <i class="ri-arrow-left-line"></i> Back
+        </button>
+        <h2>Pomodoro Timer</h2>
+      </div>
+      <div class="feature-body pomodoro-body">
+        <p id="sessionLabel" class="session-label">Work Session</p>
+        <p id="timerDisplay" class="timer-display">25:00</p>
+        <div class="timer-controls">
+          <button id="startBtn" class="primary-btn">Start</button>
+          <button id="pauseBtn" class="secondary-btn">Pause</button>
+          <button id="resetBtn" class="secondary-btn">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="motivationView" class="feature-view">
+      <div class="feature-header">
+        <button class="back-btn" data-back>
+          <i class="ri-arrow-left-line"></i> Back
+        </button>
+        <h2>Motivation</h2>
+      </div>
+      <div class="feature-body motivation-body">
+        <blockquote id="quoteText" class="quote-text">
+          Loading a quote for you…
+        </blockquote>
+        <p id="quoteAuthor" class="quote-author"></p>
+        <button id="newQuoteBtn" class="primary-btn">New Quote</button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

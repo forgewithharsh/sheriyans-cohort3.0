@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 const Form = () => {
-  const inpRef = useRef();
+  const inpRef = useRef(10);
   console.log(inpRef);
 
   const handleSubmit = (e) => {

@@ -184,6 +184,14 @@ const goalInput = document.getElementById("goalInput");
 const goalList = document.getElementById("goalList");
 const goalProgress = document.getElementById("goalProgress");
 
+function updateGoalProgress() {
+  const total = goalList.children.length;
+  const completed = document.querySelectorAll("#goalList .completed").length;
+
+  goalProgress.textContent = `${completed} of ${total} completed`
+
+}
+
 goalForm.addEventListener("submit", (e) => {
   e.preventDefault();
 

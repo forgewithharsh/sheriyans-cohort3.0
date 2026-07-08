@@ -178,3 +178,51 @@ resetBtn.addEventListener("click", () => {
   time = 25 * 60;
   updateTime();
 });
+
+const goalForm = document.getElementById("goalForm");
+const goalInput = document.getElementById("goalInput");
+const goalList = document.getElementById("goalList");
+const goalProgress = document.getElementById("goalProgress");
+
+goalForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const goal = goalInput.value.trim();
+
+  if (goal === "") return;
+
+  const li = document.createElement("li");
+
+  li.className = "item-row";
+
+  li.innerHTML = `
+    <span class="item-text">${goal}</span>
+
+    <button class="complete-btn">
+      <i class="ri-check-line"></i>
+    </button>
+
+    <button class="delete-btn">
+      <i class="ri-delete-bin-line"></i>
+    </button>
+  `;
+
+  goalList.appendChild(li);
+
+  const completeBtn = li.querySelector(".complete-btn");
+  const deleteBtn = li.querySelector(".delete-btn");
+
+  completeBtn.addEventListener("click", () => {
+    li.classList.toggle("completed");
+    updateGoalProgress();
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    li.remove();
+    updateGoalProgress();
+  });
+
+  goalInput.value = "";
+
+  updateGoalProgress();
+});

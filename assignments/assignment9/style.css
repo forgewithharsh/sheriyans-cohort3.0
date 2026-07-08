@@ -307,13 +307,14 @@ html[data-active-period="morning"] .sky-clouds {
 }
 
 .date-text {
-  font-size: 15px;
+  font-size: 18px;
   color: var(--ink-soft);
-  margin: 0;
+  margin: 12px 0px;
+  font-weight: 500;
 }
 
 .time-text {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 700;
   margin: 4px 0 0;
 }

@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 
 const Form = () => {
-  const inpRef = useRef(10);
+  const inpRef = useRef({});
   console.log(inpRef);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(useRef);
   };
 
   return (
@@ -15,32 +16,23 @@ const Form = () => {
         className="flex p-6 rounded bg-white flex-col gap-4"
       >
         <input
-          // onChange={(e) =>
-          // setFormData({ ...formData, product: e.target.value })
-          // }
+          ref={inpRef}
           className="p-2 border border-gray-400 rounded"
           type="text"
           placeholder="Product name"
         />
         <input
-          // onChange={(e) => setFormData({ ...formData, price: e.target.value })}
           className="p-2 border border-gray-400 rounded"
           type="text"
           placeholder="Price"
         />
         <span>Select category:</span>
-        <select
-          // onChange={(e) =>
-          //   setFormData({ ...formData, category: e.target.value })
-          // }
-          className="p-2 border border-gray-400 rounded"
-        >
+        <select className="p-2 border border-gray-400 rounded">
           <option value="mens">Mens</option>
           <option value="women">Women</option>
           <option value="kids">Kids</option>
         </select>
         <input
-          // onChange={(e) => setFormData({ ...formData, image: e.target.value })}
           className="p-2 border border-gray-400 rounded"
           type="text"
           placeholder="Image"

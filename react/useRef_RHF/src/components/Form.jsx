@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 
 const Form = () => {
-  const inpRef = useRef({});
-  console.log(inpRef);
+  console.log("Form Rendering...");
+
+  const formRef = useRef({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(useRef);
+    console.log(formRef);
   };
 
   return (
@@ -16,23 +17,25 @@ const Form = () => {
         className="flex p-6 rounded bg-white flex-col gap-4"
       >
         <input
-          ref={inpRef}
+          ref={(e) => (formRef.current.productName = e)}
           className="p-2 border border-gray-400 rounded"
           type="text"
           placeholder="Product name"
         />
         <input
+        ref={(e) => (formRef.current.price = e)}
           className="p-2 border border-gray-400 rounded"
           type="text"
           placeholder="Price"
         />
         <span>Select category:</span>
-        <select className="p-2 border border-gray-400 rounded">
+        <select ref={(e) => (formRef.current.category = e)} className="p-2 border border-gray-400 rounded">
           <option value="mens">Mens</option>
           <option value="women">Women</option>
           <option value="kids">Kids</option>
         </select>
         <input
+        ref={(e) => (formRef.current.image = e)}
           className="p-2 border border-gray-400 rounded"
           type="text"
           placeholder="Image"

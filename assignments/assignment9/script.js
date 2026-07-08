@@ -14,7 +14,7 @@ setInterval(updateClock, 1000);
 
 const weatherContent = document.getElementById("weatherContent");
 
-getWeather("Delhi");
+getWeather("Bhopal");
 
 async function getWeather(cityName) {
   const res = await fetch(
@@ -188,8 +188,7 @@ function updateGoalProgress() {
   const total = goalList.children.length;
   const completed = document.querySelectorAll("#goalList .completed").length;
 
-  goalProgress.textContent = `${completed} of ${total} completed`
-
+  goalProgress.textContent = `${completed} of ${total} completed`;
 }
 
 goalForm.addEventListener("submit", (e) => {
@@ -234,3 +233,36 @@ goalForm.addEventListener("submit", (e) => {
 
   updateGoalProgress();
 });
+
+const periodToggle = document.getElementById("periodToggle");
+const periodLabel = document.getElementById("periodLabel");
+
+let mode = localStorage.getItem("periodMode") || "day";
+
+periodLabel.textContent = mode;
+
+periodToggle.addEventListener("click", () => {
+  if (mode === "day") {
+    mode = "night";
+  } else {
+    mode = "day";
+  }
+
+  localStorage.setItem("periodMode", mode);
+
+  periodLabel.textContent = mode;
+
+  applyTheme();
+});
+
+function applyTheme() {
+  if (mode === "day") {
+    document.documentElement.dataset.activePeriod = "day";
+    document.documentElement.dataset.theme = "light";
+  } else {
+    document.documentElement.dataset.activePeriod = "night";
+    document.documentElement.dataset.theme = "dark";
+  }
+}
+
+applyTheme();

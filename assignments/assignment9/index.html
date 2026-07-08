@@ -14,34 +14,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <script>
-      (function () {
-        var mode = localStorage.getItem("periodMode") || "auto";
-        var period, theme;
-        if (mode === "day") {
-          period = "day";
-          theme = "light";
-        } else if (mode === "night") {
-          period = "night";
-          theme = "dark";
-        } else {
-          var hour = new Date().getHours();
-          if (hour >= 5 && hour < 11) period = "morning";
-          else if (hour >= 11 && hour < 17) period = "day";
-          else if (hour >= 17 && hour < 20) period = "evening";
-          else period = "night";
-          theme = period === "morning" || period === "day" ? "light" : "dark";
-        }
-        document.documentElement.dataset.activePeriod = period;
-        document.documentElement.dataset.theme = theme;
-      })();
-    </script>
   </head>
   <body>
-    <div class="sky-layer">
-      <div class="sky-stars"></div>
-      <div class="sky-clouds"></div>
-    </div>
+    <div class="sky-layer"></div>
 
     <header class="topbar">
       <div class="brand">
@@ -51,7 +26,7 @@
       <div class="topbar-actions">
         <a
           class="github-link"
-          href="https://github.com/forgewithharsh/sheriyans-cohort3.0/tree/main/assignments/assignment9https://github.com/forgewithharsh/sheriyans-cohort3.0/tree/main/assignments/assignment9"
+          href="https://github.com/forgewithharsh/sheriyans-cohort3.0/tree/main/assignments/assignment9"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Visit GitHub profile"
@@ -66,7 +41,7 @@
           <i class="ri-time-line toggle-icon icon-auto"></i>
           <i class="ri-sun-line toggle-icon icon-day"></i>
           <i class="ri-moon-line toggle-icon icon-night"></i>
-          <span id="periodLabel" class="period-label">Auto</span>
+          <span id="periodLabel" class="period-label"></span>
         </button>
       </div>
     </header>

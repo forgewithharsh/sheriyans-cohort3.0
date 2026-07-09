@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
-import User from "./components/User";
+import User from "./components/Usercard";
 import Form from "./components/Form";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
       {toggle ? (
         <div className="flex gap-4">
           {users.map((elem) => (
-            <User user={elem} />
+            <Usercard user={elem} setToggle={setToggle} />
           ))}
         </div>
       ) : (

@@ -9,7 +9,7 @@ const Form = () => {
     formState: { errors },
   } = useForm({});
 
-  console.log(errors)
+  console.log(errors);
 
   let formSubmit = (data) => {
     console.log(data);
@@ -26,31 +26,43 @@ const Form = () => {
         <input
           {...register("name", { required: "Name is required" })}
           className="p-2 outline-0 rounded border border-black"
-          type="email"
+          type="text"
           placeholder="Name"
         />
-        {errors.name && <p className="text-red-500">name do</p>}
+        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         <input
           {...register("email", { required: "Email is required" })}
           className="p-2 outline-0 rounded border border-black"
-          type="number"
+          type="email"
           placeholder="Email"
         />
-        {errors.email && <p className="text-red-500">email do</p>}
+        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
         <input
-          {...register("mobile", { required: "Mobile is required" })}
+          {...register("mobile", {
+            required: "Mobile is required",
+            minLength: {
+              value: 10,
+              message: "Minimum 10 digits are required",
+            },
+            maxLength: {
+              value: 10,
+              message: "Maximum 10 digits are required",
+            },
+          })}
           className="p-2 outline-0 rounded border border-black"
-          type="text"
+          type="number"
           placeholder="Mobile"
         />
-        {errors.mobile && <p className="text-red-500">mobile do</p>}
+        {errors.mobile && (
+          <p className="text-red-500">{errors.mobile.message}</p>
+        )}
         <input
           {...register("image", { required: "Image is required" })}
           className="p-2 outline-0 rounded border border-black"
           type="url"
           placeholder="Image"
         />
-        {errors.image && <p className="text-red-500">image do</p>}
+        {errors.image && <p className="text-red-500">{errors.image.message}</p>}
 
         <button className="text-white bg-blue-700 p-2 rounded-xl cursor-pointer">
           Add User

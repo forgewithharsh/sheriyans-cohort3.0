@@ -6,6 +6,7 @@ const Form = () => {
   const [products, setProducts] = useState({});
 
   const formRef = useRef({});
+  console.log(formRef);
 
   const handleSubmit = (e) => {
     e.preventDefault();

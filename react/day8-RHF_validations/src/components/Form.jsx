@@ -9,6 +9,8 @@ const Form = () => {
     formState: { errors },
   } = useForm({});
 
+  console.log(errors)
+
   let formSubmit = (data) => {
     console.log(data);
     reset();
@@ -22,29 +24,33 @@ const Form = () => {
         className="w-90 flex flex-col bg-blue-200 gap-3 p-4 rounded border-2 border-black"
       >
         <input
-          {...register("name")}
+          {...register("name", { required: "Name is required" })}
           className="p-2 outline-0 rounded border border-black"
           type="email"
-          placeholder="Email"
-        />
-        <input
-          {...register("email")}
-          className="p-2 outline-0 rounded border border-black"
-          type="number"
-          placeholder="Mobile"
-        />
-        <input
-          {...register("mobile")}
-          className="p-2 outline-0 rounded border border-black"
-          type="text"
           placeholder="Name"
         />
+        {errors.name && <p className="text-red-500">name do</p>}
         <input
-          {...register("image")}
+          {...register("email", { required: "Email is required" })}
+          className="p-2 outline-0 rounded border border-black"
+          type="number"
+          placeholder="Email"
+        />
+        {errors.email && <p className="text-red-500">email do</p>}
+        <input
+          {...register("mobile", { required: "Mobile is required" })}
+          className="p-2 outline-0 rounded border border-black"
+          type="text"
+          placeholder="Mobile"
+        />
+        {errors.mobile && <p className="text-red-500">mobile do</p>}
+        <input
+          {...register("image", { required: "Image is required" })}
           className="p-2 outline-0 rounded border border-black"
           type="url"
           placeholder="Image"
         />
+        {errors.image && <p className="text-red-500">image do</p>}
 
         <button className="text-white bg-blue-700 p-2 rounded-xl cursor-pointer">
           Add User

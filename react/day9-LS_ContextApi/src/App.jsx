@@ -9,14 +9,29 @@ const App = () => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
 
+  const deleteUser = (id) => {
+    let filterUser = users.filter((val, index) => {
+      return index !== id;
+    });
+    console.log(filterUser);
+    setUsers(filterUser);
+    localStorage.setItem("users", JSON.stringify(filterUser));
+  };
+
   return (
     <div className="p-3 h-screen flex flex-col gap-4">
       <Navbar setToggle={setToggle} />
 
       {toggle ? (
-        <div className="flex gap-4">
-          {users?.map((elem, index) => (
-            <User key={index} user={elem} setToggle={setToggle} />
+        <div className="flex flex-wrap gap-4">
+          {users.map((elem, index) => (
+            <User
+              ind={index}
+              deleteUser={deleteUser}
+              key={index}
+              user={elem}
+              setToggle={setToggle}
+            />
           ))}
         </div>
       ) : (

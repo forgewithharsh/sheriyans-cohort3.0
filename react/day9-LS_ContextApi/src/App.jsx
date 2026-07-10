@@ -9,6 +9,8 @@ const App = () => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
 
+  const [updatedData, setUpdatedData] = useState(null);
+
   const deleteUser = (id) => {
     let filterUser = users.filter((val, index) => {
       return index !== id;
@@ -26,6 +28,7 @@ const App = () => {
         <div className="flex flex-wrap gap-4">
           {users.map((elem, index) => (
             <User
+              setUpdatedData={setUpdatedData}
               ind={index}
               deleteUser={deleteUser}
               key={index}
@@ -36,7 +39,7 @@ const App = () => {
         </div>
       ) : (
         <div className="flex justify-center h-[70%] items-center">
-          <Form users={users} setUsers={setUsers} setToggle={setToggle} />
+          <Form updatedData={updatedData} users={users} setUsers={setUsers} setToggle={setToggle} />
         </div>
       )}
     </div>

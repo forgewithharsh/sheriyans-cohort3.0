@@ -1,6 +1,6 @@
 import React from "react";
 
-const User = ({ user, setToggle, deleteUser, ind, setUpdatedData }) => {
+const User = ({ user, setToggle, deleteUser, setUpdatedData }) => {
   return (
     <div className="p-4 border border-black bg-amber-100 rounded flex flex-col gap-2">
       <div className="h-40 w-40">
@@ -26,7 +26,7 @@ const User = ({ user, setToggle, deleteUser, ind, setUpdatedData }) => {
           Update
         </button>
         <button
-          onClick={() => deleteUser(ind)}
+          onClick={() => deleteUser(user.id)}
           className="bg-red-500 text-white py-2 px-3 rounded"
         >
           Delete

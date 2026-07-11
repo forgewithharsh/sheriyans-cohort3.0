@@ -12,10 +12,9 @@ const App = () => {
   const [updatedData, setUpdatedData] = useState(null);
 
   const deleteUser = (id) => {
-    let filterUser = users.filter((val, index) => {
-      return index !== id;
+    let filterUser = users.filter((user) => {
+      return user.id !== id;
     });
-    console.log(filterUser);
     setUsers(filterUser);
     localStorage.setItem("users", JSON.stringify(filterUser));
   };
@@ -26,12 +25,11 @@ const App = () => {
 
       {toggle ? (
         <div className="flex flex-wrap gap-4">
-          {users.map((elem, index) => (
+          {users.map((elem) => (
             <User
               setUpdatedData={setUpdatedData}
-              ind={index}
               deleteUser={deleteUser}
-              key={index}
+              key={elem.id}
               user={elem}
               setToggle={setToggle}
             />
@@ -39,7 +37,12 @@ const App = () => {
         </div>
       ) : (
         <div className="flex justify-center h-[70%] items-center">
-          <Form updatedData={updatedData} users={users} setUsers={setUsers} setToggle={setToggle} />
+          <Form
+            updatedData={updatedData}
+            users={users}
+            setUsers={setUsers}
+            setToggle={setToggle}
+          />
         </div>
       )}
     </div>

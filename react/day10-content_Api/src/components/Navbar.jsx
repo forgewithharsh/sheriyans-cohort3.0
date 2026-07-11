@@ -1,0 +1,16 @@
+import React from "react";
+
+const Navbar = () => {
+  return (
+    <div className="bg-black p-5 flex items-center justify-between">
+      <div>logo</div>
+      <div className="flex gap-10 text-xl">
+        <p>Home</p>
+        <p>Cart</p>
+      </div>
+      <button>Login</button>
+    </div>
+  );
+};
+
+export default Navbar;

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyShop } from "../context/MyWebsite";
 
-const Navbar = ({ setIsCartOpen }) => {
+const Navbar = () => {
+  let {setIsCartOpen} = useContext(MyShop)
   return (
     <div className="bg-black text-white rounded p-5 flex items-center justify-between">
       <div>Logo</div>

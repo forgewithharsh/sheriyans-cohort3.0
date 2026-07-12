@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Star, Trash2, ShoppingBag } from "lucide-react";
+import { MyShop } from "../context/MyWebsite";
 
-const Cart = ({ cartItems }) => {
+const Cart = () => {
+
+  let {cartItems} = useContext(MyShop)
 
   return (
     <div className="min-h-screen bg-gray-100 py-10">

@@ -10,7 +10,6 @@ const TestComponents = () => {
     <div>
       <h1>All Components</h1>
       <Comp1 />
-
     </div>
   );
 };

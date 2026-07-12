@@ -6,6 +6,9 @@ import Cart from "./components/Cart";
 const App = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([])
+
+  console.log(cartItems)
 
   let products = [
     {
@@ -285,12 +288,12 @@ const App = () => {
 
       {isCartOpen ? (
         <div>
-          <Cart />
+          <Cart cartItems={cartItems}/>
         </div>
       ) : (
-        <div className="grid grid-cols-5 gap-4">
-          {products.map((product) => {
-            return <ProductCard product={product} />;
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product, id) => {
+            return <ProductCard key={id} product={product} setCartItems={setCartItems}/>;
           })}
         </div>
       )}

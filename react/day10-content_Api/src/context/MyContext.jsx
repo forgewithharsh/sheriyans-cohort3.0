@@ -1,11 +1,13 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 // setup out blank store
-const MyStore = createContext();
+export const MyStore = createContext();
 
 // make a provider of our store who handle data
 // and serves to the customers
 
 export const ContextProvider = ({ children }) => {
-  return <MyStore.Provider>{children}</MyStore.Provider>;
+  const [centralValue, setCentralValue] = useState("me context se hu");
+
+  return <MyStore.Provider value={centralValue}>{children}</MyStore.Provider>;
 };

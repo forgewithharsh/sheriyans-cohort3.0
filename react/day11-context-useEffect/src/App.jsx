@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import { MyStore } from "./context/MyContext";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  let { count, setCount } = useContext(MyStore);
+  console.log("app rendering...");
+
   return (
     <div>
       <h1>Count - {count}</h1>

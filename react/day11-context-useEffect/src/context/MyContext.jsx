@@ -5,7 +5,7 @@ export const MyStore = createContext();
 
 // Provider
 export const ContextProvider = ({ children }) => {
-  console.log("context rendeing...");
+  console.log("context rendering...");
 
   const [count, setCount] = useState(0);
 

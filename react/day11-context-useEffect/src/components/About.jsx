@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const About = () => {
-  console.log("about rendering");
-
-  setInterval(() => {
+  let interval = setInterval(() => {
     console.log("hey i m in about");
   }, 1000);
+
+  useEffect(() => {
+    console.log("About rendering...");
+
+    // * Only use when your components leaks some memory
+    // * and if you want to track any updates
+
+    return () => {
+      clearInterval(interval);
+      console.log("i m triggered kuki about jaa chuka hai");
+    };
+  }, []);
 
   return (
     <div>

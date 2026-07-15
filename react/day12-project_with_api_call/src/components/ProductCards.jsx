@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Star, ShoppingCart } from "lucide-react";
+import { MyStore } from "../context/MyContext";
 
-const ProductCard = ({ product, setCartItems }) => {
+const ProductCard = ({ product, isInCart }) => {
+  const { setCartItems, incrementQuantity, decrementQuantity } =
+    useContext(MyStore);
+
+  const addToCart = () => {
+    setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
+    alert("Product added to Cart!");
+  };
   return (
     <div className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Product Image */}
@@ -43,13 +51,36 @@ const ProductCard = ({ product, setCartItems }) => {
             ${product.price}
           </span>
 
-          <button
-            onClick={() => setCartItems((prev) => [...prev, product])}
-            className="flex items-center gap-2 rounded-xl bg-black px-4 py-2 text-white transition hover:bg-gray-800"
-          >
-            <ShoppingCart size={18} />
-            Add
-          </button>
+          {/* Button */}
+          {isInCart ? (
+            <div className="flex items-center overflow-hidden rounded-xl border border-gray-300 shadow-sm">
+              <button
+                onClick={() => decrementQuantity(product.id)}
+                className="flex h-10 w-10 items-center justify-center transition hover:bg-gray-100"
+              >
+                −
+              </button>
+
+              <span className="flex h-10 w-12 items-center justify-center border-x border-gray-300 font-semibold">
+                {isInCart.quantity}
+              </span>
+
+              <button
+                onClick={() => incrementQuantity(product.id)}
+                className="flex h-10 w-10 items-center justify-center transition hover:bg-gray-100"
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={addToCart}
+              className="flex items-center gap-2 rounded-xl bg-black px-5 py-2.5 font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-gray-800 active:scale-95"
+            >
+              <ShoppingCart size={18} />
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
 import ProductCard from "./components/ProductCards";
 import CartScreen from "./pages/CartScreen";
+import { MyStore } from "./context/MyContext";
 
 const App = () => {
   const [productsData, setProductsData] = useState([]);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([])
+
+  const { cartOpen, cartItems } = useContext(MyStore);
 
   async function getProductsData() {
     try {
@@ -25,16 +26,20 @@ const App = () => {
 
   return (
     <div className="h-screen p-2 flex flex-col gap-4">
-      <Navbar setCartOpen={setCartOpen}/>
+      <Navbar />
 
       {cartOpen ? (
         <div className="h-screen">
-          <CartScreen cartItems={cartItems}/>
+          <CartScreen />
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {productsData.map((elem) => {
-            return <ProductCard key={elem.id} product={elem} setCartItems={setCartItems}/>;
+            let isInCart = cartItems.find((val) => val.id === elem.id);
+
+            return (
+              <ProductCard key={elem.id} product={elem} isInCart={isInCart} />
+            );
           })}
         </div>
       )}

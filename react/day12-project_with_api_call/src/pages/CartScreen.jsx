@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import CartCard from "../components/CartCard";
 
-const CartScreen = () => {
+const CartScreen = ({ cartItems }) => {
   return (
-    <div>
-      <h1>This is Cart Section</h1>
+    <div className="h-screen">
+      {cartItems.map((elem) => {
+        return <CartCard key={elem.id} product={elem} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default CartScreen
+export default CartScreen;

@@ -18,8 +18,16 @@
 // console.log("Virtual DOM", rh1);
 
 let div = React.createElement("div", {}, [
-  React.createElement("h1", {}, React.createElement("span", {}, "i m span in h1")),
-  React.createElement("h2", {}, React.createElement("span", {}, "i m span in h2")),
+  React.createElement(
+    "h1",
+    {},
+    React.createElement("span", {}, "i m span in h1"),
+  ),
+  React.createElement(
+    "h2",
+    {},
+    React.createElement("span", {}, "i m span in h2"),
+  ),
 ]);
 
 let r = document.querySelector("#root");

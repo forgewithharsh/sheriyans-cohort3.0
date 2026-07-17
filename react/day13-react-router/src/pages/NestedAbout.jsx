@@ -1,13 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router";
 
-const Home = () => {
+const NestedAbout = () => {
   return (
     <div>
-      <h1>This is Home section.</h1>
-      <Outlet />
+      <h1>Nested About section.</h1>
     </div>
   );
 };
 
-export default Home;
+export default NestedAbout;

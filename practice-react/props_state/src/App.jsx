@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import Login from "./components/Login";
+import { useState } from "react";
+import Register from "./components/Register";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <h1>Count is - {count}</h1>
+  const [toggle, setToggle] = useState(true);
 
-      <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
+  return (
+    <div className="bg-gray-300 h-screen flex justify-center items-center">
+      {toggle ? (
+        <Login setToggle={setToggle} />
+      ) : (
+        <Register setToggle={setToggle} />
+      )}
     </div>
   );
 };

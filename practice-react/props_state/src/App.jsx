@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import UserCard from "./components/UserCard";
 import Form from "./components/Form";
+import RHF from "./components/RHF";
 
 const App = () => {
   // const [users, setUsers] = useState([]);
@@ -19,7 +20,8 @@ const App = () => {
     // </div>
 
     <div>
-      <Form/>
+      {/* <Form/> */}
+      <RHF />
     </div>
   );
 };

@@ -4,6 +4,7 @@ const Form = () => {
   console.log("Form Rendering...");
 
   const [products, setProducts] = useState({});
+  console.log("Products: ", products);
 
   const formRef = useRef({});
 
@@ -14,6 +15,15 @@ const Form = () => {
     console.log(formRef.current.price.value);
     console.log(formRef.current.category.value);
     console.log(formRef.current.image.value);
+
+    let obj = {
+      pName: formRef.current.productName.value,
+      price: formRef.current.price.value,
+      category: formRef.current.category.value,
+      image: formRef.current.image.value,
+    };
+
+    setProducts(obj);
   };
 
   return (

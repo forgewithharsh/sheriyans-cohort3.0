@@ -1,30 +1,49 @@
 import React from "react";
-// import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const Form = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const formSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <div className="flex flex-col items-center gap-3">
       <h1 className="text-xl font-bold">Create User</h1>
-      <form className="w-90 flex flex-col bg-blue-200 gap-3 p-4 rounded border-2 border-black">
+      <form
+        onSubmit={handleSubmit(formSubmit)}
+        className="w-90 flex flex-col bg-blue-200 gap-3 p-4 rounded border-2 border-black"
+      >
         <input
+          {...register("name")}
           className="p-2 outline-0 rounded border border-black"
           type="text"
           placeholder="Name"
         />
 
         <input
+          {...register("email")}
           className="p-2 outline-0 rounded border border-black"
           type="email"
           placeholder="Email"
         />
 
         <input
+          {...register("mobile")}
           className="p-2 outline-0 rounded border border-black"
           type="number"
           placeholder="Mobile"
         />
 
         <input
+          {...register("image")}
           className="p-2 outline-0 rounded border border-black"
           type="url"
           placeholder="Image"

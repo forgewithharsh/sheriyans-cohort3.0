@@ -1,10 +1,12 @@
 import React from "react";
-import { RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 
 const AppRoutes = () => {
-  let router = createBrowserRouter([]);
+  let router = createBrowserRouter([
+    
+  ]);
 
-  return <RouterProvider />;
+  return <RouterProvider router={}/>;
 };
 
 export default AppRoutes;

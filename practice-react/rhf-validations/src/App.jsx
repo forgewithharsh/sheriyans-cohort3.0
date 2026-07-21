@@ -14,7 +14,7 @@ const App = () => {
       {toggle ? (
         <div className="flex gap-4">
           {users.map((elem) => (
-            <Usercard user={elem} />
+            <Usercard user={elem} setToggle={setToggle} />
           ))}
         </div>
       ) : (

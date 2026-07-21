@@ -4,7 +4,7 @@ import Form from "./components/Form";
 import Usercard from "./components/Usercard";
 
 const App = () => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   return (
     <div className="p-3 h-screen flex flex-col gap-4">
       <Navbar setToggle={setToggle} />

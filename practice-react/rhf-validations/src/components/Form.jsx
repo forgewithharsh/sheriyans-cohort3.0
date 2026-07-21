@@ -1,17 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const Form = () => {
+const Form = ({ setUsers, setToggle }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: "onChange",
+  });
 
   const formSubmit = (data) => {
     console.log(data);
+    setUsers((prev) => [...prev, data]);
     reset();
+    setToggle((prev) => !prev);
   };
 
   return (
@@ -22,14 +26,26 @@ const Form = () => {
         className="w-90 flex flex-col bg-blue-200 gap-3 p-4 rounded border-2 border-black"
       >
         <input
-          {...register("name", { required: "Name is required" })}
+          {...register("name", {
+            required: "Name is required",
+            pattern: {
+              value: /^\S.*$/,
+              message: "Blank spaces is not allowed",
+            },
+          })}
           className="p-2 outline-0 rounded border border-black"
           type="text"
           placeholder="Name"
         />
         {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         <input
-          {...register("email", { required: "Email is required" })}
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "Please enter valid email",
+            },
+          })}
           className="p-2 outline-0 rounded border border-black"
           type="email"
           placeholder="Email"

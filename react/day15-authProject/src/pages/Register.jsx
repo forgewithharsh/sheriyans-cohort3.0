@@ -1,9 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { Auth } from "../context/AuthContext";
 
 const Register = () => {
   let navigate = useNavigate();
+
+  const { registeredUsers, setRegisteredUsers } = useContext(Auth);
 
   let {
     register,
@@ -15,7 +19,13 @@ const Register = () => {
   });
 
   const formSubmit = (data) => {
-    console.log(data);
+    let arr = [...registeredUsers, data];
+
+    setRegisteredUsers(arr);
+    alert("User Registered");
+
+    localStorage.setItem("RegisteredUser", JSON.stringify(arr));
+
     reset();
   };
 

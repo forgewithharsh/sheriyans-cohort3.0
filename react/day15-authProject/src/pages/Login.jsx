@@ -1,9 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { Auth } from "../context/AuthContext";
 
 const Login = () => {
   let navigate = useNavigate();
+
+  const { registeredUsers, loggedInUser, setLoggedInUser } = useContext(Auth);
 
   let {
     register,
@@ -15,7 +19,21 @@ const Login = () => {
   });
 
   const formSubmit = (data) => {
-    console.log(data);
+    let user = registeredUsers.find((val) => {
+      return val.email === data.email && val.password === data.password;
+    });
+
+    if (!user) {
+      alert("User not found invalid credentials");
+      return;
+    }
+
+    setLoggedInUser(user);
+
+    localStorage.setItem("loggedUsers", JSON.stringify(user));
+    alert("User LoggedIn");
+    navigate("/main");
+
     reset();
   };
 

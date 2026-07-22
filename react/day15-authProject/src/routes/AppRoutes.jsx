@@ -1,8 +1,9 @@
 import React from "react";
-import { ReactProvider, createBrowserRouter } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AuthLayout from "../layout/AuthLayout";
+import MainLayout from "../layout/MainLayout";
 
 const AppRoutes = () => {
   let router = createBrowserRouter([
@@ -20,9 +21,13 @@ const AppRoutes = () => {
         },
       ],
     },
+    {
+      path: "/main",
+      element: <MainLayout />,
+    },
   ]);
 
-  return <ReactProvider router={router} />;
+  return <RouterProvider router={router} />;
 };
 
 export default AppRoutes;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -22,9 +23,10 @@ const Register = () => {
     let arr = [...registeredUsers, data];
 
     setRegisteredUsers(arr);
-    alert("User Registered");
-
     localStorage.setItem("RegisteredUser", JSON.stringify(arr));
+
+    toast.success("User Registered");
+    navigate("/");
 
     reset();
   };

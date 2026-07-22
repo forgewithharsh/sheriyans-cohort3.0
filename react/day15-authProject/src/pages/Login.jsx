@@ -3,11 +3,12 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   let navigate = useNavigate();
 
-  const { registeredUsers, loggedInUser, setLoggedInUser } = useContext(Auth);
+  const { registeredUsers, setLoggedInUser } = useContext(Auth);
 
   let {
     register,
@@ -24,14 +25,14 @@ const Login = () => {
     });
 
     if (!user) {
-      alert("User not found invalid credentials");
+      toast.error("User not found or invalid credentials");
       return;
     }
 
     setLoggedInUser(user);
 
     localStorage.setItem("loggedUsers", JSON.stringify(user));
-    alert("User LoggedIn");
+    toast.success("User LoggedIn");
     navigate("/main");
 
     reset();

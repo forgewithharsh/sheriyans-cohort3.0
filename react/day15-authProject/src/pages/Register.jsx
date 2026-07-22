@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 const Register = () => {
   let navigate = useNavigate();
 
-  const { registeredUsers, setRegisteredUsers } = useContext(Auth);
+  const { registeredUsers, setRegisteredUsers, setLoggedInUser } =
+    useContext(Auth);
 
   let {
     register,
@@ -24,9 +25,10 @@ const Register = () => {
 
     setRegisteredUsers(arr);
     localStorage.setItem("RegisteredUser", JSON.stringify(arr));
-
     toast.success("User Registered");
-    navigate("/");
+    setLoggedInUser(data);
+    localStorage.setItem("loggedUsers", JSON.stringify(data));
+    navigate("/main");
 
     reset();
   };

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router";
 import { House, Users, ShoppingBag, LogOut } from "lucide-react";
+import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { setLoggedInUser } = useContext(Auth);
+
   return (
     <div className="flex h-screen w-64 flex-col justify-between border-r border-gray-200 bg-white p-6 shadow-lg">
       {/* Logo & Links */}
@@ -56,7 +60,14 @@ const Navbar = () => {
       </div>
 
       {/* Logout */}
-      <button className="flex items-center justify-center gap-2 rounded-xl bg-red-500 py-3 font-semibold text-white transition hover:bg-red-600">
+      <button
+        onClick={() => {
+          localStorage.removeItem("loggedUsers");
+          toast.warn("User logged out!")
+          setLoggedInUser(null);
+        }}
+        className="flex items-center justify-center gap-2 rounded-xl bg-red-500 py-3 font-semibold text-white transition hover:bg-red-600"
+      >
         <LogOut size={18} />
         Logout
       </button>

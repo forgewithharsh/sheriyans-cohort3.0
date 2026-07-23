@@ -1,49 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { useContext } from "react";
 import { Auth } from "../context/AuthContext";
-import { toast } from "react-toastify";
+import { useAuth } from "../hooks/useAuth";
 
 const Login = () => {
-  let navigate = useNavigate();
-
-  const { registeredUsers, setLoggedInUser } = useContext(Auth);
-
-  let {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-  });
-
-  const formSubmit = (data) => {
-    let user = registeredUsers.find((val) => {
-      return val.email === data.email && val.password === data.password;
-    });
-
-    if (!user) {
-      toast.error("User not found or invalid credentials");
-      return;
-    }
-
-    setLoggedInUser(user);
-
-    localStorage.setItem("loggedUsers", JSON.stringify(user));
-    toast.success("User LoggedIn");
-    navigate("/main");
-
-    reset();
-  };
+  const { navigate, register, handleSubmit, errors, loginFormSubmit } =
+    useAuth();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-100">
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
         <h1 className="mb-8 text-center text-2xl font-bold">Login</h1>
 
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(loginFormSubmit)} className="space-y-5">
           <input
             {...register("email", {
               required: "Email is required",

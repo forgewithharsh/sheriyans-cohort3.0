@@ -1,44 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { useContext } from "react";
 import { Auth } from "../context/AuthContext";
-import { toast } from "react-toastify";
+import { useAuth } from "../hooks/useAuth";
 
 const Register = () => {
-  let navigate = useNavigate();
-
-  const { registeredUsers, setRegisteredUsers, setLoggedInUser } =
-    useContext(Auth);
-
-  let {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-  });
-
-  const formSubmit = (data) => {
-    let arr = [...registeredUsers, data];
-
-    setRegisteredUsers(arr);
-    localStorage.setItem("RegisteredUser", JSON.stringify(arr));
-    toast.success("User Registered");
-    setLoggedInUser(data);
-    localStorage.setItem("loggedUsers", JSON.stringify(data));
-    navigate("/main");
-
-    reset();
-  };
+  const { navigate, register, handleSubmit, errors, registerFormSubmit } =
+    useAuth();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-100">
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
         <h1 className="mb-8 text-center text-2xl font-bold">Register</h1>
 
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(registerFormSubmit)} className="space-y-5">
           <input
             {...register("name", {
               required: "Name is required",

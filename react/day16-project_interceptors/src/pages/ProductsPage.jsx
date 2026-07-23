@@ -11,7 +11,6 @@ const ProductsPage = () => {
 
     setProducts(res.data);
     setLoading(false);
-    console.log(res);
   }
 
   useEffect(() => {

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import axios from "axios";
-import ProductCard from '../components/ProductCard';
+import React, { useEffect, useState } from "react";
+import ProductCard from "../components/ProductCard";
+import { axiosInstance } from "../config/axiosInstance";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   async function getProductsData() {
-    const res = await axios.get("https://fakestoreapi.com/products");
+    const res = await axiosInstance.get("/products");
 
     setProducts(res.data);
     setLoading(false);
-    console.log(res)
+    console.log(res);
   }
 
   useEffect(() => {
@@ -29,4 +29,4 @@ const ProductsPage = () => {
   );
 };
 
-export default ProductsPage
+export default ProductsPage;

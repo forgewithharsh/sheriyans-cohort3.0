@@ -2,8 +2,8 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import AuthLayout from "../layout/AuthLayout";
-import MainLayout from "../layout/MainLayout";
+import AuthLayout from "../layouts/AuthLayout";
+import MainLayout from "../layouts/MainLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 

@@ -5,27 +5,20 @@ import Register from "../pages/Register";
 import AuthLayout from "../layout/AuthLayout";
 import MainLayout from "../layout/MainLayout";
 import ProtectedRoute from "./ProtectedRoute";
-import PublicRoute from "./PublicRoute";
 
 const AppRoutes = () => {
   let router = createBrowserRouter([
     {
       path: "/",
-      element: <PublicRoute />,
+      element: <AuthLayout />,
       children: [
         {
           path: "",
-          element: <AuthLayout />,
-          children: [
-            {
-              path: "",
-              element: <Login />,
-            },
-            {
-              path: "register",
-              element: <Register />,
-            },
-          ],
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
         },
       ],
     },

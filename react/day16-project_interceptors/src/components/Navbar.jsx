@@ -1,44 +1,65 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { House, Users, ShoppingBag, LogOut } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <div className="border-r border-gray-500 flex flex-col gap-10">
-      <h1 className="text-3xl font-semibold">E-Comm</h1>
+    <div className="flex h-screen w-64 flex-col justify-between border-r border-gray-200 bg-white p-6 shadow-lg">
+      {/* Logo & Links */}
+      <div>
+        <h1 className="mb-10 text-3xl font-bold text-gray-800">E-Comm</h1>
 
-      <div className="flex flex-col gap-6 ml-5">
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "font-semibold text-red-500 border-b border-gray-500"
-              : "text-black border-b border-gray-500"
-          }
-          to={"/main"}
-          end
-        >
-          Home
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "font-semibold text-red-500 border-b border-gray-500"
-              : "text-black border-b border-gray-500"
-          }
-          to={"/main/users"}
-        >
-          Users
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "font-semibold text-red-500 border-b border-gray-500"
-              : "text-black border-b border-gray-500"
-          }
-          to={"/main/products"}
-        >
-          Products
-        </NavLink>
+        <div className="space-y-3">
+          <NavLink
+            to="/main"
+            end
+            className={({ isActive }) =>
+              `flex items-center gap-3 rounded-xl px-4 py-3 transition ${
+                isActive
+                  ? "bg-black text-white"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`
+            }
+          >
+            <House size={20} />
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/main/users"
+            className={({ isActive }) =>
+              `flex items-center gap-3 rounded-xl px-4 py-3 transition ${
+                isActive
+                  ? "bg-black text-white"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`
+            }
+          >
+            <Users size={20} />
+            Users
+          </NavLink>
+
+          <NavLink
+            to="/main/products"
+            className={({ isActive }) =>
+              `flex items-center gap-3 rounded-xl px-4 py-3 transition ${
+                isActive
+                  ? "bg-black text-white"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`
+            }
+          >
+            <ShoppingBag size={20} />
+            Products
+          </NavLink>
+        </div>
       </div>
+
+      {/* Logout */}
+      <button className="flex items-center justify-center gap-2 rounded-xl bg-red-500 py-3 font-semibold text-white transition hover:bg-red-600">
+        <LogOut size={18} />
+        Logout
+      </button>
     </div>
   );
 };

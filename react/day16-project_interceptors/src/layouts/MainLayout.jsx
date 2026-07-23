@@ -4,12 +4,12 @@ import Navbar from "../components/Navbar";
 
 const MainContent = () => {
   return (
-    <div className="h-screen p-2 grid grid-cols-[1fr_7fr]">
+    <div className="grid h-screen grid-cols-[260px_1fr] overflow-hidden">
       <Navbar />
 
-      <div className="h-full p-2">
+      <main className="overflow-y-auto p-6">
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 };

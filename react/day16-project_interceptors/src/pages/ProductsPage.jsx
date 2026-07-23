@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import ProductCard from '../components/ProductCard';
 
 const ProductsPage = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  async function getProductsData() {
+    const res = await axios.get("https://fakestoreapi.com/products");
+
+    setProducts(res.data);
+    setLoading(false);
+    console.log(res)
+  }
+
+  useEffect(() => {
+    getProductsData();
+  }, []);
+
+  if (loading) return <h1 className="text-3xl">Loading...</h1>;
+
   return (
-    <div>
-      <h1>Product page</h1>
+    <div className="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {products.map((val) => {
+        return <ProductCard key={val.id} product={val} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
 export default ProductsPage
-

@@ -1,7 +1,21 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const Auth = createContext();
 
 export const AuthProvider = ({ children }) => {
-  return <Auth.Provider>{children}</Auth.Provider>;
+  const [registeredUsers, setRegisteredUsers] = useState(
+    JSON.parse(localStorage.getItem("registeredUsers")) || [],
+  );
+  console.log(registeredUsers)
+
+  return (
+    <Auth.Provider
+      value={{
+        registeredUsers,
+        setRegisteredUsers,
+      }}
+    >
+      {children}
+    </Auth.Provider>
+  );
 };

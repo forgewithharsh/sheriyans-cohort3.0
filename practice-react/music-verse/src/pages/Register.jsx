@@ -18,7 +18,21 @@ const Register = () => {
   });
 
   const formSubmit = (data) => {
-    let arr = [...registeredUsers, data];
+    const userExists = registeredUsers.find((user) => {
+      return user.email === data.email || user.username === data.username;
+    });
+
+    if (userExists) {
+      alert("Email or Username already exists");
+      return;
+    }
+
+    let newUser = {
+      ...data,
+      role,
+    };
+
+    let arr = [...registeredUsers, newUser];
     console.log(data);
 
     setRegisteredUsers(arr);

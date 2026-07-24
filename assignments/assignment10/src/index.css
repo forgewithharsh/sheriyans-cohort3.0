@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #d7ff3d;
+  --color-brand-dim: #b8de2b;
+
+  --color-ink-950: #0a0a0a;
+  --color-ink-900: #111111;
+  --color-ink-800: #181818;
+  --color-ink-700: #232323;
+  --color-ink-600: #2e2e2e;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --radius-xl2: 1.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-950 text-white font-body antialiased;
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(215, 255, 61, 0.06),
+      transparent
+    );
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-brand text-ink-950;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #d7ff3d;
+  outline-offset: 2px;
+}

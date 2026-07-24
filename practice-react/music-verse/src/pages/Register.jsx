@@ -2,8 +2,11 @@ import React, { useState, useContext } from "react";
 import { User, AtSign, Mail, Lock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Auth } from "../context/AuthContext";
+import { useNavigate } from "react-router";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [role, setRole] = useState("listener");
 
   const { registeredUsers, setRegisteredUsers } = useContext(Auth);
@@ -39,6 +42,8 @@ const Register = () => {
     localStorage.setItem("RegisteredUser", JSON.stringify(arr));
 
     alert("🎉 Registered successfully!");
+
+    navigate("/");
 
     reset();
   };

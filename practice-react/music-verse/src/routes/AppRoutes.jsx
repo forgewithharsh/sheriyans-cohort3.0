@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Favourite from "../pages/Favourite";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import ArtistDashboard from "../pages/ArtistDashboard";
 
 const AppRoutes = () => {
   const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const AppRoutes = () => {
         {
           path: "register",
           element: <Register />,
+        },
+        {
+          path: "artist-dashboard",
+          element: <ArtistDashboard />,
         },
       ],
     },

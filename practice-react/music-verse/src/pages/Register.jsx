@@ -38,6 +38,8 @@ const Register = () => {
     setRegisteredUsers(arr);
     localStorage.setItem("RegisteredUser", JSON.stringify(arr));
 
+    alert("🎉 Registered successfully!");
+
     reset();
   };
 

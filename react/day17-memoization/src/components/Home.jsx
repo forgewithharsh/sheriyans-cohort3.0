@@ -1,6 +1,6 @@
 import React from "react";
 
-const Home = () => {
+const Home = ({ users }) => {
   console.log("home rendering");
   return (
     <div>
@@ -9,4 +9,6 @@ const Home = () => {
   );
 };
 
-export default React.memo(Home);
+export default React.memo(Home, (prevProps, nextProps) => {
+  return prevProps.users.name === nextProps.users.name;
+});

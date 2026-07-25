@@ -11,6 +11,26 @@ const App = () => {
     setProductsData(res.data);
   };
 
+  let filteredData = () => {
+    console.log("filter running...");
+
+    let result = productsData.filter((val) => {
+      return val.title.toLowerCase().includes(searchData.toLowerCase());
+    });
+
+    setProductsData(result);
+  };
+
+  useEffect(() => {
+    if (!searchData) return;
+
+    let timeout = setTimeout(() => {
+      filteredData();
+    }, 700);
+
+    return () => clearInterval(timeout);
+  }, [searchData]);
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -23,7 +43,7 @@ const App = () => {
         style={{ padding: "10px 30px" }}
         type="text"
         placeholder="Search products"
-        onChange={(e) => setSearchData(e.target.data)}
+        onChange={(e) => setSearchData(e.target.value)}
       />
 
       {productsData.map((val) => {

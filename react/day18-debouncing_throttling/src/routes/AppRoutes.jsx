@@ -1,7 +1,8 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import App from "../App";
+import { getData } from "../apis/userApi";
 let About = lazy(() => import("../pages/About"));
 let Contact = lazy(() => import("../pages/Contact"));
 
@@ -17,11 +18,21 @@ const AppRoutes = () => {
         },
         {
           path: "about",
-          element: <About />,
+          loader: getData,
+          hydrateFallbackElement: <h1>Loading users data</h1>,
+          element: (
+            <Suspense fallback={<h1>Loading About</h1>}>
+              <About />
+            </Suspense>
+          ),
         },
         {
           path: "contact",
-          element: <Contact />,
+          element: (
+            <Suspense fallback={<h1>Loading Contact</h1>}>
+              <Contact />
+            </Suspense>
+          ),
         },
       ],
     },

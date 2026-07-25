@@ -1,11 +1,11 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router";
 import { Zap, ShoppingCart, LogOut } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop" },
-  { to: "/about", label: "About" },
+  { to: "/main/home", label: "Home" },
+  { to: "/main/shop", label: "Shop" },
+  { to: "/main/about", label: "About" },
 ];
 
 export default function Navbar({ onCartClick, cartCount = 0 }) {
@@ -16,13 +16,13 @@ export default function Navbar({ onCartClick, cartCount = 0 }) {
 
   function handleLogout() {
     logout();
-    navigate("/signup", { replace: true });
+    navigate("/", { replace: true });
   }
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink-700/60 bg-ink-950/90 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <Link to="/" className="flex items-center gap-2.5">
+        <Link to="/main/home" className="flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-ink-950">
             <Zap size={18} fill="currentColor" strokeWidth={0} />
           </span>

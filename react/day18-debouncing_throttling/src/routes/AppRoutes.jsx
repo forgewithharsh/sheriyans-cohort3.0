@@ -1,9 +1,9 @@
-import React from "react";
+import React, { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import App from "../App";
-import About from "../pages/About";
-import Contact from "../pages/Contact";
+let About = lazy(() => import("../pages/About"));
+let Contact = lazy(() => import("../pages/Contact"));
 
 const AppRoutes = () => {
   const router = createBrowserRouter([

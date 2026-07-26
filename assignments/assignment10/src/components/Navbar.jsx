@@ -1,15 +1,15 @@
-import { Link, NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { Zap, ShoppingCart, LogOut } from "lucide-react";
-import { useAuth } from "../context/AuthContext";
+import { useAuthHook } from "../hooks/useAuthHook";
 
 const links = [
-  { to: "/main/home", label: "Home" },
+  { to: "/main", label: "Home" },
   { to: "/main/shop", label: "Shop" },
   { to: "/main/about", label: "About" },
 ];
 
 export default function Navbar({ onCartClick, cartCount = 0 }) {
-  const { user, logout } = useAuth();
+  const { user, logout } = useAuthHook();
   const navigate = useNavigate();
   const displayName = user?.name || "Guest";
   const initial = displayName.charAt(0).toUpperCase();
@@ -22,14 +22,14 @@ export default function Navbar({ onCartClick, cartCount = 0 }) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-700/60 bg-ink-950/90 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <Link to="/main/home" className="flex items-center gap-2.5">
+        <NavLink to="/main" className="flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-ink-950">
             <Zap size={18} fill="currentColor" strokeWidth={0} />
           </span>
           <span className="font-display text-xl font-semibold tracking-tight">
             Sky<span className="text-brand">Mart</span>
           </span>
-        </Link>
+        </NavLink>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (

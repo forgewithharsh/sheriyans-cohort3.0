@@ -117,7 +117,7 @@ export default function About() {
           Explore thousands of products at unbeatable prices.
         </p>
         <NavLink
-          to="/shop"
+          to="/main/shop"
           className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-full bg-brand px-7 py-3.5 font-semibold text-ink-950 transition-colors hover:bg-brand-dim"
         >
           Browse Products <ArrowRight size={16} strokeWidth={2.5} />

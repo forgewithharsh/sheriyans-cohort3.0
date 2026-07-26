@@ -49,7 +49,7 @@ export function CategoryCard({ category, count, onClick }) {
     >
       <Icon size={30} strokeWidth={1.5} />
       <span className="font-display text-base font-semibold capitalize">
-        {/* {formatCategory(category)} */}
+        {category}
       </span>
       <span className="text-sm text-ink-950/40">{count} items</span>
     </button>

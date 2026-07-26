@@ -30,11 +30,7 @@ const AppRoutes = () => {
       element: <MainLayout />,
       children: [
         {
-          index: true,
-          element: <Navigate to="home" replace />,
-        },
-        {
-          path: "home",
+          path: "",
           element: <Home />,
         },
         {

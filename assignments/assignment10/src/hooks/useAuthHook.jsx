@@ -50,11 +50,20 @@ export const useAuthHook = () => {
     reset();
   };
 
+  // Logout Logic
+  const logout = () => {
+    setLoggedInUser(null);
+    localStorage.removeItem("loggedUsers");
+    toast.success("Logged out");
+    navigate("/");
+  };
+
   return {
     register,
     handleSubmit,
     reset,
     errors,
+    logout,
     loginFormSubmit,
     registerFormSubmit,
   };

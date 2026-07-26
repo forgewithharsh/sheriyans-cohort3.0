@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Star, ShoppingCart } from "lucide-react";
-import { formatCategory } from "../utils/format";
 
 export default function ProductCard({ product }) {
   const rating = product.rating?.rate ?? 0;
@@ -8,12 +7,12 @@ export default function ProductCard({ product }) {
 
   return (
     <Link
-      to={`/products/${product.id}`}
+      to={`/main/products/${product.id}`}
       className="group flex flex-col overflow-hidden rounded-2xl bg-white text-ink-950 transition-transform hover:-translate-y-1"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-50">
         <span className="absolute left-3 top-3 z-10 rounded-full bg-ink-900/90 px-3 py-1 text-xs font-medium text-white">
-          {formatCategory(product.category)}
+          {product.category}
         </span>
         <img
           src={product.image}
@@ -25,7 +24,7 @@ export default function ProductCard({ product }) {
 
       <div className="flex flex-1 flex-col gap-2 p-5">
         <p className="text-xs uppercase tracking-wide text-ink-950/40">
-          {formatCategory(product.category)}
+          {product.category}
         </p>
         <h3 className="line-clamp-2 font-display text-[17px] font-semibold leading-snug">
           {product.title}

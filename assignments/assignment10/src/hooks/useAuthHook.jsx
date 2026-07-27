@@ -51,7 +51,7 @@ export const useAuthHook = () => {
     setRegisteredUsers(arr);
     localStorage.setItem("RegisteredUser", JSON.stringify(arr));
     toast.success("Registered successfully! Please login.");
-    navigate("/login");
+    navigate("/");
     reset();
   };
 

@@ -1,11 +1,10 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Auth } from "../context/AuthContext";
 import { useNavigate } from "react-router";
 
 export const useAuthHook = () => {
-
   let navigate = useNavigate();
 
   const { registeredUsers, loggedInUser, setLoggedInUser, setRegisteredUsers } =
@@ -40,13 +39,19 @@ export const useAuthHook = () => {
 
   // Register Logic
   const registerFormSubmit = (data) => {
+    let alreadyExists = registeredUsers.find((u) => u.email === data.email);
+
+    if (alreadyExists) {
+      toast.error("An account with this email already exists");
+      return;
+    }
+
     let arr = [...registeredUsers, data];
 
     setRegisteredUsers(arr);
     localStorage.setItem("RegisteredUser", JSON.stringify(arr));
-    toast.success("User Registered");
+    toast.success("Registered successfully! Please login.");
     navigate("/main");
-
     reset();
   };
 

@@ -7,7 +7,7 @@ export const ContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("RegisteredUser")) || [],
   );
   const [loggedInUser, setLoggedInUser] = useState(
-    JSON.parse(localStorage.getItem("loggedUsers")),
+    JSON.parse(localStorage.getItem("loggedUsers")) || null,
   );
 
   return (

@@ -8,7 +8,7 @@ export const useAuthHook = () => {
 
   let navigate = useNavigate();
 
-  const { registeredUsers, setLoggedInUser, setRegisteredUsers } =
+  const { registeredUsers, loggedInUser, setLoggedInUser, setRegisteredUsers } =
     useContext(Auth);
 
   const {
@@ -63,6 +63,7 @@ export const useAuthHook = () => {
     handleSubmit,
     reset,
     errors,
+    user: loggedInUser,
     logout,
     loginFormSubmit,
     registerFormSubmit,

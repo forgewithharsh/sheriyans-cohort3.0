@@ -1,6 +1,7 @@
-import { NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { Zap, ShoppingCart, LogOut } from "lucide-react";
 import { useAuthHook } from "../hooks/useAuthHook";
+import { useCartHook } from "../hooks/useCartHook";
 
 const links = [
   { to: "/main", label: "Home" },
@@ -8,8 +9,9 @@ const links = [
   { to: "/main/about", label: "About" },
 ];
 
-export default function Navbar({ onCartClick, cartCount = 0 }) {
+export default function Navbar() {
   const { user, logout } = useAuthHook();
+  const { cartCount, openCart } = useCartHook();
   const navigate = useNavigate();
   const displayName = user?.name || "Guest";
   const initial = displayName.charAt(0).toUpperCase();
@@ -22,20 +24,21 @@ export default function Navbar({ onCartClick, cartCount = 0 }) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-700/60 bg-ink-950/90 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <NavLink to="/main" className="flex items-center gap-2.5">
+        <Link to="/main" className="flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-ink-950">
             <Zap size={18} fill="currentColor" strokeWidth={0} />
           </span>
           <span className="font-display text-xl font-semibold tracking-tight">
             Sky<span className="text-brand">Mart</span>
           </span>
-        </NavLink>
+        </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
+              end={l.to === "/main"}
               className={({ isActive }) =>
                 `text-[15px] font-medium transition-colors ${
                   isActive ? "text-brand" : "text-white/60 hover:text-white"
@@ -56,7 +59,9 @@ export default function Navbar({ onCartClick, cartCount = 0 }) {
           </div>
 
           <button
-            onClick={onCartClick}
+            onClick={() => {
+              openCart();
+            }}
             aria-label="Open cart"
             className="relative flex h-11 w-11 items-center justify-center rounded-full border border-ink-600 bg-ink-900 text-white/80 transition-colors hover:border-brand/60 hover:text-brand"
           >

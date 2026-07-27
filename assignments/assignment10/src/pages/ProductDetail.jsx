@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import axios from "axios";
+import { useCartHook } from "../hooks/useCartHook";
 import {
   ChevronLeft,
   Star,
@@ -14,6 +15,7 @@ import { LoadingState, ErrorState } from "../components/StatusStates";
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const { addToCart } = useCartHook();
 
   const [product, setProduct] = useState(null);
   const [related, setRelated] = useState([]);
@@ -106,7 +108,12 @@ export default function ProductDetail() {
           <p className="mt-6 max-w-xl text-white/50">{product.description}</p>
 
           <div className="mt-8 flex items-center gap-4">
-            <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-brand py-4 font-semibold text-ink-950 transition-colors hover:bg-brand-dim">
+            <button
+              onClick={() => {
+                addToCart(product);
+              }}
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-brand py-4 font-semibold text-ink-950 transition-colors hover:bg-brand-dim"
+            >
               <ShoppingCart size={18} strokeWidth={2.5} /> Add to Cart
             </button>
             <button

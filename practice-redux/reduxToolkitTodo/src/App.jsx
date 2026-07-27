@@ -1,14 +1,20 @@
-import React from "react";
-import AddTodo from "./components/AddTodo";
-import Todos from "./components/Todos";
+import { Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
-const App = () => {
+function App() {
   return (
-    <div className="min-h-screen bg-[#faf7f2]">
-      <AddTodo />
-      <Todos />
+    <div className="flex min-h-screen bg-orange-50/40 dark:bg-gray-950">
+      <Sidebar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
     </div>
   );
-};
+}
 
 export default App;

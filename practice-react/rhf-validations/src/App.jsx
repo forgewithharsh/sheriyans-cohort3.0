@@ -8,6 +8,7 @@ const App = () => {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || [],
   );
+  const [updateData, setUpdateData] = useState(null);
 
   const deleteUser = (id) => {
     let filterUser = users.filter((user, index) => {
@@ -18,17 +19,19 @@ const App = () => {
     localStorage.setItem("users", JSON.stringify(filterUser));
   };
 
+  console.log(updateData);
+
   return (
     <div className="p-3 h-screen flex flex-col gap-4">
       <Navbar setToggle={setToggle} />
 
       {toggle ? (
         <div className="flex gap-4">
-          {users.map((elem, index) => (
+          {users.map((elem) => (
             <Usercard
-              ind={index}
+              setUpdateData={setUpdateData}
               deleteUser={deleteUser}
-              key={index}
+              key={elem.id}
               user={elem}
               setToggle={setToggle}
             />
@@ -36,7 +39,7 @@ const App = () => {
         </div>
       ) : (
         <div className="flex justify-center h-[70%] items-center">
-          <Form users={users} setUsers={setUsers} setToggle={setToggle} />
+          <Form updateData={updateData} users={users} setUsers={setUsers} setToggle={setToggle} />
         </div>
       )}
     </div>

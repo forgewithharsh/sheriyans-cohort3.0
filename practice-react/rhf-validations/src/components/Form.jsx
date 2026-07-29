@@ -22,6 +22,7 @@ const Form = ({ setUsers, setToggle, users, updateData }) => {
       });
     } else {
       let arr = [...users, { ...data, id: nanoid() }];
+      console.log(arr);
       setUsers(arr);
       localStorage.setItem("users", JSON.stringify(arr));
     }

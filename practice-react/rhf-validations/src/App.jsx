@@ -4,8 +4,19 @@ import Form from "./components/Form";
 import Usercard from "./components/Usercard";
 
 const App = () => {
-  const [toggle, setToggle] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [toggle, setToggle] = useState(true);
+  const [users, setUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || [],
+  );
+
+  const deleteUser = (id) => {
+    let filterUser = users.filter((user, index) => {
+      return index !== id;
+    });
+
+    setUsers(filterUser);
+    localStorage.setItem("users", JSON.stringify(filterUser));
+  };
 
   return (
     <div className="p-3 h-screen flex flex-col gap-4">
@@ -13,13 +24,19 @@ const App = () => {
 
       {toggle ? (
         <div className="flex gap-4">
-          {users.map((elem) => (
-            <Usercard user={elem} setToggle={setToggle} />
+          {users.map((elem, index) => (
+            <Usercard
+              ind={index}
+              deleteUser={deleteUser}
+              key={index}
+              user={elem}
+              setToggle={setToggle}
+            />
           ))}
         </div>
       ) : (
         <div className="flex justify-center h-[70%] items-center">
-          <Form setUsers={setUsers} setToggle={setToggle} />
+          <Form users={users} setUsers={setUsers} setToggle={setToggle} />
         </div>
       )}
     </div>

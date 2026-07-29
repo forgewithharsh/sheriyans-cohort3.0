@@ -20,7 +20,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="h-screen p-2">
+    <div className="h-screen p-2 flex flex-col gap-4">
       <Navbar />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -8,6 +8,8 @@ import HomePage from "../pages/HomePage";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/authSlice";
+import PublicProtected from "./protected/PublicProtected";
+import MainProtected from "./protected/MainProtected";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -30,25 +32,37 @@ const AppRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AppLayout />,
+      element: <PublicProtected />,
       children: [
         {
           path: "",
-          element: <LoginPage />,
-        },
-        {
-          path: "/register",
-          element: <RegisterPage />,
+          element: <AppLayout />,
+          children: [
+            {
+              path: "",
+              element: <LoginPage />,
+            },
+            {
+              path: "/register",
+              element: <RegisterPage />,
+            },
+          ],
         },
       ],
     },
     {
       path: "/main",
-      element: <MainLayout />,
+      element: <MainProtected />,
       children: [
         {
           path: "",
-          element: <HomePage />,
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <HomePage />,
+            },
+          ],
         },
       ],
     },

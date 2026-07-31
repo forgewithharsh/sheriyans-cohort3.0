@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { User, AtSign, Mail, Lock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Auth } from "../context/AuthContext";
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -36,7 +36,6 @@ const Register = () => {
     };
 
     let arr = [...registeredUsers, newUser];
-    console.log(data);
 
     setRegisteredUsers(arr);
     localStorage.setItem("RegisteredUser", JSON.stringify(arr));
@@ -176,9 +175,12 @@ const Register = () => {
 
         <p className="mt-6 text-center text-sm text-gray-400">
           Already have an account?
-          <span className="ml-2 cursor-pointer font-medium text-[#f97316]">
+          <NavLink
+            to={"/"}
+            className="ml-2 cursor-pointer font-medium text-[#f97316]"
+          >
             Login
-          </span>
+          </NavLink>
         </p>
       </div>
     </div>

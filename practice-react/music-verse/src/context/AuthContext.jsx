@@ -6,13 +6,18 @@ export const AuthProvider = ({ children }) => {
   const [registeredUsers, setRegisteredUsers] = useState(
     JSON.parse(localStorage.getItem("registeredUsers")) || [],
   );
-  console.log(registeredUsers)
+
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("currentUser")) || null,
+  );
 
   return (
     <Auth.Provider
       value={{
         registeredUsers,
         setRegisteredUsers,
+        currentUser,
+        setCurrentUser,
       }}
     >
       {children}

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { MyStore } from "../context/MyContext";
 
 const CartCard = ({ item }) => {
+  const { incrementQuantity, decrementQuantity } = useContext(MyStore);
+
   return (
     <div className="flex flex-col gap-5 rounded-2xl border border-[#262626] bg-[#171717] p-5 transition hover:border-[#f97316] md:flex-row">
       {/* Product Image */}
@@ -27,15 +30,21 @@ const CartCard = ({ item }) => {
         <div className="mt-6 flex flex-wrap items-center justify-between gap-5">
           {/* Quantity */}
           <div className="flex items-center overflow-hidden rounded-xl border border-[#333] bg-[#111]">
-            <button className="p-3 text-white transition hover:bg-[#222]">
+            <button
+              onClick={() => decrementQuantity(item.id)}
+              className="p-3 text-white transition hover:bg-[#222]"
+            >
               <Minus size={18} />
             </button>
 
             <span className="w-12 text-center text-lg font-semibold text-white">
-              1
+              {item.quantity}
             </span>
 
-            <button className="p-3 text-white transition hover:bg-[#222]">
+            <button
+              onClick={() => incrementQuantity(item.id)}
+              className="p-3 text-white transition hover:bg-[#222]"
+            >
               <Plus size={18} />
             </button>
           </div>

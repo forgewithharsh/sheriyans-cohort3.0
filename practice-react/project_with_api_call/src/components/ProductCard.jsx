@@ -1,7 +1,16 @@
 import React from "react";
 import { Star } from "lucide-react";
+import { useContext } from "react";
+import { MyStore } from "../context/MyContext";
 
 const ProductCard = ({ product }) => {
+  const { setCartItems } = useContext(MyStore);
+
+  const addToCart = () => {
+    setCartItems((prev) => [...prev, product]);
+    alert("Product added into cart");
+  };
+
   return (
     <div className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Image */}
@@ -44,7 +53,10 @@ const ProductCard = ({ product }) => {
             ${product.price}
           </h3>
 
-          <button className="rounded-xl bg-black px-5 py-2 text-white transition hover:bg-gray-800">
+          <button
+            onClick={addToCart}
+            className="rounded-xl bg-black px-5 py-2 text-white transition hover:bg-gray-800"
+          >
             Add to Cart
           </button>
         </div>

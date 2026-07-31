@@ -3,10 +3,13 @@ import axios from "axios";
 import Navbar from "./components/Navbar";
 import ProductCard from "./components/ProductCard";
 import CartScreen from "./pages/CartScreen";
+import { useContext } from "react";
+import { MyStore } from "./context/MyContext";
 
 const App = () => {
+
   const [productsData, setProductsData] = useState([]);
-  const [isCartOpen, setIsCartOpen] = useState(true);
+  const { isCartOpen } = useContext(MyStore);
 
   async function getProductsData() {
     try {
@@ -23,7 +26,7 @@ const App = () => {
 
   return (
     <div className="h-screen p-2 flex flex-col gap-4">
-      <Navbar setIsCartOpen={setIsCartOpen}/>
+      <Navbar />
 
       {isCartOpen ? (
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

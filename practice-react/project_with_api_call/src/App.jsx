@@ -7,9 +7,8 @@ import { useContext } from "react";
 import { MyStore } from "./context/MyContext";
 
 const App = () => {
-
   const [productsData, setProductsData] = useState([]);
-  const { isCartOpen } = useContext(MyStore);
+  const { isCartOpen, cartItems } = useContext(MyStore);
 
   async function getProductsData() {
     try {
@@ -31,7 +30,11 @@ const App = () => {
       {isCartOpen ? (
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {productsData.map((elem) => {
-            return <ProductCard key={elem.id} product={elem} />;
+            let isInCart = cartItems.find((val) => val.id === elem.id);
+
+            return (
+              <ProductCard key={elem.id} product={elem} isInCart={isInCart} />
+            );
           })}
         </div>
       ) : (

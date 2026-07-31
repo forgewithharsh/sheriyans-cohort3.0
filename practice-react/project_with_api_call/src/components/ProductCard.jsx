@@ -1,9 +1,9 @@
 import React from "react";
-import { Star } from "lucide-react";
+import { Star, Minus, Plus } from "lucide-react";
 import { useContext } from "react";
 import { MyStore } from "../context/MyContext";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, isInCart }) => {
   const { setCartItems } = useContext(MyStore);
 
   const addToCart = () => {
@@ -53,12 +53,28 @@ const ProductCard = ({ product }) => {
             ${product.price}
           </h3>
 
-          <button
-            onClick={addToCart}
-            className="rounded-xl bg-black px-5 py-2 text-white transition hover:bg-gray-800"
-          >
-            Add to Cart
-          </button>
+          {isInCart ? (
+            <div className="flex items-center gap-3 rounded-xl border border-[#333] bg-[#111] px-3 py-2">
+              <button className="rounded-lg p-1.5 text-white transition hover:bg-[#222]">
+                <Minus size={18} />
+              </button>
+
+              <span className="min-w-[24px] text-center font-semibold text-white">
+                1
+              </span>
+
+              <button className="rounded-lg p-1.5 text-white transition hover:bg-[#222]">
+                <Plus size={18} />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={addToCart}
+              className="rounded-xl bg-[#f97316] px-5 py-2.5 font-semibold text-white transition hover:bg-[#ea580c]"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

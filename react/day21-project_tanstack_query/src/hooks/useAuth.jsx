@@ -45,7 +45,6 @@ const useAuth = () => {
     dispatch(addUser(user));
     localStorage.setItem("loggedInUser", JSON.stringify(user))
     toast.success("User Logged In...");
-
     reset();
   };
 

@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import ProductCard from "../components/ProductCard";
 import ProductSkeleton from "../components/ProductSkeleton";
-import { getProductsDataApi } from "../api/productApi";
-import { useEffect } from "react";
+import useProductApi from "../hooks/productHooks";
 
-const ShopPage = async () => {
-  const [productsData, setProductsData] = useState([]);
-  const [loading, setLoading] = useState(true);
+const ShopPage = () => {
+  let { isPending, data, error } = useProductApi();
 
-  const getData = async () => {
-    let data = await getProductsDataApi();
-    setProductsData(data);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  if (error) return <h1>{error.message}</h1>;
 
   return (
     <div className="min-h-screen bg-[#0f0f11] px-6 py-10">
@@ -31,11 +21,11 @@ const ShopPage = async () => {
 
       {/* Products Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {loading
+        {isPending
           ? Array.from({ length: 8 }).map((_, index) => (
               <ProductSkeleton key={index} />
             ))
-          : productsData.map((product) => (
+          : data.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
       </div>

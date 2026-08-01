@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { addUser } from "../features/authSlice";
 
-const useAuth = () => {
+const useAuthHook = () => {
   const dispatch = useDispatch();
 
   const [registeredUsers, setRegisteredUsers] = useState(
@@ -34,7 +34,7 @@ const useAuth = () => {
 
   let loginFormSubmit = (data) => {
     let user = registeredUsers.find((val) => {
-      return val.email === data.email || val.password === data.password;
+      return val.email === data.email && val.password === data.password;
     });
 
     if (!user) {
@@ -58,4 +58,4 @@ const useAuth = () => {
   };
 };
 
-export default useAuth;
+export default useAuthHook;

@@ -1,9 +1,9 @@
 import { Zap, Mail, Lock, ArrowRight } from "lucide-react";
-import useAuth from "../hooks/useAuth";
+import useAuthHook from "../hooks/authHooks";
 
 export default function Login() {
   const { navigate, register, handleSubmit, errors, loginFormSubmit } =
-    useAuth();
+    useAuthHook();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4">

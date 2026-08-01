@@ -1,12 +1,11 @@
 import React from "react";
 import ProductCard from "../components/ProductCard";
 import ProductSkeleton from "../components/ProductSkeleton";
-import useProductApi from "../hooks/productHooks";
+import Filter from "../components/Filter";
+import { useProduct } from "../hooks/productHooks";
 
 const ShopPage = () => {
-  let { isPending, data, error } = useProductApi();
-
-  if (error) return <h1>{error.message}</h1>;
+  const { isLoading, filteredProducts, filterProducts } = useProduct();
 
   return (
     <div className="min-h-screen bg-[#0f0f11] px-6 py-10">
@@ -19,13 +18,15 @@ const ShopPage = () => {
         </p>
       </div>
 
+      <Filter filterProducts={filterProducts} />
+
       {/* Products Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {isPending
+        {isLoading
           ? Array.from({ length: 8 }).map((_, index) => (
               <ProductSkeleton key={index} />
             ))
-          : data.map((product) => (
+          : filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
       </div>

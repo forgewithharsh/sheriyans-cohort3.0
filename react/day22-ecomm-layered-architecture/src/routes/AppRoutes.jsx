@@ -9,13 +9,18 @@ import ProductPage from "../features/products/ui/pages/ProductPage";
 import CartPage from "../features/cart/ui/pages/CartPage";
 import OrderPage from "../features/orders/ui/pages/OrderPage";
 import { hydrateUser } from "../features/auth/api/authApi";
+import { useDispatch } from "react-redux";
+import { addToUser } from "../features/auth/state/authSlice";
 
 const AppRoutes = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     (async () => {
       try {
         let response = await hydrateUser();
         console.log(response);
+        dispatch(addToUser(response));
       } catch (error) {
         console.log("Error in hydration...", error);
       }

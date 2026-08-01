@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Search } from "lucide-react";
 
 const Filter = ({ filterProducts }) => {
+  const [search, setSearch] = useState("");
+
   return (
     <div className="mb-8 rounded-2xl border border-[#262626] bg-[#171717] p-5">
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
@@ -13,12 +15,26 @@ const Filter = ({ filterProducts }) => {
           />
 
           <input
-            onChange={(e) => filterProducts(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                filterProducts(search.trim());
+              }
+            }}
             type="text"
             placeholder="Search products..."
             className="w-full rounded-xl border border-[#333] bg-[#111] py-3 pl-11 pr-4 text-white outline-none transition focus:border-[#f97316]"
           />
         </div>
+
+        {/* Search Button */}
+        <button
+          onClick={() => filterProducts(search.trim())}
+          className="rounded-xl bg-[#f97316] px-8 py-3 font-semibold text-white transition hover:bg-[#ea580c]"
+        >
+          Search
+        </button>
 
         {/* Category */}
         <select className="rounded-xl border border-[#333] bg-[#111] px-4 py-3 text-white outline-none transition focus:border-[#f97316]">
@@ -28,16 +44,6 @@ const Filter = ({ filterProducts }) => {
           <option>Furniture</option>
           <option>Groceries</option>
         </select>
-
-        {/* Search Button */}
-        <button className="rounded-xl bg-[#f97316] px-8 py-3 font-semibold text-white transition hover:bg-[#ea580c]">
-          Search
-        </button>
-
-        {/* Reset Button */}
-        <button className="rounded-xl border border-[#333] px-8 py-3 font-semibold text-white transition hover:border-[#f97316] hover:text-[#f97316]">
-          Reset
-        </button>
       </div>
     </div>
   );

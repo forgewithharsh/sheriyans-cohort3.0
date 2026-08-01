@@ -1,17 +1,23 @@
 import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import AppLayout from "../layouts/AppLayout";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
-import MainLayout from "../layouts/MainLayout";
-import HomePage from "../pages/HomePage";
-import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+import { lazy, Suspense } from "react";
+
 import { addUser } from "../features/authSlice";
 import PublicProtected from "./protected/PublicProtected";
 import MainProtected from "./protected/MainProtected";
-import ShopPage from "../pages/ShopPage";
-import AboutPage from "../pages/AboutPage";
+
+// Lazy Imports
+const AppLayout = lazy(() => import("../layouts/AppLayout"));
+const MainLayout = lazy(() => import("../layouts/MainLayout"));
+
+const LoginPage = lazy(() => import("../pages/LoginPage"));
+const RegisterPage = lazy(() => import("../pages/RegisterPage"));
+const HomePage = lazy(() => import("../pages/HomePage"));
+const ShopPage = lazy(() => import("../pages/ShopPage"));
+const AboutPage = lazy(() => import("../pages/AboutPage"));
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -78,7 +84,17 @@ const AppRoutes = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-[#0f0f11] text-white">
+          Loading...
+        </div>
+      }
+    >
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 };
 
 export default AppRoutes;

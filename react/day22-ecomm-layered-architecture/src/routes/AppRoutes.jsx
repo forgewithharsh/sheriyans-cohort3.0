@@ -19,7 +19,6 @@ const AppRoutes = () => {
     (async () => {
       try {
         let response = await hydrateUser();
-        console.log(response);
         dispatch(addToUser(response));
       } catch (error) {
         console.log("Error in hydration...", error);

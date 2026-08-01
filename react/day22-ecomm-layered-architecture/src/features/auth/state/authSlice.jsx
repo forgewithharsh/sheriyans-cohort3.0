@@ -11,10 +11,12 @@ const authSlice = createSlice({
     addToUser: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
+      state.isLoading = false;
     },
     removeToUser: (state) => {
       state.user = null;
       state.isAuthenticated = false;
+      state.isLoading = false;
     },
   },
 });

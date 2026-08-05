@@ -10,6 +10,9 @@ import CartPage from "../features/cart/ui/pages/CartPage";
 import OrderPage from "../features/orders/ui/pages/OrderPage";
 import { useDispatch } from "react-redux";
 import { hydrateUserAction } from "../features/auth/state/authAction";
+import AboutPage from "../shared/pages/AboutPage";
+import MainLayout from "../layout/MainLayout";
+import AuthLayout from "../layout/AuthLayout";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -30,12 +33,18 @@ const AppRoutes = () => {
       element: <PublicProtected />,
       children: [
         {
-          index: true,
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <Register />,
+          path: "",
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "",
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <Register />,
+            },
+          ],
         },
       ],
     },
@@ -44,20 +53,30 @@ const AppRoutes = () => {
       element: <MainProtected />,
       children: [
         {
-          index: true,
-          element: <HomePage />,
-        },
-        {
-          path: "product",
-          element: <ProductPage />,
-        },
-        {
-          path: "cart",
-          element: <CartPage />,
-        },
-        {
-          path: "orders",
-          element: <OrderPage />,
+          path: "",
+          element: <MainLayout />,
+          children: [
+            {
+              index: "",
+              element: <HomePage />,
+            },
+            {
+              path: "product",
+              element: <ProductPage />,
+            },
+            {
+              path: "cart",
+              element: <CartPage />,
+            },
+            {
+              path: "orders",
+              element: <OrderPage />,
+            },
+            {
+              path: "about",
+              element: <AboutPage />,
+            },
+          ],
         },
       ],
     },

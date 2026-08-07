@@ -1,7 +1,7 @@
 import { api } from "../../../config/api";
 
 export const getAllProductsApi = async (search) => {
-  let url = search ? `/products/search?q=${search}` : "/products";
+  let url = search ? `/products/search?q=${search}` : "/products?limit=100";
 
   try {
     let res = await api.get(url);
@@ -20,11 +20,11 @@ export const getProductsCategories = async () => {
   }
 };
 
-export const getProductByCategory = async () => {
+export const getProductByCategory = async (category) => {
   try {
-    let res = await api.get("/products/category/");
+    let res = await api.get(`/products/category/${category}`);
     return res.data;
   } catch (error) {
     console.log("Error in getting all products api", error);
   }
-}
+};

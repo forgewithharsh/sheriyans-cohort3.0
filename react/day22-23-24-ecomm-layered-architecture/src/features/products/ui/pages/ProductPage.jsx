@@ -19,7 +19,9 @@ const ProductPage = () => {
         setSearch={setSearch}
       />
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {data.products.map((product) => (
+        {productByCategory?.products.length  ? productByCategory.products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        )) : data.products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

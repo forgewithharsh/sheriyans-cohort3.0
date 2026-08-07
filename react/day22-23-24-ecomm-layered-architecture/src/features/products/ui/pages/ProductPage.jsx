@@ -1,6 +1,7 @@
 import React from "react";
 import { useAllProducts } from "../../hooks/useProductHooks";
 import ProductCard from "../components/ProductCard";
+import Filter from "../components/Filter";
 
 const ProductPage = () => {
 
@@ -10,6 +11,7 @@ const ProductPage = () => {
 
   return (
     <div>
+      <Filter/>
 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
   {data.products.map((product) => (
     <ProductCard key={product.id} product={product} />

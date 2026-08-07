@@ -1,6 +1,6 @@
 import { useAllCategories } from "../../hooks/useProductHooks";
 
-const Filter = () => {
+const Filter = ({ search, setSearch }) => {
   const { data, isPending, error } = useAllCategories();
 
   if (isPending) return <h1>Loading Categories...</h1>;
@@ -10,6 +10,8 @@ const Filter = () => {
       {/* Search */}
       <div className="w-full">
         <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="Search products..."
           className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-black"

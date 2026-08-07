@@ -1,5 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllProductsApi, getProductsCategories } from "../api/productApis";
+import {
+  getAllProductsApi,
+  getProductByCategory,
+  getProductsCategories,
+} from "../api/productApis";
 import { useEffect, useState } from "react";
 
 export const useAllProducts = () => {
@@ -33,4 +37,19 @@ export const useAllCategories = () => {
     queryKey: ["allCategories"],
     queryFn: getProductsCategories,
   });
+};
+
+export const useByCategories = () => {
+  const [category, setCategory] = useState(null);
+
+  let { data } = useQuery({
+    queryKey: ["productsByCategory"],
+    queryFn: getProductByCategory,
+  });
+
+  return {
+    data,
+    category,
+    setCategory,
+  };
 };

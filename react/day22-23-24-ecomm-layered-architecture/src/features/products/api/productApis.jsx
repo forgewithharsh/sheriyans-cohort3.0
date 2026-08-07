@@ -19,3 +19,12 @@ export const getProductsCategories = async () => {
     console.log("Error in getting all products api", error);
   }
 };
+
+export const getProductByCategory = async () => {
+  try {
+    let res = await api.get("/products/category/");
+    return res.data;
+  } catch (error) {
+    console.log("Error in getting all products api", error);
+  }
+}

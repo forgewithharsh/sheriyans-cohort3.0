@@ -12,7 +12,6 @@ const App = () => {
       `https://dummyjson.com/products?limit=${limit}&skip=${page * limit}`,
     );
     setProducts(res.data);
-    console.log(res.data);
   }
 
   let totalPages = Math.ceil(products?.total / limit);

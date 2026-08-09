@@ -1,18 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import { getAllProducts } from "./api/productApi";
+import ProductCard from "./components/ProductCard";
 
 const TanStack = () => {
-  let { data, isPending, isError } = useQuery({
-    queryKey: ["products"],
-    queryFn: getAllProducts,
+  let limit = 10;
+  const [page, setPage] = useState(0);
+
+  let { data, isPending, isError, isPlaceholderData } = useQuery({
+    queryKey: ["products", page],
+    queryFn: () => getAllProducts(limit, page),
+    placeholderData: keepPreviousData,
   });
 
   if (isPending) return <h1>Loading...</h1>;
   if (isError) return <h1>Something went wrong</h1>;
 
+  let totalPages = Math.ceil(data.total / limit);
+
   return (
-    <div className="min-h-screen bg-gray-100 px-6 py-10">
+    <div
+      style={{ opacity: isPlaceholderData ? 0.3 : 1 }}
+      className="min-h-screen bg-gray-100 px-6 py-10"
+    >
       <h1 className="mb-8 text-center text-3xl font-bold text-gray-900">
         Products
       </h1>

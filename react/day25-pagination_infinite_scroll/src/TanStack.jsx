@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import ProductCard from "./components/ProductCard";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { getAllProducts } from "./api/productApi";
 
-const App = () => {
-  let limit = 10;
-  const [products, setProducts] = useState(null);
-  const [page, setPage] = useState(0);
+const TanStack = () => {
+  let { data, isPending, isError } = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+  });
 
-  async function getAllProducts() {
-    const res = await axios.get(
-      `https://dummyjson.com/products?limit=${limit}&skip=${page * limit}`,
-    );
-    setProducts(res.data);
-    console.log(res.data);
-  }
-
-  let totalPages = Math.ceil(products?.total / limit);
-
-  useEffect(() => {
-    getAllProducts();
-  }, [page]);
+  if (isPending) return <h1>Loading...</h1>;
+  if (isError) return <h1>Something went wrong</h1>;
 
   return (
     <div className="min-h-screen bg-gray-100 px-6 py-10">
@@ -29,7 +19,7 @@ const App = () => {
 
       {/* Cards */}
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products?.products.map((product) => (
+        {data?.products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
@@ -60,4 +50,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default TanStack;

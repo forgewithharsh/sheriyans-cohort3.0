@@ -22,3 +22,25 @@ let data: [{ name: string }, { name: string }, { name: string }] = [
   { name: "pol" },
   { name: "pol" },
 ];
+
+// enums - options
+
+enum Role {
+  ADMIN,
+  SUP_ADMIN,
+  USER,
+}
+
+let role: Role = Role.USER;
+
+// Union Types
+let yolo: string | number | boolean | bigint = "rahul";
+yolo = 23;
+
+yolo = true;
+yolo = 900000n;
+
+// Literal Types
+type Status = "pending" | "success" | "error";
+
+let status: Status = "success";

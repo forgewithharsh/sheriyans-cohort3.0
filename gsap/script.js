@@ -1,20 +1,32 @@
-gsap.to("#box1", {
-  x: 1500,
-  duration: 2,
-  delay: 1,
-  rotate: 360,
-});
+gsap.registerPlugin(ScrollTrigger);
 
-gsap.to("#box2", {
-  x: 1500,
-  duration: 1.5,
-  delay: 2.5,
-});
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
-gsap.to("#box3", {
-  x: 1500,
-  scale: 0.5,
-  borderRadius: "50%",
-  duration: 1.5,
-  delay: 4,
-});
+if (!reduceMotion) {
+  gsap
+    .timeline()
+    .from(".kicker", { opacity: 0, y: 20, duration: 0.6 })
+    .from(".hero h1", { opacity: 0, y: 20, duration: 0.6 }, "-=0.4")
+    .from(".hero-sub", { opacity: 0, y: 20, duration: 0.6 }, "-=0.4")
+    .from(".hero-cta", { opacity: 0, y: 20, duration: 0.6 }, "-=0.4")
+    .from(".hero-photo", { opacity: 0, scale: 0.95, duration: 0.7 }, "-=0.6");
+
+  const revealTargets = document.querySelectorAll(
+    '.section [data-anim="fade"]',
+  );
+
+  revealTargets.forEach((el) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      },
+    });
+  });
+}

@@ -3,20 +3,190 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GSAP</title>
+    <title>Harsh Guleria — Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="box1"></div>
-    <div id="box2"></div>
-    <div id="box3"></div>
+    <nav>
+      <div class="nav-inner">
+        <div class="logo">Harsh<span>.</span></div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#work">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-social">
+          <a
+            href="https://github.com/forgewithharsh"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/forgewithharsh/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </nav>
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"
-      integrity="sha512-oJ8QbaQThQoJZ7oEv+29jfPM6CcP+zUxh3PKJs1vyOhx0UraUrE7PQgeItu3dOuCJyrzWpoYMsVjkkPEBzbUqw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <p class="kicker" data-anim="fade">Frontend Developer</p>
+        <h1 data-anim="fade">
+          Forging ideas<br />
+          into <span class="accent">interfaces.</span>
+        </h1>
+        <p class="hero-sub" data-anim="fade">
+          Hey, I'm Harsh Guleria. I build clean, interactive websites — heating
+          up an idea and hammering it into shape until it works.
+        </p>
+        <div class="hero-cta" data-anim="fade">
+          <a href="#work" class="btn btn-solid">View my work</a>
+          <a
+            href="https://github.com/forgewithharsh"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-outline"
+            >GitHub</a
+          >
+        </div>
+      </div>
+      <div class="hero-photo" data-anim="fade">
+        <img
+          src="https://avatars.githubusercontent.com/u/148263003?s=400&u=fdd9983b5c365936e36d80a07acd556184e6d40a&v=4"
+          alt="Harsh Guleria"
+        />
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head" data-anim="fade">
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <p class="about-lead" data-anim="fade">
+          I'm a frontend developer who learns by building real things, not just
+          reading about them.
+        </p>
+        <div class="about-body" data-anim="fade">
+          <p>
+            I like turning plain ideas into interfaces people can actually use —
+            clean layouts, components that hold up, and interactions that feel
+            smooth instead of static.
+          </p>
+          <p>
+            Most of what I know came from shipping small real projects and
+            fixing what broke along the way. I'm still building, still learning,
+            and always looking for the next thing to forge.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-head" data-anim="fade">
+        <h2>Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card" data-anim="fade">
+          <p class="project-num">01</p>
+          <h3>SkyMart</h3>
+          <p class="project-desc">
+            An e-commerce storefront with product browsing, cart handling, and a
+            clean dark UI.
+          </p>
+          <div class="project-tags">
+            <span>React</span><span>State</span><span>UI</span>
+          </div>
+        </div>
+        <div class="project-card" data-anim="fade">
+          <p class="project-num">02</p>
+          <h3>Finance Tracker</h3>
+          <p class="project-desc">
+            A personal finance app for logging transactions and visualizing
+            spending at a glance.
+          </p>
+          <div class="project-tags">
+            <span>Charts</span><span>Auth</span><span>Data</span>
+          </div>
+        </div>
+        <div class="project-card" data-anim="fade">
+          <p class="project-num">03</p>
+          <h3>Two Leaves</h3>
+          <p class="project-desc">
+            A landing page project focused on clean layout, typography, and a
+            calm visual identity.
+          </p>
+          <div class="project-tags">
+            <span>Design</span><span>CSS</span><span>Landing page</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-head" data-anim="fade">
+        <h2>Skills</h2>
+      </div>
+      <div class="skills-list">
+        <div class="skill-row" data-anim="fade">HTML</div>
+        <div class="skill-row" data-anim="fade">CSS</div>
+        <div class="skill-row" data-anim="fade">JavaScript</div>
+        <div class="skill-row" data-anim="fade">React</div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="contact-block" data-anim="fade">
+        <h2>
+          Ready to work<br />with you, <span class="accent">connect.</span>
+        </h2>
+        <div class="contact-info">
+          <p>
+            <span>Email</span
+            ><a href="mailto:forgewithharsh@gmail.com"
+              >forgewithharsh@gmail.com</a
+            >
+          </p>
+          <p>
+            <span>GitHub</span
+            ><a
+              href="https://github.com/forgewithharsh"
+              target="_blank"
+              rel="noopener"
+              >github.com/forgewithharsh</a
+            >
+          </p>
+          <p>
+            <span>LinkedIn</span
+            ><a
+              href="https://www.linkedin.com/in/forgewithharsh/"
+              target="_blank"
+              rel="noopener"
+              >linkedin.com/in/forgewithharsh</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Harsh Guleria</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

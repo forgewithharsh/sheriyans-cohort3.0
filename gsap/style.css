@@ -15,8 +15,20 @@ body{
   background-color: #121212;
 }
 
-#box{
+#box1{
   height: 300px;;
   width: 300px;
   background-color: crimson;
+}
+
+#box2{
+  height: 300px;;
+  width: 300px;
+  background-color: royalblue;
+}
+
+#box3{
+  height: 300px;;
+  width: 300px;
+  background-color: yellowgreen;
 }

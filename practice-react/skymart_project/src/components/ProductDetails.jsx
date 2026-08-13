@@ -19,7 +19,7 @@ const ProductDetails = ({ product }) => {
               </span>
 
               <img
-                src={product.image}
+                src={product.thumbnail}
                 alt={product.title}
                 className="max-h-[420px] w-full object-contain transition duration-500 hover:scale-105"
               />

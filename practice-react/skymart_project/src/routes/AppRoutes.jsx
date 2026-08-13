@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import About from "../pages/About";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -66,6 +67,10 @@ const AppRoutes = () => {
             {
               path: "shop",
               element: <Shop />,
+            },
+            {
+              path: "about",
+              element: <About />,
             },
           ],
         },

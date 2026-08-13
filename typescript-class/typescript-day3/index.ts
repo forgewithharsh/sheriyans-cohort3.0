@@ -39,10 +39,19 @@ let mul = (a: number, b: () => number): number => {
 let res = mul(20, () => 10);
 // console.log(res);
 
-let add = (a: number) => (b: number) => {
+// Currying
+let add = (a: number) => (b?: number) => {
   if (b !== undefined) return add(a + b);
   return a;
 };
 
-let data = add(90)(10)(90)();
-console.log(data);
+// let data = add(90)(90)();
+// console.log(data);
+
+let data = (...rest: number[]): number => {
+  let res = rest.reduce((acc, curr) => acc + curr, 0);
+  return res;
+};
+
+let val = data(10,2, 3, 4, 5, 3, 2, 1);
+console.log(val);

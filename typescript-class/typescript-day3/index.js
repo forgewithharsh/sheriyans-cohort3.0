@@ -22,11 +22,18 @@ let mul = (a, b) => {
 };
 let res = mul(20, () => 10);
 // console.log(res);
+// Currying
 let add = (a) => (b) => {
     if (b !== undefined)
         return add(a + b);
     return a;
 };
-let data = add(90)(10)(90)();
-console.log(data);
+// let data = add(90)(90)();
+// console.log(data);
+let data = (...rest) => {
+    let res = rest.reduce((acc, curr) => acc + curr, 0);
+    return res;
+};
+let val = data(10, 2, 3, 4, 5, 3, 2, 1);
+console.log(val);
 //# sourceMappingURL=index.js.map

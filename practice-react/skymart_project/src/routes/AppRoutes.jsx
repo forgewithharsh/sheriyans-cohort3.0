@@ -13,22 +13,20 @@ import { addUser } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import About from "../pages/About";
+import { hydrateUserApi } from "../api/productApi";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
-  const hydrateUser = () => {
-    let loggedInUser = JSON.parse(localStorage.getItem("loggedUsers"));
-
-    if (!loggedInUser) {
-      toast.error("Unauthorized User");
-      return;
-    }
-
-    dispatch(addUser(loggedInUser));
-  };
 
   useEffect(() => {
-    hydrateUser();
+    (async () => {
+      try {
+        let res = await hydrateUserApi();
+        dispatch(addUser(res));
+      } catch (error) {
+        console.log("Error in hydration..", error);
+      }
+    })();
   }, []);
 
   const router = createBrowserRouter([
@@ -52,30 +50,30 @@ const AppRoutes = () => {
         },
       ],
     },
-    {
-      path: "/main",
-      element: <MainProtected />,
-      children: [
-        {
-          path: "",
-          element: <MainLayout />,
-          children: [
-            {
-              path: "",
-              element: <Home />,
-            },
-            {
-              path: "shop",
-              element: <Shop />,
-            },
-            {
-              path: "about",
-              element: <About />,
-            },
-          ],
-        },
-      ],
-    },
+    // {
+    //   path: "/main",
+    //   element: <MainProtected />,
+    //   children: [
+    //     {
+    //       path: "",
+    //       element: <MainLayout />,
+    //       children: [
+    //         {
+    //           path: "",
+    //           element: <Home />,
+    //         },
+    //         {
+    //           path: "shop",
+    //           element: <Shop />,
+    //         },
+    //         {
+    //           path: "about",
+    //           element: <About />,
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
   ]);
 
   return <RouterProvider router={router} />;

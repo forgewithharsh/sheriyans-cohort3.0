@@ -4,13 +4,14 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/auth/authSlice";
+import { loginUserApi } from "../api/productApi";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
 
   let navigate = useNavigate();
 
-  const [ registeredUsers, setRegisteredUsers ] = useState(
+  const [registeredUsers, setRegisteredUsers] = useState(
     JSON.parse(localStorage.getItem("registeredUsers")) || [],
   );
 
@@ -36,19 +37,13 @@ export const useAuth = () => {
 
   // Login Logic
   const loginFormSubmit = (data) => {
-    let user = registeredUsers.find((val) => {
-      return val.email === data.email && val.password === data.password;
-    });
-
-    if (!user) {
-      toast.error("User not found or invalid credentials");
-      return;
+    try {
+      // Api Call
+      let response = loginUserApi(data);
+      dispatch(addUser(response));
+    } catch (error) {
+      console.log("Form api error", error);
     }
-
-    dispatch(addUser(user));
-
-    localStorage.setItem("loggedUsers", JSON.stringify(user));
-    toast.success("User LoggedIn");
 
     reset();
   };

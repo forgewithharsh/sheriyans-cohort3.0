@@ -12,19 +12,19 @@ const Login = () => {
 
         <form onSubmit={handleSubmit(loginFormSubmit)} className="space-y-5">
           <input
-            {...register("email", {
-              required: "Email is required",
+            {...register("username", {
+              required: "Username is required",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Enter a valid email",
+                message: "Enter a valid username",
               },
             })}
             type="email"
             placeholder="Enter your email"
             className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black"
           />
-          {errors.email && (
-            <p className="text-red-500">{errors.email.message}</p>
+          {errors.username && (
+            <p className="text-red-500">{errors.username.message}</p>
           )}
 
           <input

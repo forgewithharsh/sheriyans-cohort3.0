@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/auth/authSlice";
 import { loginUserApi } from "../api/productApi";
+import { loginUserAction } from "../features/auth/authAction";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
@@ -39,8 +40,7 @@ export const useAuth = () => {
   const loginFormSubmit = (data) => {
     try {
       // Api Call
-      let response = loginUserApi(data);
-      dispatch(addUser(response));
+      dispatch(loginUserAction(data))
     } catch (error) {
       console.log("Form api error", error);
     }

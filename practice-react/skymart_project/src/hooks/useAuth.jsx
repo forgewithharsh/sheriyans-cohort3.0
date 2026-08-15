@@ -40,7 +40,7 @@ export const useAuth = () => {
   const loginFormSubmit = (data) => {
     try {
       // Api Call
-      dispatch(loginUserAction(data))
+      console.log(data);
     } catch (error) {
       console.log("Form api error", error);
     }

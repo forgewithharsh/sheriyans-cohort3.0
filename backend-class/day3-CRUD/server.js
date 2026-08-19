@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const users = [];
+let users = [];
 
 // post - create
 app.post("/create", (req, res) => {
@@ -11,12 +11,23 @@ app.post("/create", (req, res) => {
 
   users.push(body);
 
-  res.send(users);
+  res.send("user saved successfully");
 });
 
 // get - read
-app.get((req, res) => {
-  res.send("ok got it");
+app.get("/", (req, res) => {
+  res.send(users);
+});
+
+// delete
+app.delete("/delete/:id", (req, res) => {
+  let { id } = req.params;
+
+  let userData = users.filter((val) => val.id !== id);
+
+  users = userData;
+
+  res.send(userData);
 });
 
 const port = 3000;

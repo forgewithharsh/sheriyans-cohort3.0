@@ -2,6 +2,9 @@ const express = require("express");
 
 const app = express();
 
+// middleware fro acceptingf data from frontend
+app.use(express.json())
+
 app.get("/", (req, res) => {
   res.send("Express setup done");
 });
@@ -281,7 +284,14 @@ app.get("/products", (req, res) => {
   ]);
 });
 
-const port = 3000
+app.post("/create", (req, res) => {
+
+  console.log(req.body)
+
+  res.send("ok post");
+});
+
+const port = 3000;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

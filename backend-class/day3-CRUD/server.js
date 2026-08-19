@@ -19,6 +19,19 @@ app.get("/", (req, res) => {
   res.send(users);
 });
 
+// update
+app.put("/update/:id", (req, res) => {
+  let { id } = req.params;
+  let { name } = req.body;
+
+  let updatedUser = users.map((val) =>
+    val.id === id ? { ...val, name } : val,
+  );
+
+  users = updatedUser
+  res.send(updatedUser);
+});
+
 // delete
 app.delete("/delete/:id", (req, res) => {
   let { id } = req.params;

@@ -13,3 +13,21 @@ export const loginUserAction = createAsyncThunk(
     }
   },
 );
+
+export const hydrateUserAction = createAsyncThunk(
+  "/auth/hydrate",
+  async (_, thunkApi) => {
+    let token = localStorage.getItem("accessToken");
+
+    try {
+      let res = await axiosInstance.get("/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue("Unauthorized User");
+    }
+  },
+);

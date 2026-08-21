@@ -9,20 +9,18 @@ import Shop from "../pages/Shop";
 import PublicProtected from "./protected/PublicProtected";
 import MainProtected from "./protected/MainProtected";
 import { useDispatch } from "react-redux";
-import { addUser } from "../features/auth/authSlice";
-import { toast } from "react-toastify";
+
 import { useEffect } from "react";
 import About from "../pages/About";
-import { hydrateUserApi } from "../api/productApi";
+import { hydrateUserAction } from "../features/auth/authAction";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
+    (() => {
       try {
-        let res = await hydrateUserApi();
-        dispatch(addUser(res));
+        dispatch(hydrateUserAction());
       } catch (error) {
         console.log("Error in hydration..", error);
       }

@@ -19,7 +19,7 @@ const Infinite = () => {
 
   if (isPending) return <h1>Loading...</h1>;
 
-  let allProducts = data?.pages?.flatMap((val) => val.products) ?? [];
+  let allProducts = data.pages.flatMap((val) => val.products);
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10 sm:px-6">

@@ -5,18 +5,19 @@ import ProductCard from "./components/ProductCard";
 
 const TanStack = () => {
   let limit = 10;
+
   const [page, setPage] = useState(0);
 
-  let { data, isPending, isError, isPlaceholderData } = useQuery({
+  const { data, isPending, isError, isPlaceholderData } = useQuery({
     queryKey: ["products", page],
     queryFn: () => getAllProducts(limit, page),
     placeholderData: keepPreviousData,
   });
 
   if (isPending) return <h1>Loading...</h1>;
-  if (isError) return <h1>Something went wrong</h1>;
+  if (isError) return <h1>Something went wrong...</h1>;
 
-  let totalPages = Math.ceil(data.total / limit);
+  const totalPages = Math.ceil(data.total / limit);
 
   return (
     <div

@@ -1,4 +1,4 @@
-const mongoose =  require("mongoose")
+const mongoose = require("mongoose");
 
 const notesSchema = new mongoose.Schema({
   title: {
@@ -8,10 +8,10 @@ const notesSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    minLength: [20, 'Minimum 20 words needed']
-  }
-})
+    minlength: [20, "Minimum 20 words needed"],
+  },
+});
 
-const NotesModel  = mongoose.model("notes", notesSchema)
+const NotesModel = mongoose.model("notes", notesSchema);
 
-module.exports = NotesModel
+module.exports = NotesModel;

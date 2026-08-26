@@ -2,10 +2,8 @@ const mongoose = require("mongoose");
 
 const connectDb = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://<user>:<password>@<connection>.y4agefi.mongodb.net/",
-    );
-    console.log("mongodb connected");
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Database connected");
   } catch (error) {
     console.log("Error in db", error);
   }

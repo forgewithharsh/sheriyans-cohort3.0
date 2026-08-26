@@ -22,7 +22,7 @@ const createNotesController = async (req, res) => {
 
 const getAllNotesController = async (req, res) => {
   try {
-    let allNotes = await NotesModel.find()
+    let allNotes = await NotesModel.find();
 
     return res.status(200).json({
       message: "All notes fetched",
@@ -35,6 +35,25 @@ const getAllNotesController = async (req, res) => {
   }
 };
 
+const getSingleNoteController = async (req, res) => {
+  try {
+    let newNote = req.params.id;
+
+    let singleNote = await NotesModel.findById(newNote);
+
+    return res.status(201).json({
+      message: "Single note fetched",
+      data: singleNote,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+};
+
 module.exports = {
-createNotesController, getAllNotesController
+  createNotesController,
+  getAllNotesController,
+  getSingleNoteController,
 };

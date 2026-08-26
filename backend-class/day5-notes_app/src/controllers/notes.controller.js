@@ -20,6 +20,21 @@ const createNotesController = async (req, res) => {
   }
 };
 
+const getAllNotesController = async (req, res) => {
+  try {
+    let allNotes = await NotesModel.find()
+
+    return res.status(200).json({
+      message: "All notes fetched",
+      data: allNotes,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+};
+
 module.exports = {
-createNotesController,
+createNotesController, getAllNotesController
 };

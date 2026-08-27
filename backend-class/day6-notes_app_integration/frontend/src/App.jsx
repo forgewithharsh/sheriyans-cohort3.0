@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 const App = () => {
   const [formValues, setFormValues] = useState({
@@ -10,10 +11,14 @@ const App = () => {
     setFormValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formValues);
+    // Api call
+    const res = await axios.post(
+      "http://localhost:3000/notes/create",
+      formValues,
+    );
 
     setFormValues({
       title: "",

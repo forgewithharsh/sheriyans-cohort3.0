@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import NotesDisplay from "./components/NotesDisplay";
 
 const App = () => {
   const [formValues, setFormValues] = useState({
@@ -7,9 +8,24 @@ const App = () => {
     description: "",
   });
 
+  const [allNotes, setAllNotes] = useState([]);
+
   const handleChange = (e) => {
     setFormValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const getAllNotes = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/notes/allNotes");
+      setAllNotes(res.data.data);
+    } catch (error) {
+      console.log("Error in fetching all Notes", error);
+    }
+  };
+
+  useEffect(() => {
+    getAllNotes();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +40,18 @@ const App = () => {
       title: "",
       description: "",
     });
+
+    getAllNotes()
+  };
+
+  const onDelete = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:3000/notes/${id}`);
+      console.log(res);
+      getAllNotes();
+    } catch (error) {
+      console.log("Error in deleteing the notes", error);
+    }
   };
 
   return (
@@ -75,25 +103,9 @@ const App = () => {
           </button>
         </form>
 
-        <section className="mt-10">
-          <header className="mb-5 flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">Your Notes</h2>
-
-            <span className="rounded-full border border-gray-700 bg-[#171717] px-3 py-1 text-sm text-gray-400">
-              0 Notes
-            </span>
-          </header>
-
-          <article className="rounded-2xl border border-dashed border-gray-700 bg-[#141414] px-6 py-14 text-center">
-            <p className="mb-4 text-3xl">📝</p>
-
-            <h3 className="text-lg font-semibold">No notes yet</h3>
-
-            <p className="mt-2 text-sm text-gray-500">
-              Create your first note using the form above.
-            </p>
-          </article>
-        </section>
+        {allNotes.map((val) => (
+          <NotesDisplay key={val._id} notes={val} onDelete={onDelete}/>
+        ))}
       </section>
     </main>
   );

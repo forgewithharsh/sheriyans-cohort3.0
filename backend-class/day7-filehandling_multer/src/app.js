@@ -4,6 +4,6 @@ const fileRoute = require("./routes/file.routes.js")
 
 app.use(express.json())
 
-app.use("/files", fileRoute)
+app.use("/file", fileRoute)
 
 module.exports = app

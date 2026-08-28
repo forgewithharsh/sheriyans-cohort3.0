@@ -4,7 +4,7 @@ const upload = require("../config/multer.js");
 
 const router = express.Router();
 
-router.post("/", upload.single("image"), (req, res) => {
+router.post("/", upload.single("profile_pic"), (req, res) => {
   try {
     let body = req.body;
     let file = req.file;

@@ -4,13 +4,13 @@ const upload = require("../config/multer.js");
 
 const router = express.Router();
 
-router.post("/", upload.single("profile_pic"), (req, res) => {
+router.post("/", upload.array("images", 5), (req, res) => {
   try {
     let body = req.body;
-    let file = req.file;
+    let files = req.files;
 
-    console.log(body);
-    console.log(file);
+    console.log("Body:", body);
+    console.log("Files:", files);
 
     return res.status(200).json({
       message: "File received successfully",

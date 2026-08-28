@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import axios from "axios"
+import axios from "axios";
 
 const App = () => {
   const {
@@ -8,15 +8,27 @@ const App = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+  try {
     const formData = new FormData();
 
     formData.append("name", data.name);
     formData.append("email", data.email);
-    formData.append("profile_pic", data.profile_pic[0]);
 
-    console.log(data);
-  };
+    for (const image of data.images) {
+      formData.append("images", image);
+    }
+
+    const res = await axios.post(
+      "http://localhost:3000/file",
+      formData
+    );
+
+    console.log(res.data);
+  } catch (error) {
+    console.log("Upload error:", error);
+  }
+};
 
   return (
     <main className="min-h-screen bg-[#0f0f0f] px-4 py-10 text-white">
@@ -77,15 +89,16 @@ const App = () => {
           <input
             type="file"
             accept="image/*"
-            {...register("profile_pic", {
+            {...register("images", {
               required: "Profile picture is required",
             })}
+            multiple
             className="w-full rounded-xl border border-gray-700 bg-[#0f0f0f] p-3 text-sm text-gray-400 file:mr-4 file:rounded-lg file:border-0 file:bg-orange-500 file:px-4 file:py-2 file:font-medium file:text-black"
           />
 
-          {errors.profile_pic && (
+          {errors.images && (
             <p className="mt-1 text-sm text-red-400">
-              {errors.profile_pic.message}
+              {errors.images.message}
             </p>
           )}
         </div>

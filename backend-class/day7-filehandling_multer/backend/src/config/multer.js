@@ -11,8 +11,8 @@ const storageForLocal = multer.diskStorage({
 });
 
 // MemoryStorage for server
-const storageForServer = multer.memoryStorage()
+const storageForServer = multer.memoryStorage();
 
-const upload = multer({ storageForServer });
+const upload = multer({ storageForLocal });
 
 module.exports = upload;

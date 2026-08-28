@@ -8,6 +8,8 @@ const App = () => {
     description: "",
   });
 
+  const [updateNoteId, setUpdateNoteId] = useState(null);
+
   const [allNotes, setAllNotes] = useState([]);
 
   const handleChange = (e) => {
@@ -30,27 +32,47 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Api call
-    const res = await axios.post(
-      "http://localhost:3000/notes/create",
-      formValues,
-    );
+    if (updateNoteId) {
+      const res = await axios.put(
+        `http://localhost:3000/notes/${updateNoteId}`,
+        formValues,
+      );
+      setUpdateNoteId();
+    } else {
+      // Api call
+      const res = await axios.post(
+        "http://localhost:3000/notes/create",
+        formValues,
+      );
+    }
 
     setFormValues({
       title: "",
       description: "",
     });
 
-    getAllNotes()
+    getAllNotes();
   };
 
   const onDelete = async (id) => {
     try {
       const res = await axios.delete(`http://localhost:3000/notes/${id}`);
-      console.log(res);
       getAllNotes();
     } catch (error) {
       console.log("Error in deleteing the notes", error);
+    }
+  };
+
+  const onUpdate = async (notes) => {
+    try {
+      setUpdateNoteId(notes._id);
+
+      setFormValues({
+        title: notes.title,
+        description: notes.description
+      })
+    } catch (error) {
+      console.log("Error in updating the notes", error);
     }
   };
 
@@ -75,7 +97,7 @@ const App = () => {
           onSubmit={handleSubmit}
           className="rounded-2xl border border-gray-800 bg-[#171717] p-6 shadow-xl"
         >
-          <h2 className="mb-5 text-xl font-semibold">Create a new note</h2>
+          <h2 className="mb-5 text-xl font-semibold">{updateNoteId ? "Update Note" : "Create a new note"}</h2>
 
           <input
             type="text"
@@ -99,12 +121,17 @@ const App = () => {
             type="submit"
             className="w-full rounded-xl bg-orange-500 px-6 py-3 font-semibold text-black transition hover:bg-orange-400 active:scale-[0.98]"
           >
-            + Add Note
+            {updateNoteId ? "Update Note" : "+ Add Note"}
           </button>
         </form>
 
         {allNotes.map((val) => (
-          <NotesDisplay key={val._id} notes={val} onDelete={onDelete}/>
+          <NotesDisplay
+            key={val._id}
+            notes={val}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
+          />
         ))}
       </section>
     </main>

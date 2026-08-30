@@ -13,7 +13,7 @@ axiosInstance.interceptors.response.use(
       originalReq._retry = true;
 
       try {
-        await axiosInstance.get("/auth./get-accessToken")
+        await axiosInstance.get("/auth/get-accessToken")
         return axiosInstance(originalReq)
       } catch (error) {
         window.location.href("/");

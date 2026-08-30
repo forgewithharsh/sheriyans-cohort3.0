@@ -7,6 +7,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Home from "../../features/dashboard/ui/pages/Home";
 import { useDispatch } from "react-redux";
 import { currentLoggedEmployee } from "../../features/auth/state/auth/authAction";
+import { commonRoutes } from "./CommonRoutes";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -34,12 +35,7 @@ const AppRoutes = () => {
     {
       path: "/home",
       element: <DashboardLayout />,
-      children: [
-        {
-          path: "",
-          element: <Home />,
-        },
-      ],
+      children: commonRoutes
     },
   ]);
 

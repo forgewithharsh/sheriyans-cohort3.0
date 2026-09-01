@@ -1,4 +1,7 @@
-import ImageKit from "@imagekit/nodejs";
+import ImageKit from "imagekit";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const storageInstance = new ImageKit({
   urlEndpoint: process.env.IMAGE_KIT_URL,

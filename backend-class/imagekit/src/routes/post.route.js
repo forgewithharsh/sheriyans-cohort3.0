@@ -1,8 +1,10 @@
-import express from "express"
-import { upload } from "../config/multer.config"
+import express from "express";
+import { upload } from "../config/multer.config.js";
+import { createPost, getAllPost } from "../controllers/post.controller.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.post("/create", upload.single("image"), createPost)
+router.post("/create", upload.single("image"), createPost);
+router.get("/getAllPost", getAllPost);
 
-export default router
+export default router;

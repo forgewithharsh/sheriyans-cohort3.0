@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import userModel from "../models/user.model.js";
 import { authenticate } from "../middleware/auth.middleware.js";
 import dotenv from "dotenv";
+import bcrypt from "bcryptjs"
 dotenv.config();
 
 const app = express();
@@ -21,7 +22,7 @@ app.post("/api/auth/register", async (req, res) => {
   const user = await userModel.create({
     email,
     name,
-    password,
+    password: await bcrypt.hash(password, 10),
   });
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);

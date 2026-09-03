@@ -2,6 +2,8 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import userModel from "../models/user.model.js";
 import { authenticate } from "../middleware/auth.middleware.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -22,10 +24,7 @@ app.post("/api/auth/register", async (req, res) => {
     password,
   });
 
-  const token = jwt.sign(
-    { id: user._id },
-    "3307bdae5634966eeb512f1823c4051230cdf44c0ffb4adcffa7788380b54cd5",
-  );
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
   res.status(201).json({
     message: "User created successfully",

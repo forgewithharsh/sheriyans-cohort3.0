@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 import userModel from "../models/user.model.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const authenticate = async (req, res, next) => {
   const token = req.headers.authorization;
@@ -10,10 +12,7 @@ export const authenticate = async (req, res, next) => {
     });
   }
 
-  const data = jwt.verify(
-    token,
-    "3307bdae5634966eeb512f1823c4051230cdf44c0ffb4adcffa7788380b54cd5",
-  );
+  const data = jwt.verify(token, process.env.JWT_SECRET);
 
   const user = await userModel.findById(data.id);
 

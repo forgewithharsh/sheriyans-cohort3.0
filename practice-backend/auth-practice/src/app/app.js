@@ -60,8 +60,48 @@ app.post("/api/auth/register", async (req, res) => {
   });
 });
 
-// app.get("/api/auth/me", authenticate, async (req, res) => {});
+app.get("/api/auth/me", authenticate, async (req, res) => {
+  res.status(200).json({
+    data: {
+      user: req.user,
+    },
+  });
+});
 
-// app.post("/api/auth/login", async (req, res) => {});
+app.post("/api/auth/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await userModel.findOne({ email });
+
+  const isValidate = bcrypt.compare(password, user.password);
+
+  if (!isValidate) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid Email and Password",
+    });
+  }
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+  if (!token) {
+    return res.json({
+      success: false,
+      message: "Token not found",
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    message: "User loggedIn successfully",
+    data: {
+      user: {
+        email: user.email,
+        name: user.name,
+      },
+    },
+    token,
+  });
+});
 
 export default app;

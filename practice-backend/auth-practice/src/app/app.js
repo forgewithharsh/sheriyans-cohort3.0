@@ -20,8 +20,18 @@ app.post("/api/auth/register", async (req, res) => {
   const { email, name, password } = req.body;
 
   if (!email || !name || !password) {
-    return res.json({
-      message: "Invalid credentails",
+    return res.status(400).json({
+      success: false,
+      message: "Email, Name, Password is required",
+    });
+  }
+
+  const alreadyRegister = await userModel.findOne({ email });
+
+  if (alreadyRegister) {
+    return res.status(409).json({
+      success: false,
+      message: "User already exists",
     });
   }
 
@@ -40,9 +50,11 @@ app.post("/api/auth/register", async (req, res) => {
   }
 
   return res.status(201).json({
+    success: true,
+    message: "User is created successfully",
     data: {
-      email: user.email,
       user: user.name,
+      email: user.email,
     },
     token,
   });

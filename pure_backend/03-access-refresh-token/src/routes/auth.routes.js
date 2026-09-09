@@ -102,6 +102,20 @@ router.post("/refresh", async (req, res) => {
         message: "Unauthorized, refresh token mismatch",
       });
     }
+
+    const { accessToken, refreshToken: newRefreshToken } = generateTokens({
+      userId: user._id,
+    });
+
+    res.cookie("refreshToken", newRefreshToken, { httpOnly: true });
+
+    user.refreshToken = newRefreshToken;
+    await user.save();
+
+    res.status(200).json({
+      message: "Tokens refreshed successfully",
+      accessToken,
+    });
   } catch (error) {
     return res.status(401).json({
       message: "Unauthorized, Invalid or expired refresh token",

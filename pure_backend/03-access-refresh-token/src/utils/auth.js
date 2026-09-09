@@ -16,7 +16,13 @@ export const generateTokens = ({ userd }) => {
 };
 
 export const verifyAccessToken = (token) => {
-  const decoded = jwt.verify(token, config.ACCESS_TOKEN_SECRET)
+  const decoded = jwt.verify(token, config.ACCESS_TOKEN_SECRET);
 
-  return decoded
-}
+  return decoded;
+};
+
+export const verifyRefreshToken = (token) => {
+  const decoded = jwt.verify(token, config.REFRESH_TOKEN_SECRET);
+
+  return decoded;
+};

@@ -1,7 +1,11 @@
 import { Router } from "express";
 import userModel from "../model/user.model.js";
 import bcrypt from "bcryptjs";
-import { generateTokens, verifyAccessToken } from "../utils/auth.js";
+import {
+  generateTokens,
+  verifyAccessToken,
+  verifyRefreshToken,
+} from "../utils/auth.js";
 
 const router = Router();
 
@@ -74,6 +78,35 @@ router.get("/me", async (req, res) => {
   }
 });
 
+// * @POST /api/auth/refresh
+router.post("/refresh", async (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
 
+  if (!refreshToken) {
+    return res.status(401).json({
+      message: "Unauthorized, refresh token not found",
+    });
+  }
+
+  try {
+    const decoded = await verifyRefreshToken(refreshToken);
+
+    const user = await userModel.findById(decoded.id);
+
+    if (refreshToken !== user.refreshToken) {
+      user.refreshToken = null;
+
+      await user.save();
+
+      return res.status(401).json({
+        message: "Unauthorized, refresh token mismatch",
+      });
+    }
+  } catch (error) {
+    return res.status(401).json({
+      message: "Unauthorized, Invalid or expired refresh token",
+    });
+  }
+});
 
 export default router;

@@ -1,6 +1,9 @@
 import { useState } from "react";
+import useApi from "../../../shared/api";
 
 const Register = () => {
+  const api = useApi();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,7 +23,8 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      console.log("Register data:", formData);
+      const response = await api.post("/auth/register", formData);
+      console.log(response.data);
     } catch (error) {
       console.error("Registration failed:", error);
     }

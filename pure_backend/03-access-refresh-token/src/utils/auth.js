@@ -2,12 +2,12 @@ import jwt from "jsonwebtoken";
 
 import config from "../config/config.js";
 
-export const generateTokens = ({ userd }) => {
-  const accessToken = jwt.sign({ id: userd._id }, config.ACCESS_TOKEN_SECRET, {
+export const generateTokens = ({ userId }) => {
+  const accessToken = jwt.sign({ id: userId._id }, config.ACCESS_TOKEN_SECRET, {
     expiresIn: "15m",
   });
   const refreshToken = jwt.sign(
-    { id: userd._id },
+    { id: userId._id },
     config.REFRESH_TOKEN_SECRET,
     { expiresIn: "7d" },
   );

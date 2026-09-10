@@ -18,12 +18,7 @@ router.post("/register", async (req, res) => {
   if (isUserExists) {
     return res.status(400).json({
       message: "User already exists",
-      errors: [
-        {
-          path: "email",
-          message: "User already exists",
-        },
-      ],
+      errors: [{ path: "email", message: "User already exists" }],
     });
   }
 
@@ -36,7 +31,6 @@ router.post("/register", async (req, res) => {
   const { accessToken, refreshToken } = generateTokens({ userId: user._id });
 
   user.refreshToken = refreshToken;
-
   await user.save();
 
   res.cookie("refreshToken", refreshToken, {
@@ -46,16 +40,24 @@ router.post("/register", async (req, res) => {
   res.status(201).json({
     message: "User registered successfully",
     data: {
-      name: user.name,
-      email: user.email,
+      user: {
+        name: user.name,
+        email: user.email,
+      },
     },
     accessToken,
   });
 });
 
-// * @GET /api/auth/me
+// *@GET /api/auth/me
 router.get("/me", async (req, res) => {
   const accessToken = req.headers.authorization?.split(" ")[1];
+
+  if (!accessToken) {
+    return res.status(401).json({
+      message: "Unauthorized, access token not found",
+    });
+  }
 
   try {
     const decoded = verifyAccessToken(accessToken);
@@ -78,7 +80,7 @@ router.get("/me", async (req, res) => {
   }
 });
 
-// * @POST /api/auth/refresh
+// *@POST /api/auth/refresh
 router.post("/refresh", async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
 
@@ -89,13 +91,12 @@ router.post("/refresh", async (req, res) => {
   }
 
   try {
-    const decoded = await verifyRefreshToken(refreshToken);
+    const decoded = verifyRefreshToken(refreshToken);
 
     const user = await userModel.findById(decoded.id);
 
     if (refreshToken !== user.refreshToken) {
       user.refreshToken = null;
-
       await user.save();
 
       return res.status(401).json({
@@ -107,18 +108,20 @@ router.post("/refresh", async (req, res) => {
       userId: user._id,
     });
 
-    res.cookie("refreshToken", newRefreshToken, { httpOnly: true });
+    res.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+    });
 
     user.refreshToken = newRefreshToken;
     await user.save();
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "Tokens refreshed successfully",
       accessToken,
     });
   } catch (error) {
     return res.status(401).json({
-      message: "Unauthorized, Invalid or expired refresh token",
+      message: "Unauthorized, Invalid or expired access token",
     });
   }
 });

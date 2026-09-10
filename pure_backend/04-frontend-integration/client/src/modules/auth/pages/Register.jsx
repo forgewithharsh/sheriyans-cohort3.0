@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useApi from "../../../shared/api";
+import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
   const api = useApi();
+  const authContext = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,7 +26,7 @@ const Register = () => {
 
     try {
       const response = await api.post("/auth/register", formData);
-      console.log(response.data);
+      authContext.setAccessToken(response.data.accessToken);
     } catch (error) {
       console.error("Registration failed:", error);
     }

@@ -99,8 +99,11 @@ router.post("/refresh", async (req, res) => {
     const user = await userModel.findById(decoded.id);
 
     if (refreshToken !== user.refreshToken) {
+      user.refreshToken = null;
+      await user.save();
+
       return res.status(401).json({
-        message: "Invalid access token or mismatch",
+        message: "Unauthorized, refresh token mismatch",
       });
     }
 
@@ -108,19 +111,15 @@ router.post("/refresh", async (req, res) => {
       userId: user._id,
     });
 
-    user.refreshToken = newRefreshToken;
-    await user.save();
-
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
     });
 
+    user.refreshToken = newRefreshToken;
+    await user.save();
+
     return res.status(201).json({
-      message: "New token generated",
-      data: {
-        name: user.name,
-        email: user.email,
-      },
+      message: "Tokens refreshed successfully",
       accessToken,
     });
   } catch (error) {

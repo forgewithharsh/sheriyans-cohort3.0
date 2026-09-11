@@ -6,6 +6,7 @@ import {
   verifyAccessToken,
   verifyRefreshToken,
 } from "../utils/auth.js";
+import { decode } from "jsonwebtoken";
 
 const router = Router();
 
@@ -65,8 +66,6 @@ router.get("/me", async (req, res) => {
   try {
     const decoded = verifyAccessToken(accessToken);
 
-    console.log(decoded);
-
     const user = await userModel.findById(decoded.id);
 
     return res.status(200).json({
@@ -80,6 +79,53 @@ router.get("/me", async (req, res) => {
   } catch (error) {
     return res.status(401).json({
       message: "Unauthorized, Invalid or expired access token",
+    });
+  }
+});
+
+// @POST /api/auth/refresh
+router.post("/refresh", async (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+
+  if (!refreshToken) {
+    return res.status(401).json({
+      message: "Unauthorized, refresh token not found",
+    });
+  }
+
+  try {
+    const decoded = verifyRefreshToken(refreshToken);
+
+    const user = await userModel.findById(decoded.id);
+
+    if (refreshToken !== user.refreshToken) {
+      return res.status(401).json({
+        message: "Invalid access token or mismatch",
+      });
+    }
+
+    const { accessToken, refreshToken: newRefreshToken } = generateTokens({
+      userId: user._id,
+    });
+
+    user.refreshToken = newRefreshToken;
+    await user.save();
+
+    res.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+    });
+
+    return res.status(201).json({
+      message: "New token generated",
+      data: {
+        name: user.name,
+        email: user.email,
+      },
+      accessToken,
+    });
+  } catch (error) {
+    return res.status(401).json({
+      message: "Unauthorized, Invalid or expired refresh token",
     });
   }
 });

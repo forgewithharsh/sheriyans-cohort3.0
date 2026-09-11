@@ -1,10 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import useApi from "../../../shared/api";
-import { AuthContext } from "../context/useAuthContext";
 
 const Register = () => {
   const api = useApi();
-  const authContext = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     name: "",

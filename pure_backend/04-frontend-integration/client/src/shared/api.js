@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext } from "react";
-import { AuthContext } from "../modules/auth/context/AuthContext";
+import { AuthContext } from "../modules/auth/context/useAuthContext";
 
 const api = axios.create({
   baseURL: "http://localhost:5173/api",

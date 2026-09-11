@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import useApi from "../../../shared/api";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/useAuthContext";
 
 const Register = () => {
   const api = useApi();

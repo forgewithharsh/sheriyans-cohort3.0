@@ -1,10 +1,12 @@
 import { useState } from "react";
 import useApi from "../../../shared/api";
 import { useAuthContext } from "../context/AuthProvider";
+import { useNavigate } from "react-router";
 
 const Register = () => {
   const api = useApi();
-  const authContext= useAuthContext()
+  const authContext = useAuthContext();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -25,8 +27,11 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post("/auth/register", formData)
-      authContext.setAccessToken(response.data.accessToken)
+      const response = await api.post("/auth/register", formData);
+      authContext.setAccessToken(response.data.accessToken);
+      authContext.setUser(response.data.data.user);
+
+      navigate("/profile");
     } catch (error) {
       console.error("Registration failed:", error);
     }

@@ -18,4 +18,10 @@ const verifyAccessToken = (token) => {
   return decoded;
 };
 
-export { generateTokens, verifyAccessToken };
+const verifyRefreshToken = (token) => {
+  const decoded = jwt.verify(token, config.REFRESH_TOKEN_SECRET);
+
+  return decoded;
+};
+
+export { generateTokens, verifyAccessToken, verifyRefreshToken };

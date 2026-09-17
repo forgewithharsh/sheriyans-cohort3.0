@@ -1,4 +1,4 @@
-let generateCode = () => {
+const generateCode = () => {
   let mainString =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 

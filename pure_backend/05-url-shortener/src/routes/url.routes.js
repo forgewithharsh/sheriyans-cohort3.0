@@ -31,7 +31,7 @@ router.post("/", async function (req, res) {
 
   let code = generateCode();
 
-  let newUrl = await urlModel.create({
+  const newUrl = await urlModel.create({
     originalUrl: url,
     shortCode: code,
   });

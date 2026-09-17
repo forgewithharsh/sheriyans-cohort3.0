@@ -109,25 +109,21 @@ router.post("/refresh", async (req, res) => {
       });
     }
 
-    const { accessToken, refreshToken } = generateTokens({ userId: user._id });
+    const { accessToken, refreshToken: newRefreshToken } = generateTokens({
+      userId: user._id,
+    });
 
-    res.cookie("refreshToken", refreshToken, {
+    res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
       secure: true,
     });
 
-    user.refreshToken = refreshToken;
+    user.refreshToken = newRefreshToken;
     await user.save();
 
-    res.status(201).json({
-      message: "User registered successfully",
-      data: {
-        user: {
-          name: user.name,
-          email: user.email,
-        },
-        accessToken,
-      },
+    res.status(200).json({
+      message: "Tokens refreshed successfully",
+      accessToken,
     });
   } catch (error) {
     return res.status(401).json({

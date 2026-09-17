@@ -1,13 +1,12 @@
-import dotenv from "dotenv";
-dotenv.config();
+import "dotenv/config";
 
 const config = {
   PORT: process.env.PORT,
 
   MONGO_URI: process.env.MONGO_URI,
 
-  ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN__SECRET,
-  REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN__SECRET,
+  ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
+  REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
 };
 
 export default config;

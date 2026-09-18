@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import "./App.css";
 
 const dummyUrls = [
@@ -29,6 +31,16 @@ function App() {
   const [urls, setUrls] = useState(dummyUrls);
   const [inputValue, setInputValue] = useState("");
   const [currentUrl, setCurrentUrl] = useState(null);
+
+  async function fetchUrls() {
+    const response = await axios.get("http://localhost:5173/api/url");
+    const responseData = response.data;
+    setUrls(responseData.data.urls);
+  }
+
+  useEffect(() => {
+    fetchUrls();
+  }, []);
 
   return (
     <main className="p-10 flex flex-col gap-4">

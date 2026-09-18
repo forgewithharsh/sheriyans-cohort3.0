@@ -1,7 +1,8 @@
 import userModel from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import { createAccessToken, createRefreshToken } from "../utils/auth.utils.js";
 
-export async function register() {
+export async function register(req, res) {
   const { name, email, password } = req.body;
 
   const isUserAlreadyExists = await userModel.findOne({ email });
@@ -24,5 +25,13 @@ export async function register() {
     passwordHash: await bcrypt.hash(password, 12),
   });
 
-  
+  const accessToken = createAccessToken({
+    userId: user._id,
+    role: user.role,
+  });
+
+  const refreshToken = createRefreshToken({
+    userId: user._id,
+    role: user.role,
+  });
 }

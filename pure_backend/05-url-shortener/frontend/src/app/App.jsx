@@ -51,10 +51,16 @@ function App() {
     fetchUrls();
   }
 
+  async function deleteUrl(id) {
+    const response = await axios.delete(`http://localhost:5173/api/url/${id}`);
+
+    fetchUrls();
+  }
+  console.log(currentUrl);
+
   useEffect(() => {
     fetchUrls();
   }, []);
-
   return (
     <main className="p-10 flex flex-col gap-4">
       <div className="w-full max-w-4xl p-2 flex gap-2">
@@ -72,7 +78,20 @@ function App() {
           Shorten
         </button>
       </div>
-      <div className="w-full max-w-4xl p-2"></div>
+      <div className="w-full max-w-4xl p-2">
+        {
+          <div className="border rounded w-full p-2">
+            <a
+              href={`http://localhost:3000/${currentUrl.shortCode}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-orange-500 font-medium"
+            >
+              http://localhost:3000/{currentUrl.shortCode}
+            </a>
+          </div>
+        }
+      </div>
       <div className="w-full max-w-4xl p-2">
         {urls.map((url) => {
           return (
@@ -89,7 +108,10 @@ function App() {
                 <button className="p-2 rounded bg-orange-600 text-white">
                   COPY
                 </button>
-                <button className="p-2 rounded bg-orange-600 text-white">
+                <button
+                  onClick={() => deleteUrl(url._id)}
+                  className="p-2 rounded bg-orange-600 text-white"
+                >
                   DELETE
                 </button>
               </div>

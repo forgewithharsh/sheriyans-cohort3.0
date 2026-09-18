@@ -38,20 +38,53 @@ function App() {
     setUrls(responseData.data.urls);
   }
 
+  async function createShortUrl() {
+    const response = await axios.post("http://localhost:5173/api/url", {
+      url: inputValue,
+    });
+
+    setCurrentUrl({
+      originalUrl: response.data.data.originalUrl,
+      shortCode: response.data.data.shortCode,
+    });
+
+    fetchUrls();
+  }
+
   useEffect(() => {
     fetchUrls();
   }, []);
 
   return (
     <main className="p-10 flex flex-col gap-4">
-      <div className="w-full max-w-4xl p-2"></div>
+      <div className="w-full max-w-4xl p-2 flex gap-2">
+        <input
+          className="border rounded w-full p-2"
+          placeholder="Enter Long URL"
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button
+          className="rounded p-2 bg-orange-500 text-white cursor-pointer"
+          onClick={createShortUrl}
+        >
+          Shorten
+        </button>
+      </div>
       <div className="w-full max-w-4xl p-2"></div>
       <div className="w-full max-w-4xl p-2">
         {urls.map((url) => {
           return (
-            <div className="border border-neutral-200 p-2 flex gap-8 justify-evenly">
-              <p>{url.shortCode}</p>
+            <div className="border border-neutral-200 p-2 flex gap-8 justify-evenly items-center">
+              <a
+                href={`http://localhost:3000/${url.shortCode}`}
+                target="_blank"
+              >
+                {url.shortCode}
+              </a>
               <p className="truncate">{url.originalUrl}</p>
+              <p>{url.clicks}</p>
               <div className="flex gap-2">
                 <button className="p-2 rounded bg-orange-600 text-white">
                   COPY

@@ -1,43 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useApi from "../../../shared/api";
 import { useAuthContext } from "../context/AuthProvider";
 
 const Profile = () => {
   const api = useApi();
 
-  const { user, accessToken, setAccessToken } = useAuthContext();
+  const { user, setUser, accessToken, setAccessToken } = useAuthContext();
 
-  const [loading, setLoading] = useState(true);
+  async function fetchProfile() {
+    const res = await api.get("/auth/me");
+
+    setUser(res.data.data.user);
+  }
 
   useEffect(() => {
-    const getProfile = async () => {
-      try {
-        await api.get("/auth/profile");
-      } catch (error) {
-        console.error("Failed to get profile:", error);
-
-        if (error.response?.status === 401) {
-          setAccessToken(null);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (accessToken) {
-      getProfile();
-    } else {
-      setLoading(false);
-    }
-  }, [accessToken]);
-
-  if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-zinc-950">
-        <p className="text-zinc-400">Loading profile...</p>
-      </div>
-    );
-  }
+    fetchProfile();
+  }, []);
 
   if (!accessToken) {
     return (

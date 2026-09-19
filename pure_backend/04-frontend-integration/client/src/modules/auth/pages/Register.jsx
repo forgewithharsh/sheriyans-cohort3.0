@@ -28,8 +28,9 @@ const Register = () => {
 
     try {
       const response = await api.post("/auth/register", formData);
+
       authContext.setAccessToken(response.data.accessToken);
-      authContext.setUser(response.data.data.user);
+      authContext.setUser(response.data.data.user)
 
       navigate("/profile");
     } catch (error) {

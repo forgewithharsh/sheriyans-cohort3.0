@@ -16,7 +16,7 @@ app.get("/:code", async function (req, res) {
 
   if (!url) {
     return res.status(404).json({
-      message: "Url not found",
+      message: "URL not found",
     });
   }
 

@@ -34,7 +34,9 @@ function App() {
 
   async function fetchUrls() {
     const response = await axios.get("http://localhost:5173/api/url");
+
     const responseData = response.data;
+
     setUrls(responseData.data.urls);
   }
 
@@ -56,7 +58,6 @@ function App() {
 
     fetchUrls();
   }
-  console.log(currentUrl);
 
   useEffect(() => {
     fetchUrls();
@@ -79,7 +80,7 @@ function App() {
         </button>
       </div>
       <div className="w-full max-w-4xl p-2">
-        {
+        {currentUrl && (
           <div className="border rounded w-full p-2">
             <a
               href={`http://localhost:3000/${currentUrl.shortCode}`}
@@ -90,7 +91,7 @@ function App() {
               http://localhost:3000/{currentUrl.shortCode}
             </a>
           </div>
-        }
+        )}
       </div>
       <div className="w-full max-w-4xl p-2">
         {urls.map((url) => {

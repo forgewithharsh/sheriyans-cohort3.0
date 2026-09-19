@@ -12,8 +12,8 @@ export async function register(req, res) {
       message: "User already exists with this email address",
       errors: [
         {
-          field: "email",
-          message: "User already exists with this email address",
+          path: "email",
+          msg: "User already exists with this email address",
         },
       ],
     });
@@ -33,5 +33,24 @@ export async function register(req, res) {
   const refreshToken = createRefreshToken({
     userId: user._id,
     role: user.role,
+  });
+
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true,
+  });
+
+  user.refreshToken = refreshToken;
+  await user.save();
+
+  res.status(201).json({
+    message: "User registered successfully",
+    data: {
+      user: {
+        email: user.email,
+        name: user.name,
+        id: user._id,
+      },
+    },
+    accessToken,
   });
 }

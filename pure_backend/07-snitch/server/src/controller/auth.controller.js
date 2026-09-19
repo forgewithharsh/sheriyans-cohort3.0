@@ -133,7 +133,7 @@ export async function refresh(req, res) {
     const user = await userModel.findById(userId);
 
     if (refreshToken !== user.refreshToken) {
-      await userModel.findByIdAndDelete(user._id, {
+      await userModel.findByIdAndUpdate(user._id, {
         refreshToken: null,
       });
 
@@ -152,9 +152,8 @@ export async function refresh(req, res) {
       role,
     });
 
-    await user.findByIdAndUpdate(user._id, {
-      refreshToken: newRefreshToken,
-    });
+    user.refreshToken = newRefreshToken;
+    await user.save();
 
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
@@ -176,4 +175,21 @@ export async function refresh(req, res) {
       message: "Invalid refresh token",
     });
   }
+}
+
+export async function getMe(req, res) {
+  const { userId, role } = req.user;
+
+  const user = await userModel.findById(userId);
+
+  res.status(200).json({
+    message: "User data fetch successfully",
+    data: {
+      user: {
+        email: user.email,
+        name: user.name,
+        id: user._id,
+      },
+    },
+  });
 }

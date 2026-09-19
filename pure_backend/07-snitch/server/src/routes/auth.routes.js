@@ -2,7 +2,13 @@ import { Router } from "express";
 import registerValidator, {
   loginValidator,
 } from "../validators/auth.validator.js";
-import { register, login, refresh } from "../controller/auth.controller.js";
+import {
+  register,
+  login,
+  refresh,
+  getMe,
+} from "../controller/auth.controller.js";
+import { authenticate } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
@@ -14,5 +20,8 @@ router.post("/login", loginValidator, login);
 
 // *@POST /api/auth/refresh
 router.post("/refresh", refresh);
+
+// *@GET /api/auth/refresh
+router.get("/me", authenticate, getMe);
 
 export default router;

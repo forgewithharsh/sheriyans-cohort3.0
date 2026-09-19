@@ -132,6 +132,12 @@ export async function refresh(req, res) {
 
     const user = await userModel.findById(userId);
 
+    if (!user) {
+      return res.status(401).json({
+        message: "User not found",
+      });
+    }
+
     if (refreshToken !== user.refreshToken) {
       await userModel.findByIdAndUpdate(user._id, {
         refreshToken: null,

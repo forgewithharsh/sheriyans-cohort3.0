@@ -16,7 +16,7 @@ app.get("/:code", async function (req, res) {
 
   if (!url) {
     return res.status(404).json({
-      error: "URL not found",
+      message: "Url not found",
     });
   }
 
@@ -27,7 +27,9 @@ app.get("/:code", async function (req, res) {
       shortCode: code,
     },
     {
-      $inc: { clicks: 1 },
+      $inc: {
+        clicks: 1,
+      },
     },
   );
 });

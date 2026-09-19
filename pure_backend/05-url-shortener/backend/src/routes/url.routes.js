@@ -10,26 +10,26 @@ router.post("/", async function (req, res) {
 
   if (!url) {
     return res.status(400).json({
-      error: "Please enter a URL",
-    });
-  }
-
-  if (
-    url.startsWith("http://") == false &&
-    url.startsWith("https://") == false
-  ) {
-    return res.status(400).json({
-      error: "Please enter a valid URL starting with http:// and https://",
+      message: "Please enter a URL",
     });
   }
 
   if (url.length > 2048) {
     return res.status(400).json({
-      error: "URL is too long.",
+      error: "Url is too long",
     });
   }
 
-  let code = generateCode();
+  if (
+    url.startsWith("http://" === false) &&
+    url.startsWith("https://") === false
+  ) {
+    return res.status(400).json({
+      error: "Enter valid url starting with http:// or https://",
+    });
+  }
+
+  const code = generateCode();
 
   const newUrl = await urlModel.create({
     originalUrl: url,

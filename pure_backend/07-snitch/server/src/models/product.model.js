@@ -35,4 +35,27 @@ const productSchema = new mongoose.Schema({
       default: "INR",
     },
   },
+  sizes: [
+    {
+      size: {
+        type: String,
+        enum: ["XS", "S", "M", "L", "XL", "XXL"],
+        required: true,
+      },
+      stock: {
+        type: Number,
+        min: 0,
+        default: 0,
+      },
+    },
+  ],
+  seller: {
+    type: mongoose.Types.ObjectId,
+    ref: "users",
+    required: true,
+  },
 });
+
+const productModel = mongoose.model("products", productSchema);
+
+export default productModel;

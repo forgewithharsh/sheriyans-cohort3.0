@@ -24,4 +24,20 @@ export const createProductValidator = [
     .isLength({ min: 20, max: 500 })
     .withMessage("Description length must be between 20 to 500 characters")
     .bail(),
+  body("price.amount")
+    .exists()
+    .withMessage("price amount is required")
+    .bail()
+    .isFloat({ min: 0 })
+    .withMessage("price amount must be a floating number")
+    .bail(),
+  body("price.currency")
+    .exists()
+    .withMessage("Currency is required")
+    .bail()
+    .isString()
+    .withMessage("Currency must be a string value")
+    .bail()
+    .isIn(["INR", "USD"])
+    .withMessage("Currency either be INR or USD"),
 ];

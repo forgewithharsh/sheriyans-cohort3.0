@@ -58,7 +58,7 @@ export const createProductValidator = [
     .isString()
     .withMessage("Size must be a string value")
     .bail()
-    .isIn("XS", "S", "M", "L", "XL", "XXL")
+    .isIn(["XS", "S", "M", "L", "XL", "XXL"])
     .withMessage("Size can be one of these XS, S, M, L, XL, XXL"),
   body("sizes.*.stock")
     .exists()

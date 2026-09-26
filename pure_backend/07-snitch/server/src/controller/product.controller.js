@@ -13,7 +13,7 @@ export async function createProduct(req, res) {
       fileName: req.files[i].originalname,
     });
 
-    console.log(response);
+    fileUrls.push(response.url)
   }
 
   res.status(200).json({
